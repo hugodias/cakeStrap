@@ -33,7 +33,7 @@ PRIMARY KEY (id)
 
 
 - Open the file `app/Config/database.php` and change the database information
-
+- Change the permissions of the folder `app/tmp` to 777 ( and all the folders inside of it )
 
 
 ## Questions / Bugs
