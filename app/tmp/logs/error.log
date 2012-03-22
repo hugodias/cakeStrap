@@ -1,0 +1,574 @@
+2012-03-21 19:16:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:16:50 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:17:23 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:17:23 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:18:03 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:18:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:19:44 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:19:44 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:19:47 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:19:47 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:20:16 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:20:16 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:20:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:20:18 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:21:31 Error: [MissingViewException] View file "/Applications/MAMP/htdocs/caketrap/app/View/Pages/display.ctp" is missing.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-21 19:21:31 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:21:31 Error: [MissingViewException] View file "/Applications/MAMP/htdocs/caketrap/app/View/Pages/display.ctp" is missing.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-21 19:21:31 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:26:12 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:26:12 Error: [MissingControllerException] Controller class ScriptsController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:27:34 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:27:35 Error: [MissingControllerException] Controller class ScriptsController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:28:08 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:28:08 Error: [MissingControllerException] Controller class WebrootController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:28:19 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:29:08 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 19:39:01 Error: [MissingActionException] Action UsersController::login() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:39:01 Error: [MissingActionException] Action UsersController::login() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:39:01 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:39:13 Error: [MissingViewException] View file "/Applications/MAMP/htdocs/caketrap/app/View/Users/login.ctp" is missing.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-21 19:39:13 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:39:13 Error: [MissingViewException] View file "/Applications/MAMP/htdocs/caketrap/app/View/Users/login.ctp" is missing.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-21 19:39:34 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:39:54 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:39:59 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:40:10 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:40:29 Error: [MissingTableException] Table users for model User was not found in datasource default.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Model/Model.php(3380): Model->setSource('users')
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Model/Model.php(1278): Model->getDataSource()
+#2 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/Helper/FormHelper.php(191): Model->schema()
+#3 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/Helper/FormHelper.php(444): FormHelper->_introspectModel('User', 'fields')
+#4 /Applications/MAMP/htdocs/caketrap/app/View/Users/login.ctp(8): FormHelper->create()
+#5 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(908): include('/Applications/M...')
+#6 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(872): View->_evaluate('/Applications/M...', Array)
+#7 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(463): View->_render('/Applications/M...')
+#8 /Applications/MAMP/htdocs/caketrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#9 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#10 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-03-21 19:40:29 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:40:30 Error: [MissingTableException] Table users for model User was not found in datasource default.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Model/Model.php(3380): Model->setSource('users')
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Model/Model.php(1278): Model->getDataSource()
+#2 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/Helper/FormHelper.php(191): Model->schema()
+#3 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/Helper/FormHelper.php(444): FormHelper->_introspectModel('User', 'fields')
+#4 /Applications/MAMP/htdocs/caketrap/app/View/Users/login.ctp(8): FormHelper->create()
+#5 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(908): include('/Applications/M...')
+#6 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(872): View->_evaluate('/Applications/M...', Array)
+#7 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(463): View->_render('/Applications/M...')
+#8 /Applications/MAMP/htdocs/caketrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#9 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#10 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-03-21 19:41:08 Error: [MissingTableException] Table users for model User was not found in datasource default.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Model/Model.php(3380): Model->setSource('users')
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Model/Model.php(1278): Model->getDataSource()
+#2 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/Helper/FormHelper.php(191): Model->schema()
+#3 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/Helper/FormHelper.php(444): FormHelper->_introspectModel('User', 'fields')
+#4 /Applications/MAMP/htdocs/caketrap/app/View/Users/login.ctp(8): FormHelper->create()
+#5 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(908): include('/Applications/M...')
+#6 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(872): View->_evaluate('/Applications/M...', Array)
+#7 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(463): View->_render('/Applications/M...')
+#8 /Applications/MAMP/htdocs/caketrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#9 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#10 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-03-21 19:41:08 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:41:08 Error: [MissingTableException] Table users for model User was not found in datasource default.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Model/Model.php(3380): Model->setSource('users')
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Model/Model.php(1278): Model->getDataSource()
+#2 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/Helper/FormHelper.php(191): Model->schema()
+#3 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/Helper/FormHelper.php(444): FormHelper->_introspectModel('User', 'fields')
+#4 /Applications/MAMP/htdocs/caketrap/app/View/Users/login.ctp(8): FormHelper->create()
+#5 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(908): include('/Applications/M...')
+#6 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(872): View->_evaluate('/Applications/M...', Array)
+#7 /Applications/MAMP/htdocs/caketrap/lib/Cake/View/View.php(463): View->_render('/Applications/M...')
+#8 /Applications/MAMP/htdocs/caketrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#9 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#10 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-03-21 19:42:24 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:42:52 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:43:01 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:47:03 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:47:30 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:47:40 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:48:37 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:48:48 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 19:49:08 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:03:01 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:03:19 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:04:21 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:04:51 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:05:03 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:05:24 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:05:31 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:06:48 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:07:54 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:08:01 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:08:06 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:08:34 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:08:40 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:09:27 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:09:49 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:10:36 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:10:41 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:10:44 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:11:14 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:11:33 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:11:43 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:11:46 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:12:11 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:12:13 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:12:28 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:12:57 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:13:23 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:14:45 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:14:52 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:14:54 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:15:06 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:15:30 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:15:50 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:16:28 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:16:47 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:16:53 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:16:59 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:17:04 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:17:13 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:17:22 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:18:05 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:18:08 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:18:11 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:19:12 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:19:20 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:19:25 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:19:30 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:19:39 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:19:41 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:19:44 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:27:23 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:29:08 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:29:19 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:29:24 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:29:34 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:29:37 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:29:56 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:30:21 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:30:39 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:31:13 Error: [MissingActionException] Action UsersController::u() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:31:31 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:32:35 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:34:03 Error: [MissingControllerException] Controller class AppjsController could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-21 20:35:59 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-21 20:36:08 Error: [MissingActionException] Action UsersController::js() could not be found.
+#0 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
