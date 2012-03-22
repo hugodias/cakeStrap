@@ -22,5 +22,6 @@ echo $this->Form->create
 echo $this->Form->input('username',array('placeholder' => 'Username','class' => 'span3'));
 echo $this->Form->input('password',array('type' => 'password', 'class' => 'span3'));
 
-echo $this->Form->end(array('label' => 'Login','class' => 'btn btn-primary'))
-?>
+?> 
+<button class="btn btn-primary"><i class="icon-play-circle icon-white"></i> Login</button> 
+</form>
