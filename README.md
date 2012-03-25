@@ -1,4 +1,4 @@
-# CakeTrap v 0.1
+# CakeStrap v 0.1
 ---
 Caketrap is a simple HTML5 Ready Bootstrap for CakePHP Applications.
 
