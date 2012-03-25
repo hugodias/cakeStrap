@@ -2,7 +2,7 @@
 	<div class="hero-unit">
 		<div class="row-fluid">
 			<div class="span8">
-			<h1>CakeTrap v 0.1</h1>	
+			<h1>CakeStrap v 0.1</h1>	
 			<hr>
 			<h3>Features</h3>
 			<ul>

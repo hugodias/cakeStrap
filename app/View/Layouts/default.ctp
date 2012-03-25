@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>CakeTrap v0.1</title>
+	<title>CakeStrap v0.1</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -62,7 +62,7 @@
       </footer>
 
     </div> <!-- /container -->
-    <?php echo $this->Html->script('scripts/require-jquery.js', array('data-main' => '/caketrap/js/scripts/main')) ?>
+    <?php echo $this->Html->script('scripts/require-jquery.js', array('data-main' => '/cakestrap/js/scripts/main')) ?>
 <script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

@@ -39,4 +39,4 @@ PRIMARY KEY (id)
 ## Questions / Bugs
 
 Have a question or found a bug? Please create an issue [here][] on GitHub!
-[here]: https://github.com/hugodias/caketrap/issues
+[here]: https://github.com/hugodias/cakestrap/issues
