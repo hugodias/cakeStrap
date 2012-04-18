@@ -12,7 +12,7 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP Applications.
 
 ##### Back-end
 1. CakePHP 2.0.x Security Authentication
-2. Simple users register
+2. Users CRUD
 
 
 ## Quick start
