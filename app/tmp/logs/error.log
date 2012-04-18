@@ -572,3 +572,45 @@
 #1 /Applications/MAMP/htdocs/caketrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #2 /Applications/MAMP/htdocs/caketrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2012-04-18 11:53:49 Error: [MethodNotAllowedException] Method Not Allowed
+#0 [internal function]: UsersController->delete('5')
+#1 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Controller/Controller.php(488): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-18 11:53:49 Error: [MethodNotAllowedException] Method Not Allowed
+#0 [internal function]: UsersController->delete('5')
+#1 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Controller/Controller.php(488): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-18 11:54:27 Error: [MethodNotAllowedException] Method Not Allowed
+#0 [internal function]: UsersController->delete('5')
+#1 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Controller/Controller.php(488): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-18 11:54:27 Error: [MethodNotAllowedException] Method Not Allowed
+#0 [internal function]: UsersController->delete('5')
+#1 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Controller/Controller.php(488): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#3 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-18 11:54:52 Error: [MissingViewException] View file "/Applications/MAMP/htdocs/cakeStrap/app/View/Users/view.ctp" is missing.
+#0 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-04-18 11:54:52 Error: [MissingViewException] View file "/Applications/MAMP/htdocs/cakeStrap/app/View/Users/view.ctp" is missing.
+#0 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/View/View.php(460): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Controller/Controller.php(962): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}

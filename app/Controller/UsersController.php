@@ -9,55 +9,139 @@ class UsersController extends AppController
 	{
 		parent::beforeFilter();
 
-		$this->Auth->allow('register');
+		$this->Auth->allow('register','logout');
 	}
 
 	public function home()
 	{
-		# This is a secret area
+        $this->User->recursive = 0;
+        $this->set('users', $this->paginate());
 	}
 
 	# Action to log the user in
-	public function login() {
+	public function login() 
+	{
 
-	    if ($this->request->is('post')) {
+	    if ($this->request->is('post')) 
+	    {
 
-	        if ($this->Auth->login()) {
+	        if ($this->Auth->login()) 
+	        {
 
-	            return $this->redirect( $this->Auth->redirect() );
+	            $this->redirect($this->Auth->redirect());
 
-	        } else {
-
-	            $this->Session->setFlash(__('Username or password is incorrect'), 'flash_fail', array(), 'auth');
-
+	        } 
+	        else 
+	        {
+	            $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
 	        }
 	    }
 	}
-	
-	public function logout() {
 
+
+	public function logout() 
+	{
 	    $this->redirect($this->Auth->logout());
+	}
 
-	}	
+
+    public function view($id = null) 
+    {
+
+        $this->User->id = $id;
+
+        if (!$this->User->exists()) 
+        {
+            throw new NotFoundException(__('Invalid user'));
+        }
+
+        $this->set('user', $this->User->read(null, $id));
+    }	
 
 	# Registering the user
 	public function register()
 	{
-		if( $this->request->data )
-		{
-			# Logging the user after register
-		    if ( $this->User->save( $this->request->data ) ) 
-		    {
-		        $id = $this->User->id;
+        if ($this->request->is('post')) 
+        {
 
-		        $this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
+            $this->User->create();
 
-		        $this->Auth->login( $this->request->data['User'] );
+            if ($this->User->save($this->request->data)) 
+            {
 
-		        $this->redirect('/users/home');
-		    }			
-		}
+                $this->Session->setFlash(__('The user has been saved'),'flash_success');
+
+                $this->redirect(array('action' => 'home'));
+
+            } 
+            else 
+            {
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'),'flash_fail');
+            }
+        }
 	
 	}
+
+    public function edit($id = null) {
+
+        $this->User->id = $id;
+
+        if (!$this->User->exists()) 
+        {
+
+            throw new NotFoundException(__('Invalid user'));
+        }
+
+        $user = $this->User->findById( $id );
+        $this->set('user',$user);
+
+        if ($this->request->is('post') || $this->request->is('put')) 
+        {
+        	if( empty($this->request->data['User']['password']) )
+        	{
+        		unset($this->request->data['User']['password']);
+        	}
+
+            if ($this->User->save($this->request->data)) 
+            {
+                $this->Session->setFlash(__('The user has been saved'),'flash_success');
+                $this->redirect(array('action' => 'home'));
+            } 
+            else 
+            {
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'),'flash_fail');
+            }
+        } 
+        else 
+        {
+            $this->request->data = $this->User->read(null, $id);
+            unset($this->request->data['User']['password']);
+        }
+    }	
+
+    public function delete($id = null) {
+
+        // if (!$this->request->is('post')) 
+        // {
+        //     throw new MethodNotAllowedException();
+        // }
+
+        $this->User->id = $id;
+
+        if (!$this->User->exists()) 
+        {
+            throw new NotFoundException(__('Invalid user'));
+        }
+
+        if ($this->User->delete()) 
+        {
+            $this->Session->setFlash(__('User deleted'),'flash_success');
+            $this->redirect(array('action' => 'home'));
+        }
+
+        $this->Session->setFlash(__('User was not deleted'),'flash_fail');
+
+        $this->redirect(array('action' => 'home'));
+    }    
 }
 ?>

@@ -18,8 +18,8 @@
 				<li>
 					<strong>Back-end</strong>
 					<ul>
-						<li> <i class="icon-ok"></i> <a href="http://cakephp.org/">CakePHP</a> 2.1.0 Security Login</li>
-						<li> <i class="icon-ok"></i> Simple Users <?php echo $this->Html->link('Register','/users/register') ?></li>						
+						<li> <i class="icon-ok"></i> <a href="http://cakephp.org/" target="_blank">CakePHP</a> 2.1.0 Security Login</li>
+						<li> <i class="icon-ok"></i> Users <a href="http://en.wikipedia.org/wiki/Crud" target="_blank">CRUD</a></li>		
 					</ul>
 				</li>
 

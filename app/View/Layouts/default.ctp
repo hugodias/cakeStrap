@@ -35,8 +35,14 @@
           <?php echo $this->Html->link('CakeTrap',"/",array('class' => 'brand')) ?>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="<?php echo $this->params->controller == 'pages' && $this->action == 'home' ? 'active' : '';  ?>"><?php echo $this->Html->link('Home','/') ?></li>
-              <li class="<?php echo $this->action == 'register' ? 'active' : ''; ?>"><?php echo $this->Html->link('Register','/users/register') ?></li>
+              <?php if( AuthComponent::user('id') ) { ?>
+              <li class="<?php echo $this->params->controller == 'users' && $this->action == 'home' ? 'active' : '';  ?>">
+                <?php echo $this->Html->link('Home','/users/home') ?>
+              </li>
+              <?php } ?>
+              <li class="<?php echo $this->action == 'register' ? 'active' : ''; ?>">
+                <?php echo $this->Html->link('Register','/users/register') ?>
+              </li>
 
               
             </ul>
