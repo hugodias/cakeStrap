@@ -25,6 +25,7 @@ id int(11) NOT NULL AUTO_INCREMENT,
 username varchar(255) NOT NULL,
 password varchar(255) NOT NULL,
 name varchar(255) NOT NULL,
+role varchar(20) NOT NULL,
 created datetime NOT NULL,
 modified datetime NOT NULL,
 PRIMARY KEY (id)
