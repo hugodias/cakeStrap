@@ -2,6 +2,10 @@
 ---
 CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP Applications.
 
+Video tutorial ( Portuguese ): [http://youtu.be/m4FtYIS3Rm8][]
+[http://youtu.be/m4FtYIS3Rm8]: http://youtu.be/m4FtYIS3Rm8
+
+
 ### Features
 ##### Front-end
 1. Responsive Web Design
