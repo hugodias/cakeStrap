@@ -71,7 +71,7 @@ class UsersController extends AppController
 
                 $this->Session->setFlash(__('The user has been saved'),'flash_success');
 
-                $this->redirect(array('action' => 'home'));
+                $this->redirect(array('controller' => 'pages','action' => 'home'));
 
             } 
             else 
