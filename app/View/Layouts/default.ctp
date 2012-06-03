@@ -68,7 +68,7 @@
       </footer>
 
     </div> <!-- /container -->
-    <?php echo $this->Html->script('scripts/require-jquery.js', array('data-main' => '/cakestrap/js/scripts/main')) ?>
+    <?php echo $this->Html->script('scripts/require-jquery.js', array('data-main' => $this->params->webroot.'js/scripts/main')) ?>
 <script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
