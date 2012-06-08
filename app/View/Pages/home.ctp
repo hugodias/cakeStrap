@@ -10,7 +10,6 @@
 					<strong>Front-end</strong>
 					<ul>
 						<li> <i class="icon-ok"></i> <a href="http://html5boilerplate.com/" target="_blank">HTML5 Boilerplate</a> </li>
-						<li> <i class="icon-ok"></i> <a href="http://requirejs.org/" target="_blank">RequireJS</a> </li>
 						<li> <i class="icon-ok"></i> <a href="http://twitter.github.com/bootstrap/" target="_blank"> Twitter Bootsrap 2.0</a> </li>
 						<li> <i class="icon-ok"></i> <a href="http://www.modernizr.com/" target="_blank"> Modernizr</a> </li>						
 					</ul>

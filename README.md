@@ -12,7 +12,6 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP Applications.
 ##### Front-end
 1. Responsive Web Design
 2. HTML5 Boilerplate
-3. RequireJS
 4. Modernizr
 5. Twitter Bootstrap
 
