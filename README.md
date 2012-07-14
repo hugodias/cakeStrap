@@ -45,7 +45,7 @@ PRIMARY KEY (id)
 
 
 
-## ## Internationalization
+## Internationalization
 
 Currently cakeStrap supports two languages, **English** and **Portuguese**. To enable the Portuguese language as the main just add the following line in your `app/Controllers/AppController.php` at `beforeFilter` action:
 <pre>
