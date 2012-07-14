@@ -1,22 +1,21 @@
 <?php
-# Compoente para formatação dos erros em uma estrutura html.
+# Component to handle errros
 class ErrorComponent extends Component
 {
 	public $components = array('Session');
-	
+
 	public function set( $erros)
 	{
-
 		if ( !empty($erros) )
 		{	
-			$htmlErro = '<ul>';
+			$html = '<ul>';
 			foreach ( $erros as $e )
 			{
-				$htmlErro .= '<li>'.$e[0].'</li>';
+				$html .= '<li>'.$e[0].'</li>';
 			}
-			$htmlErro .= '</ul>';
-			
-			$this->Session->setFlash($htmlErro, 'flash_fail');
+			$html .= '</ul>';
+
+			$this->Session->setFlash($html, 'flash_fail');
 		}
 	}
 }

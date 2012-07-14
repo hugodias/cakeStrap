@@ -3,7 +3,7 @@ App::uses('AuthComponent', 'Controller/Component');
 
 class User extends AppModel
 {
-    public $name = 'User';
+  public $name = 'User';
 	
   public function beforeSave() 
   {
