@@ -23,7 +23,7 @@ echo $this->Form->create
 <?php
 echo $this->Form->input('username',
 	array(
-		'placeholder' => 'Username',
+		'placeholder' => __('Username'),
 		'class' => 'span3',
 		'value' => !empty( $user['User']['username'] ) ? $user['User']['username'] : ''
 	)
@@ -33,12 +33,12 @@ echo $this->Form->input('password',
 	array(
 		'type' => 'password', 
 		'class' => 'span3',
-		'placeholder' => 'Password'
+		'placeholder' => __('Password')
 	)
 );
 
 echo $this->Form->input('role', array(
-    'options' => array('admin' => 'Admin', 'author' => 'Author'),
+    'options' => array('admin' => __('Admin'), 'author' => __('Author')),
     'selected' => !empty( $user['User']['role'] ) ? $user['User']['role'] : ''
 ));
 ?>

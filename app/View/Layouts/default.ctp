@@ -41,7 +41,7 @@
               </li>
               <?php } ?>
               <li class="<?php echo $this->action == 'register' ? 'active' : ''; ?>">
-                <?php echo $this->Html->link('Register','/users/register') ?>
+                <?php echo $this->Html->link(__('Register'),'/users/register') ?>
               </li>
 
               

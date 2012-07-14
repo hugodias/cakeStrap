@@ -3,16 +3,16 @@
 	<div class="span12">
 		<?php echo $this->Session->flash() ?>
 		
-		<h2>You are logged in, <strong><?php echo AuthComponent::user('username') ?></strong> </h2>
+		<h2><?php echo __('You are logged in') ?>, <strong><?php echo AuthComponent::user('username') ?></strong> </h2>
 		<hr>
-		<h3>All Users</h3>
+		<h3><?php echo __('All Users')?></h3>
 		<hr>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Username</th>
-					<th>Role</th>
+					<th><?php echo __('Username') ?></th>
+					<th><?php echo __('Role') ?></th>
 					<th>#</th>
 				</tr>
 			</thead>

@@ -44,3 +44,5 @@ class AppController extends Controller
 		$this->Auth->authError = 'You are not allowed to see that.';
 	}	
 }
+
+
