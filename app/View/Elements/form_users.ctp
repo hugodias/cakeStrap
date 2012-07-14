@@ -43,4 +43,9 @@ echo $this->Form->input('role', array(
 ));
 ?>
 </fieldset>
-<?php echo $this->Form->end(__('Submit'), array('class' => 'btn btn-primary'));?>
+<?php 
+$options = array(
+	'label' => __('Submit'),
+	'class' => 'btn btn-primary'
+);
+echo $this->Form->end($options);?>
