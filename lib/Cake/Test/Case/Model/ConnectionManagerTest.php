@@ -4,13 +4,13 @@
  *
  * PHP 5
  *
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.Model
  * @since         CakePHP(tm) v 1.2.0.5550
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -208,8 +208,8 @@ class ConnectionManagerTest extends CakeTestCase {
  */
 	public function testLoadDataSource() {
 		$connections = array(
-			array('classname' => 'Mysql', 'filename' =>  'Mysql', 'package' => 'Database'),
-			array('classname' => 'Postgres', 'filename' =>  'Postgres', 'package' => 'Database'),
+			array('classname' => 'Mysql', 'filename' => 'Mysql', 'package' => 'Database'),
+			array('classname' => 'Postgres', 'filename' => 'Postgres', 'package' => 'Database'),
 			array('classname' => 'Sqlite', 'filename' => 'Sqlite', 'package' => 'Database'),
 		);
 
@@ -253,14 +253,14 @@ class ConnectionManagerTest extends CakeTestCase {
 		$this->assertEquals($name, ConnectionManager::getSourceName($connection));
 
 		$source = ConnectionManager::create(null, array());
-		$this->assertEquals($source, null);
+		$this->assertEquals(null, $source);
 
 		$source = ConnectionManager::create('another_test', array());
-		$this->assertEquals($source, null);
+		$this->assertEquals(null, $source);
 
 		$config = array('classname' => 'DboMysql', 'filename' => 'dbo' . DS . 'dbo_mysql');
 		$source = ConnectionManager::create(null, $config);
-		$this->assertEquals($source, null);
+		$this->assertEquals(null, $source);
 	}
 
 /**

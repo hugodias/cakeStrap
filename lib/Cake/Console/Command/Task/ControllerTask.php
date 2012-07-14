@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc.
+ * Copyright 2005-2012, Cake Software Foundation, Inc.
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @since         CakePHP(tm) v 1.2
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -397,11 +397,12 @@ class ControllerTask extends BakeTask {
 
 		if ($this->interactive == true) {
 			$this->out(__d('cake_console', 'Possible Controllers based on your current database:'));
+			$this->hr();
 			$this->_controllerNames = array();
 			$count = count($this->__tables);
 			for ($i = 0; $i < $count; $i++) {
 				$this->_controllerNames[] = $this->_controllerName($this->_modelName($this->__tables[$i]));
-				$this->out($i + 1 . ". " . $this->_controllerNames[$i]);
+				$this->out(sprintf("%2d. %s", $i + 1, $this->_controllerNames[$i]));
 			}
 			return $this->_controllerNames;
 		}

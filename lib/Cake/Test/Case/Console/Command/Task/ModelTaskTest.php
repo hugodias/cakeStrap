@@ -7,12 +7,12 @@
  * PHP 5
  *
  * CakePHP : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc.
+ * Copyright 2005-2012, Cake Software Foundation, Inc.
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc.
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc.
  * @link          http://cakephp.org CakePHP Project
  * @package       Cake.Test.Case.Console.Command.Task
  * @since         CakePHP v 1.2.6
@@ -315,7 +315,7 @@ class ModelTaskTest extends CakeTestCase {
 		$this->Task->initValidations();
 		$this->Task->interactive = true;
 		$this->Task->expects($this->any())->method('in')
-			->will($this->onConsecutiveCalls('21', 'y', '17', 'n'));
+			->will($this->onConsecutiveCalls('23', 'y', '17', 'n'));
 
 		$result = $this->Task->fieldValidation('text', array('type' => 'string', 'length' => 10, 'null' => false));
 		$expected = array('notempty' => 'notempty', 'maxlength' => 'maxlength');
@@ -333,9 +333,9 @@ class ModelTaskTest extends CakeTestCase {
 		$this->Task->interactive = true;
 
 		$this->Task->expects($this->any())->method('in')
-			->will($this->onConsecutiveCalls('999999', '21', 'n'));
+			->will($this->onConsecutiveCalls('999999', '23', 'n'));
 
-		$this->Task->expects($this->at(7))->method('out')
+		$this->Task->expects($this->at(10))->method('out')
 			->with($this->stringContains('make a valid'));
 
 		$result = $this->Task->fieldValidation('text', array('type' => 'string', 'length' => 10, 'null' => false));
@@ -470,7 +470,7 @@ class ModelTaskTest extends CakeTestCase {
 			->will($this->onConsecutiveCalls('y', 2));
 
 		$result = $this->Task->findDisplayField($fields);
-		$this->assertEquals($result, 'tagname');
+		$this->assertEquals('tagname', $result);
 	}
 
 /**
@@ -619,7 +619,7 @@ class ModelTaskTest extends CakeTestCase {
 				),
 			),
 		);
-		$this->assertEquals($result, $expected);
+		$this->assertEquals($expected, $result);
 	}
 
 /**
@@ -716,7 +716,7 @@ class ModelTaskTest extends CakeTestCase {
 		$this->Task->expects($this->at(6))->method('out')->with('3. three');
 		$this->Task->expects($this->at(7))->method('in')->will($this->returnValue(2));
 		$result = $this->Task->inOptions($options, 'Pick a number');
-		$this->assertEquals($result, 1);
+		$this->assertEquals(1, $result);
 	}
 
 /**
@@ -823,7 +823,7 @@ STRINGEND;
 		$this->Task->plugin = 'ControllerTest';
 
 		//fake plugin path
-		CakePlugin::load('ControllerTest', array('path' =>  APP . 'Plugin' . DS . 'ControllerTest' . DS));
+		CakePlugin::load('ControllerTest', array('path' => APP . 'Plugin' . DS . 'ControllerTest' . DS));
 		$path = APP . 'Plugin' . DS . 'ControllerTest' . DS . 'Model' . DS . 'BakeArticle.php';
 		$this->Task->expects($this->once())->method('createFile')
 			->with($path, $this->stringContains('BakeArticle extends ControllerTestAppModel'));
@@ -861,7 +861,7 @@ STRINGEND;
  *
  * @return void
  */
-	static function nameVariations() {
+	public static function nameVariations() {
 		return array(
 			array('BakeArticles'), array('BakeArticle'), array('bake_article'), array('bake_articles')
 		);

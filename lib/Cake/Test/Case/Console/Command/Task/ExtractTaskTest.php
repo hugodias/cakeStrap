@@ -7,12 +7,12 @@
  * PHP 5
  *
  * CakePHP :  Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc.
+ * Copyright 2005-2012, Cake Software Foundation, Inc.
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc.
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc.
  * @link          http://cakephp.org CakePHP Project
  * @package       Cake.Test.Case.Console.Command.Task
  * @since         CakePHP v 1.2.0.7726
@@ -20,6 +20,8 @@
  */
 
 App::uses('Folder', 'Utility');
+App::uses('ConsoleOutput', 'Console');
+App::uses('ConsoleInput', 'Console');
 App::uses('ShellDispatcher', 'Console');
 App::uses('Shell', 'Console');
 App::uses('ExtractTask', 'Console/Command/Task');
@@ -74,6 +76,7 @@ class ExtractTaskTest extends CakeTestCase {
 
 		$this->Task->params['paths'] = CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS . 'Pages';
 		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
 		$this->Task->expects($this->never())->method('err');
 		$this->Task->expects($this->any())->method('in')
 			->will($this->returnValue('y'));
@@ -82,6 +85,8 @@ class ExtractTaskTest extends CakeTestCase {
 		$this->Task->execute();
 		$this->assertTrue(file_exists($this->path . DS . 'default.pot'));
 		$result = file_get_contents($this->path . DS . 'default.pot');
+
+		$this->assertFalse(file_exists($this->path . DS . 'cake.pot'));
 
 		$pattern = '/"Content-Type\: text\/plain; charset\=utf-8/';
 		$this->assertRegExp($pattern, $result);
@@ -110,7 +115,7 @@ class ExtractTaskTest extends CakeTestCase {
 
 		$pattern = '/msgid "Your database configuration file is NOT present."\nmsgstr ""\n/';
 		$this->assertRegExp($pattern, $result);
-		
+
 		$pattern = '/msgid "Rename config\/database.php.default to ';
 		$pattern .= 'config\/database.php"\nmsgstr ""\n/';
 		$this->assertRegExp($pattern, $result);
@@ -180,6 +185,7 @@ class ExtractTaskTest extends CakeTestCase {
 		$this->Task->params['paths'] = CAKE . 'Test' . DS . 'test_app' . DS . 'View';
 		$this->Task->params['output'] = $this->path . DS;
 		$this->Task->params['exclude'] = 'Pages,Layouts';
+		$this->Task->params['extract-core'] = 'no';
 
 		$this->Task->expects($this->any())->method('in')
 			->will($this->returnValue('y'));
@@ -208,6 +214,7 @@ class ExtractTaskTest extends CakeTestCase {
 			CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS . 'Posts';
 
 		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
 		$this->Task->expects($this->never())->method('err');
 		$this->Task->expects($this->never())->method('_stop');
 		$this->Task->execute();
@@ -291,6 +298,7 @@ class ExtractTaskTest extends CakeTestCase {
 
 		$this->Task->params['paths'] = CAKE . 'Test' . DS . 'test_app' . DS;
 		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
 		$this->Task->params['exclude-plugins'] = true;
 		$this->Task->params['ignore-model-validation'] = false;
 
@@ -336,6 +344,7 @@ class ExtractTaskTest extends CakeTestCase {
 
 		$this->Task->params['paths'] = CAKE . 'Test' . DS . 'test_app' . DS;
 		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
 		$this->Task->params['exclude-plugins'] = true;
 		$this->Task->params['ignore-model-validation'] = false;
 
@@ -357,7 +366,6 @@ class ExtractTaskTest extends CakeTestCase {
 		$pattern = '#msgid "Post body is super required"#';
 		$this->assertRegExp($pattern, $result);
 	}
-
 
 /**
  *  Test that the extract shell can obtain validation messages from models inside a specific plugin
@@ -382,10 +390,10 @@ class ExtractTaskTest extends CakeTestCase {
 		$this->Task->execute();
 		$result = file_get_contents($this->path . DS . 'test_plugin.pot');
 
-		$pattern =  preg_quote('#Model' . DS . 'TestPluginPost.php:validation for field title#', '\\');
+		$pattern = preg_quote('#Model' . DS . 'TestPluginPost.php:validation for field title#', '\\');
 		$this->assertRegExp($pattern, $result);
 
-		$pattern =  preg_quote('#Model' . DS . 'TestPluginPost.php:validation for field body#', '\\');
+		$pattern = preg_quote('#Model' . DS . 'TestPluginPost.php:validation for field body#', '\\');
 		$this->assertRegExp($pattern, $result);
 
 		$pattern = '#msgid "Post title is required"#';
@@ -398,6 +406,57 @@ class ExtractTaskTest extends CakeTestCase {
 		$this->assertRegExp($pattern, $result);
 
 		$pattern = '#Plugin/TestPlugin/Model/TestPluginPost.php:validation for field title#';
+		$this->assertNotRegExp($pattern, $result);
+	}
+
+/**
+ *  Test that the extract shell overwrites existing files with the overwrite parameter
+ *
+ * @return void
+ */
+	public function testExtractOverwrite() {
+		$this->Task->interactive = false;
+
+		$this->Task->params['paths'] = CAKE . 'Test' . DS . 'test_app' . DS;
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
+		$this->Task->params['overwrite'] = true;
+
+		file_put_contents($this->path . DS . 'default.pot', 'will be overwritten');
+		$this->assertTrue(file_exists($this->path . DS . 'default.pot'));
+		$original = file_get_contents($this->path . DS . 'default.pot');
+
+		$this->Task->execute();
+		$result = file_get_contents($this->path . DS . 'default.pot');
+		$this->assertNotEquals($original, $result);
+	}
+
+/**
+ *  Test that the extract shell scans the core libs
+ *
+ * @return void
+ */
+	public function testExtractCore() {
+		$this->Task->interactive = false;
+
+		$this->Task->params['paths'] = CAKE . 'Test' . DS . 'test_app' . DS;
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'yes';
+
+		$this->Task->execute();
+		$this->assertTrue(file_exists($this->path . DS . 'cake.pot'));
+		$result = file_get_contents($this->path . DS . 'cake.pot');
+
+		$pattern = '/msgid "Yesterday, %s"\nmsgstr ""\n/';
+		$this->assertRegExp($pattern, $result);
+
+		$this->assertTrue(file_exists($this->path . DS . 'cake_dev.pot'));
+		$result = file_get_contents($this->path . DS . 'cake_dev.pot');
+
+		$pattern = '/#: Console\/Templates\//';
+		$this->assertNotRegExp($pattern, $result);
+
+		$pattern = '/#: Test\//';
 		$this->assertNotRegExp($pattern, $result);
 	}
 }

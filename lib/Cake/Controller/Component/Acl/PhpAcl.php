@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Controller.Component.Acl
  * @since         CakePHP(tm) v 2.1
@@ -403,7 +403,7 @@ class PhpAro {
  * index. The resulting array will contain a prioritized list of (list of) roles ordered from 
  * the most distant AROs to the requested one itself.
  * 
- * @param mixed $aro An ARO identifier
+ * @param string|array $aro An ARO identifier
  * @return array prioritized AROs
  */
 	public function roles($aro) {
@@ -429,7 +429,7 @@ class PhpAro {
  * resolve an ARO identifier to an internal ARO string using
  * the internal mapping information. 
  *
- * @param mixed $aro ARO identifier (User.jeff, array('User' => ...), etc)
+ * @param string|array $aro ARO identifier (User.jeff, array('User' => ...), etc)
  * @return string internal aro string (e.g. User/jeff, Role/default)
  */
 	public function resolve($aro) {
@@ -494,7 +494,7 @@ class PhpAro {
 					// detect cycles
 					$roles = $this->roles($dependency);
 
-					if (in_array($role, Set::flatten($roles))) {
+					if (in_array($role, Hash::flatten($roles))) {
 						$path = '';
 
 						foreach ($roles as $roleDependencies) {

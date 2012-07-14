@@ -1,12 +1,12 @@
 <?php
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Utility
  * @since         CakePHP(tm) v 0.2.9
@@ -79,7 +79,7 @@ class Folder {
  *
  * @param string $path Path to folder
  * @param boolean $create Create folder if not found
- * @param mixed $mode Mode (CHMOD) to apply to created folder, false to ignore
+ * @param string|boolean $mode Mode (CHMOD) to apply to created folder, false to ignore
  * @link http://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder
  */
 	public function __construct($path = false, $create = false, $mode = false) {
@@ -132,7 +132,7 @@ class Folder {
  *
  * @param boolean $sort Whether you want the results sorted, set this and the sort property
  *   to false to get unsorted results.
- * @param mixed $exceptions Either an array or boolean true will not grab dot files
+ * @param array|boolean $exceptions Either an array or boolean true will not grab dot files
  * @param boolean $fullPath True returns the full path
  * @return mixed Contents of current directory as an array, an empty array on failure
  * @link http://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::read
@@ -322,7 +322,7 @@ class Folder {
  * Returns true if the File is in given path.
  *
  * @param string $path The path to check that the current pwd() resides with in.
- * @param boolean $reverse
+ * @param boolean $reverse Reverse the search, check that pwd() resides within $path.
  * @return boolean
  * @link http://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::inPath
  */
@@ -394,7 +394,7 @@ class Folder {
  * Returns an array of nested directories and files in each directory
  *
  * @param string $path the directory path to build the tree from
- * @param mixed $exceptions Either an array of files/folder to exclude
+ * @param array|boolean $exceptions Either an array of files/folder to exclude
  *   or boolean true to not grab dot files/folders
  * @param string $type either 'file' or 'dir'. null returns both files and directories
  * @return mixed array of nested directories and files in each directory
@@ -595,7 +595,7 @@ class Folder {
  * - `mode` The mode to copy the files/directories with.
  * - `skip` Files/directories to skip.
  *
- * @param mixed $options Either an array of options (see above) or a string of the destination directory.
+ * @param array|string $options Either an array of options (see above) or a string of the destination directory.
  * @return boolean Success
  * @link http://book.cakephp.org/2.0/en/core-utility-libraries/file-folder.html#Folder::copy
  */

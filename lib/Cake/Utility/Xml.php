@@ -7,12 +7,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Utility
  * @since         CakePHP v .0.10.3.1400
@@ -76,7 +76,7 @@ class Xml {
  * - `return` Can be 'simplexml' to return object of SimpleXMLElement or 'domdocument' to return DOMDocument.
  * - If using array as input, you can pass `options` from Xml::fromArray.
  *
- * @param mixed $input XML string, a path to a file, an URL or an array
+ * @param string|array $input XML string, a path to a file, an URL or an array
  * @param array $options The options to use
  * @return SimpleXMLElement|DOMDocument SimpleXMLElement or DOMDocument
  * @throws XmlException
@@ -230,7 +230,7 @@ class Xml {
 					if ($key[0] === '@') {
 						throw new XmlException(__d('cake_dev', 'Invalid array'));
 					}
-					if (array_keys($value) === range(0, count($value) - 1)) { // List
+					if (is_numeric(implode('', array_keys($value)))) { // List
 						foreach ($value as $item) {
 							$itemData = compact('dom', 'node', 'key', 'format');
 							$itemData['value'] = $item;

@@ -4,14 +4,14 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.View
  * @since         CakePHP(tm) v 2.1.0
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -43,9 +43,27 @@ class XmlViewTest extends CakeTestCase {
 		$View = new XmlView($Controller);
 		$output = $View->render(false);
 
-		$expected = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . '<users><user>user1</user><user>user2</user></users>';
-		$this->assertTextEquals($expected, trim($output));
-		$this->assertIdentical('application/xml', $Response->type());
+		$this->assertSame(Xml::build($data)->asXML(), $output);
+		$this->assertSame('application/xml', $Response->type());
+
+		$data = array(
+			array(
+				'User' => array(
+					'username' => 'user1'
+				)
+			),
+			array(
+				'User' => array(
+					'username' => 'user2'
+				)
+			)
+		);
+		$Controller->set(array('users' => $data, '_serialize' => 'users'));
+		$View = new XmlView($Controller);
+		$output = $View->render(false);
+
+		$expected = Xml::build(array('response' => array('users' => $data)))->asXML();
+		$this->assertSame($expected, $output);
 	}
 
 /**
@@ -64,10 +82,10 @@ class XmlViewTest extends CakeTestCase {
 		$output = $View->render(false);
 
 		$expected = array(
-			'response' => array('no' =>$data['no'], 'user' => $data['user'])
+			'response' => array('no' => $data['no'], 'user' => $data['user'])
 		);
-		$this->assertIdentical(Xml::build($expected)->asXML(), $output);
-		$this->assertIdentical('application/xml', $Response->type());
+		$this->assertSame(Xml::build($expected)->asXML(), $output);
+		$this->assertSame('application/xml', $Response->type());
 	}
 
 /**
@@ -100,9 +118,12 @@ class XmlViewTest extends CakeTestCase {
 		$View = new XmlView($Controller);
 		$output = $View->render('index');
 
-		$expected = '<?xml version="1.0" encoding="UTF-8"?><users><user>user1</user><user>user2</user></users>';
-		$this->assertIdentical($expected, str_replace(array("\r", "\n"), '', $output));
-		$this->assertIdentical('application/xml', $Response->type());
+		$expected = array(
+			'users' => array('user' => array('user1', 'user2'))
+		);
+		$expected = Xml::build($expected)->asXML();
+		$this->assertSame($expected, $output);
+		$this->assertSame('application/xml', $Response->type());
 		$this->assertInstanceOf('HelperCollection', $View->Helpers);
 	}
 

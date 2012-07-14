@@ -7,12 +7,12 @@
  * PHP 5
  *
  * CakePHP :  Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc.
+ * Copyright 2005-2012, Cake Software Foundation, Inc.
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc.
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc.
  * @link          http://cakephp.org CakePHP Project
  * @package       Cake.Test.Case.Console.Command
  * @since         CakePHP v 1.2.0.7726
@@ -45,6 +45,13 @@ class ShellTestShell extends Shell {
 	public $stopped;
 
 /**
+ * testMessage property
+ *
+ * @var string
+ */
+	public $testMessage = 'all your base are belong to us';
+
+/**
  * stop method
  *
  * @param integer $status
@@ -54,21 +61,25 @@ class ShellTestShell extends Shell {
 		$this->stopped = $status;
 	}
 
-	public function do_something() {
-
+	protected function _secret() {
 	}
 
-	protected function _secret() {
-
+	//@codingStandardsIgnoreStart
+	public function do_something() {
 	}
 
 	protected function no_access() {
-
 	}
+
+	public function log_something() {
+		$this->log($this->testMessage);
+	}
+	//@codingStandardsIgnoreEnd
 
 	public function mergeVars($properties, $class, $normalize = true) {
 		return $this->_mergeVars($properties, $class, $normalize);
 	}
+
 }
 
 /**
@@ -77,8 +88,11 @@ class ShellTestShell extends Shell {
  * @package       Cake.Test.Case.Console.Command
  */
 class TestMergeShell extends Shell {
+
 	public $tasks = array('DbConfig', 'Fixture');
+
 	public $uses = array('Comment');
+
 }
 
 /**
@@ -139,7 +153,7 @@ class ShellTest extends CakeTestCase {
  * @return void
  */
 	public function testConstruct() {
-		$this->assertEquals($this->Shell->name, 'ShellTestShell');
+		$this->assertEquals('ShellTestShell', $this->Shell->name);
 		$this->assertInstanceOf('ConsoleInput', $this->Shell->stdin);
 		$this->assertInstanceOf('ConsoleOutput', $this->Shell->stdout);
 		$this->assertInstanceOf('ConsoleOutput', $this->Shell->stderr);
@@ -160,7 +174,7 @@ class ShellTest extends CakeTestCase {
 		$this->assertEquals($expected, $this->Shell->tasks);
 
 		$expected = array('Fixture' => null, 'DbConfig' => array('one', 'two'));
-		$this->assertEquals($expected, Set::normalize($this->Shell->tasks), 'Normalized results are wrong.');
+		$this->assertEquals($expected, Hash::normalize($this->Shell->tasks), 'Normalized results are wrong.');
 		$this->assertEquals(array('Comment', 'Posts'), $this->Shell->uses, 'Merged models are wrong.');
 	}
 
@@ -181,14 +195,14 @@ class ShellTest extends CakeTestCase {
 
 		$this->assertTrue(isset($this->Shell->TestPluginPost));
 		$this->assertInstanceOf('TestPluginPost', $this->Shell->TestPluginPost);
-		$this->assertEquals($this->Shell->modelClass, 'TestPluginPost');
+		$this->assertEquals('TestPluginPost', $this->Shell->modelClass);
 		CakePlugin::unload('TestPlugin');
 
 		$this->Shell->uses = array('Comment');
 		$this->Shell->initialize();
 		$this->assertTrue(isset($this->Shell->Comment));
 		$this->assertInstanceOf('Comment', $this->Shell->Comment);
-		$this->assertEquals($this->Shell->modelClass, 'Comment');
+		$this->assertEquals('Comment', $this->Shell->modelClass);
 
 		App::build();
 	}
@@ -224,22 +238,22 @@ class ShellTest extends CakeTestCase {
 			->will($this->returnValue('0'));
 
 		$result = $this->Shell->in('Just a test?', array('y', 'n'), 'n');
-		$this->assertEquals($result, 'n');
+		$this->assertEquals('n', $result);
 
 		$result = $this->Shell->in('Just a test?', array('y', 'n'), 'n');
-		$this->assertEquals($result, 'Y');
+		$this->assertEquals('Y', $result);
 
 		$result = $this->Shell->in('Just a test?', 'y,n', 'n');
-		$this->assertEquals($result, 'y');
+		$this->assertEquals('y', $result);
 
 		$result = $this->Shell->in('Just a test?', 'y/n', 'n');
-		$this->assertEquals($result, 'y');
+		$this->assertEquals('y', $result);
 
 		$result = $this->Shell->in('Just a test?', 'y', 'y');
-		$this->assertEquals($result, 'y');
+		$this->assertEquals('y', $result);
 
 		$result = $this->Shell->in('Just a test?', array(0, 1, 2), '0');
-		$this->assertEquals($result, '0');
+		$this->assertEquals('0', $result);
 	}
 
 /**
@@ -251,7 +265,7 @@ class ShellTest extends CakeTestCase {
 		$this->Shell->interactive = false;
 
 		$result = $this->Shell->in('Just a test?', 'y/n', 'n');
-		$this->assertEquals($result, 'n');
+		$this->assertEquals('n', $result);
 	}
 
 /**
@@ -366,7 +380,7 @@ class ShellTest extends CakeTestCase {
 		}
 		$this->assertEquals($this->Shell->nl(), $newLine);
 		$this->assertEquals($this->Shell->nl(true), $newLine);
-		$this->assertEquals($this->Shell->nl(false), "");
+		$this->assertEquals("", $this->Shell->nl(false));
 		$this->assertEquals($this->Shell->nl(2), $newLine . $newLine);
 		$this->assertEquals($this->Shell->nl(1), $newLine);
 	}
@@ -467,7 +481,7 @@ class ShellTest extends CakeTestCase {
  *
  * @return void
  */
-	public function test__getArgAndParamReferences() {
+	public function testMagicGetArgAndParamReferences() {
 		$this->Shell->tasks = array('TestApple');
 		$this->Shell->args = array('one');
 		$this->Shell->params = array('help' => false);
@@ -487,33 +501,33 @@ class ShellTest extends CakeTestCase {
  */
 	public function testShortPath() {
 		$path = $expected = DS . 'tmp' . DS . 'ab' . DS . 'cd';
-		$this->assertEquals($this->Shell->shortPath($path), $expected);
+		$this->assertEquals($expected, $this->Shell->shortPath($path));
 
-		$path = $expected = DS . 'tmp' . DS . 'ab' . DS . 'cd' . DS ;
-		$this->assertEquals($this->Shell->shortPath($path), $expected);
+		$path = $expected = DS . 'tmp' . DS . 'ab' . DS . 'cd' . DS;
+		$this->assertEquals($expected, $this->Shell->shortPath($path));
 
 		$path = $expected = DS . 'tmp' . DS . 'ab' . DS . 'index.php';
-		$this->assertEquals($this->Shell->shortPath($path), $expected);
+		$this->assertEquals($expected, $this->Shell->shortPath($path));
 
 		$path = DS . 'tmp' . DS . 'ab' . DS . DS . 'cd';
 		$expected = DS . 'tmp' . DS . 'ab' . DS . 'cd';
-		$this->assertEquals($this->Shell->shortPath($path), $expected);
+		$this->assertEquals($expected, $this->Shell->shortPath($path));
 
 		$path = 'tmp' . DS . 'ab';
 		$expected = 'tmp' . DS . 'ab';
-		$this->assertEquals($this->Shell->shortPath($path), $expected);
+		$this->assertEquals($expected, $this->Shell->shortPath($path));
 
 		$path = 'tmp' . DS . 'ab';
 		$expected = 'tmp' . DS . 'ab';
-		$this->assertEquals($this->Shell->shortPath($path), $expected);
+		$this->assertEquals($expected, $this->Shell->shortPath($path));
 
 		$path = APP;
 		$expected = DS . basename(APP) . DS;
-		$this->assertEquals($this->Shell->shortPath($path), $expected);
+		$this->assertEquals($expected, $this->Shell->shortPath($path));
 
 		$path = APP . 'index.php';
 		$expected = DS . basename(APP) . DS . 'index.php';
-		$this->assertEquals($this->Shell->shortPath($path), $expected);
+		$this->assertEquals($expected, $this->Shell->shortPath($path));
 	}
 
 /**
@@ -522,7 +536,7 @@ class ShellTest extends CakeTestCase {
  * @return void
  */
 	public function testCreateFileNonInteractive() {
-		$this->skipIf(DIRECTORY_SEPARATOR === '\\', 'Not supported on Windows.');
+		$eol = PHP_EOL;
 
 		$path = TMP . 'shell_test';
 		$file = $path . DS . 'file1.php';
@@ -531,7 +545,7 @@ class ShellTest extends CakeTestCase {
 
 		$this->Shell->interactive = false;
 
-		$contents = "<?php\necho 'test';\n\$te = 'st';\n";
+		$contents = "<?php{$eol}echo 'test';${eol}\$te = 'st';{$eol}";
 		$result = $this->Shell->createFile($file, $contents);
 		$this->assertTrue($result);
 		$this->assertTrue(file_exists($file));
@@ -541,7 +555,7 @@ class ShellTest extends CakeTestCase {
 		$result = $this->Shell->createFile($file, $contents);
 		$this->assertTrue($result);
 		$this->assertTrue(file_exists($file));
-		$this->assertEquals(file_get_contents($file), $contents);
+		$this->assertTextEquals(file_get_contents($file), $contents);
 	}
 
 /**
@@ -550,7 +564,7 @@ class ShellTest extends CakeTestCase {
  * @return void
  */
 	public function testCreateFileInteractive() {
-		$this->skipIf(DIRECTORY_SEPARATOR === '\\', 'Not supported on Windows.');
+		$eol = PHP_EOL;
 
 		$path = TMP . 'shell_test';
 		$file = $path . DS . 'file1.php';
@@ -566,8 +580,7 @@ class ShellTest extends CakeTestCase {
 			->method('read')
 			->will($this->returnValue('y'));
 
-
-		$contents = "<?php\necho 'yet another test';\n\$te = 'st';\n";
+		$contents = "<?php{$eol}echo 'yet another test';{$eol}\$te = 'st';{$eol}";
 		$result = $this->Shell->createFile($file, $contents);
 		$this->assertTrue($result);
 		$this->assertTrue(file_exists($file));
@@ -594,10 +607,14 @@ class ShellTest extends CakeTestCase {
  * @return void
  */
 	public function testCreateFileNoPermissions() {
+		$this->skipIf(DIRECTORY_SEPARATOR === '\\', 'Cant perform operations using permissions on windows.');
+
 		$path = TMP . 'shell_test';
 		$file = $path . DS . 'no_perms';
 
-		mkdir($path);
+		if (!is_dir($path)) {
+			mkdir($path);
+		}
 		chmod($path, 0444);
 
 		$this->Shell->createFile($file, 'testing');
@@ -605,82 +622,6 @@ class ShellTest extends CakeTestCase {
 
 		chmod($path, 0744);
 		rmdir($path);
-	}
-
-/**
- * testCreateFileWindows method
- *
- * @return void
- */
-	public function testCreateFileWindowsNonInteractive() {
-		$this->skipIf(DIRECTORY_SEPARATOR === '/', 'testCreateFileWindowsNonInteractive supported on Windows only.');
-
-		$path = TMP . 'shell_test';
-		$file = $path . DS . 'file1.php';
-
-		$Folder = new Folder($path, true);
-
-		$this->Shell->interactive = false;
-
-		$contents = "<?php\r\necho 'test';\r\n\$te = 'st';\r\n";
-		$result = $this->Shell->createFile($file, $contents);
-		$this->assertTrue($result);
-		$this->assertTrue(file_exists($file));
-		$this->assertEquals(file_get_contents($file), $contents);
-
-		$contents = "<?php\r\necho 'another test';\r\n\$te = 'st';\r\n";
-		$result = $this->Shell->createFile($file, $contents);
-		$this->assertTrue($result);
-		$this->assertTrue(file_exists($file));
-		$this->assertEquals(file_get_contents($file), $contents);
-
-		$Folder = new Folder($path);
-		$Folder->delete();
-	}
-
-/**
- * test createFile on windows with interactive on.
- *
- * @return void
- */
-	public function testCreateFileWindowsInteractive() {
-		$this->skipIf(DIRECTORY_SEPARATOR === '/', 'testCreateFileWindowsInteractive supported on Windows only.');
-		$path = TMP . 'shell_test';
-		$file = $path . DS . 'file1.php';
-		$Folder = new Folder($path, true);
-
-		$this->Shell->interactive = true;
-
-		$this->Shell->stdin->expects($this->at(0))
-			->method('read')
-			->will($this->returnValue('n'));
-
-		$this->Shell->stdin->expects($this->at(1))
-			->method('read')
-			->will($this->returnValue('y'));
-
-
-		$contents = "<?php\r\necho 'yet another test';\r\n\$te = 'st';\r\n";
-		$result = $this->Shell->createFile($file, $contents);
-		$this->assertTrue($result);
-		$this->assertTrue(file_exists($file));
-		$this->assertEquals(file_get_contents($file), $contents);
-
-		// no overwrite
-		$contents = 'new contents';
-		$result = $this->Shell->createFile($file, $contents);
-		$this->assertFalse($result);
-		$this->assertTrue(file_exists($file));
-		$this->assertNotEquals($contents, file_get_contents($file));
-
-		// overwrite
-		$contents = 'more new contents';
-		$result = $this->Shell->createFile($file, $contents);
-		$this->assertTrue($result);
-		$this->assertTrue(file_exists($file));
-		$this->assertEquals($contents, file_get_contents($file));
-
-		$Folder->delete();
 	}
 
 /**
@@ -774,7 +715,6 @@ class ShellTest extends CakeTestCase {
 			->will($this->returnValue($Parser));
 		$Mock->expects($this->once())->method('out');
 
-
 		$result = $Mock->runCommand('idontexist', array());
 		$this->assertFalse($result);
 	}
@@ -834,7 +774,7 @@ This is the song that never ends.
 This is the song that never ends.
 This is the song that never ends.
 TEXT;
-		$this->assertEquals($expected, $result, 'Text not wrapped.');
+		$this->assertTextEquals($expected, $result, 'Text not wrapped.');
 
 		$result = $this->Shell->wrapText($text, array('indent' => '  ', 'width' => 33));
 		$expected = <<<TEXT
@@ -842,7 +782,7 @@ TEXT;
   This is the song that never ends.
   This is the song that never ends.
 TEXT;
-		$this->assertEquals($expected, $result, 'Text not wrapped.');
+		$this->assertTextEquals($expected, $result, 'Text not wrapped.');
 	}
 
 /**
@@ -866,7 +806,38 @@ TEXT;
 		$this->Shell->name = 'test';
 		$this->Shell->plugin = 'plugin';
 		$parser = $this->Shell->getOptionParser();
-	
+
 		$this->assertEquals('plugin.test', $parser->command());
 	}
+
+/**
+ * Test file and console and logging
+ */
+	public function testFileAndConsoleLogging() {
+		// file logging
+		$this->Shell->log_something();
+		$this->assertTrue(file_exists(LOGS . 'error.log'));
+
+		unlink(LOGS . 'error.log');
+		$this->assertFalse(file_exists(LOGS . 'error.log'));
+
+		// both file and console logging
+		require_once CORE_TEST_CASES . DS . 'Log' . DS . 'Engine' . DS . 'ConsoleLogTest.php';
+		$mock = $this->getMock('ConsoleLog', array('write'), array(
+			array('types' => 'error'),
+			));
+		TestCakeLog::config('console', array(
+			'engine' => 'ConsoleLog',
+			'stream' => 'php://stderr',
+			));
+		TestCakeLog::replace('console', $mock);
+		$mock->expects($this->once())
+			->method('write')
+			->with('error', $this->Shell->testMessage);
+		$this->Shell->log_something();
+		$this->assertTrue(file_exists(LOGS . 'error.log'));
+		$contents = file_get_contents(LOGS . 'error.log');
+		$this->assertContains($this->Shell->testMessage, $contents);
+	}
+
 }

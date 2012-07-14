@@ -4,14 +4,14 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.Controller.Component
  * @since         CakePHP(tm) v 1.2.0.5435
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -21,10 +21,10 @@ App::uses('SecurityComponent', 'Controller/Component');
 App::uses('Controller', 'Controller');
 
 /**
-* TestSecurityComponent
-*
-* @package       Cake.Test.Case.Controller.Component
-*/
+ * TestSecurityComponent
+ *
+ * @package       Cake.Test.Case.Controller.Component
+ */
 class TestSecurityComponent extends SecurityComponent {
 
 /**
@@ -36,13 +36,14 @@ class TestSecurityComponent extends SecurityComponent {
 	public function validatePost(Controller $controller) {
 		return $this->_validatePost($controller);
 	}
+
 }
 
 /**
-* SecurityTestController
-*
-* @package       Cake.Test.Case.Controller.Component
-*/
+ * SecurityTestController
+ *
+ * @package       Cake.Test.Case.Controller.Component
+ */
 class SecurityTestController extends Controller {
 
 /**
@@ -85,7 +86,7 @@ class SecurityTestController extends Controller {
 /**
  * redirect method
  *
- * @param mixed $option
+ * @param string|array $url
  * @param mixed $code
  * @param mixed $exit
  * @return void
@@ -103,6 +104,7 @@ class SecurityTestController extends Controller {
 	public function header($status) {
 		$this->testHeaders[] = $status;
 	}
+
 }
 
 /**
@@ -677,7 +679,6 @@ class SecurityComponentTest extends CakeTestCase {
 		$result = $this->Controller->Security->validatePost($this->Controller);
 		$this->assertTrue($result);
 
-
 		$this->Controller->request->data = array();
 		$this->Controller->Security->startup($this->Controller);
 		$key = $this->Controller->request->params['_Token']['key'];
@@ -912,7 +913,6 @@ class SecurityComponentTest extends CakeTestCase {
  * @return void
  */
 	public function testValidateNestedNumericSets() {
-
 		$this->Controller->Security->startup($this->Controller);
 		$key = $this->Controller->request->params['_Token']['key'];
 		$unlocked = '';
@@ -1105,7 +1105,7 @@ class SecurityComponentTest extends CakeTestCase {
 		$this->Security->startup($this->Controller);
 
 		$token = $this->Security->Session->read('_Token');
-		$this->assertEquals(count($token['csrfTokens']), 1, 'Missing the csrf token.');
+		$this->assertEquals(1, count($token['csrfTokens']), 'Missing the csrf token.');
 		$this->assertEquals(strtotime('+10 minutes'), current($token['csrfTokens']), 'Token expiry does not match');
 		$this->assertEquals(array('key', 'unlockedFields'), array_keys($this->Controller->request->params['_Token']), 'Keys don not match');
 	}
@@ -1124,7 +1124,7 @@ class SecurityComponentTest extends CakeTestCase {
 		$this->Security->startup($this->Controller);
 
 		$token = $this->Security->Session->read('_Token');
-		$this->assertEquals(count($token['csrfTokens']), 2, 'Missing the csrf token.');
+		$this->assertEquals(2, count($token['csrfTokens']), 'Missing the csrf token.');
 		foreach ($token['csrfTokens'] as $key => $expires) {
 			$diff = $csrfExpires - $expires;
 			$this->assertTrue($diff === 0 || $diff === 1, 'Token expiry does not match');
@@ -1181,7 +1181,6 @@ class SecurityComponentTest extends CakeTestCase {
 		$tokens = $this->Security->Session->read('_Token.csrfTokens');
 		$this->assertEquals(2, count($tokens), 'Too many tokens left behind');
 		$this->assertNotEmpty('valid', $tokens, 'Valid token was removed.');
-
 	}
 
 /**
@@ -1261,9 +1260,9 @@ class SecurityComponentTest extends CakeTestCase {
 		$this->assertEquals(1, count($token), 'Should only be one token.');
 
 		$this->Security->startup($this->Controller);
-		$token2 = $this->Security->Session->read('_Token.csrfTokens');
-		$this->assertEquals(1, count($token2), 'Should only be one token.');
-		$this->assertEquals($token, $token2, 'Tokens should not be different.');
+		$tokenTwo = $this->Security->Session->read('_Token.csrfTokens');
+		$this->assertEquals(1, count($tokenTwo), 'Should only be one token.');
+		$this->assertEquals($token, $tokenTwo, 'Tokens should not be different.');
 
 		$key = $this->Controller->request->params['_Token']['key'];
 		$this->assertEquals(array($key), array_keys($token), '_Token.key and csrfToken do not match request will blackhole.');

@@ -4,14 +4,14 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.View.Helper
  * @since         CakePHP(tm) v 1.2.0.4206
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -73,6 +73,54 @@ class CakeNumberTest extends CakeTestCase {
 	}
 
 /**
+ * testMultibyteFormat
+ *
+ * @return void
+ */
+	public function testMultibyteFormat() {
+		$value = '5199100.0006';
+		$result = $this->Number->format($value, array(
+			'thousands'	=> '&nbsp;',
+			'decimals'	=> '&amp;',
+			'places'	=> 3,
+			'escape'	=> false,
+			'before'	=> '',
+		));
+		$expected = '5&nbsp;199&nbsp;100&amp;001';
+		$this->assertEquals($expected, $result);
+
+		$value = 1000.45;
+		$result = $this->Number->format($value, array(
+			'thousands'	=> ',,',
+			'decimals'	=> '.a',
+			'escape'	=> false,
+		));
+		$expected = '$1,,000.a45';
+		$this->assertEquals($expected, $result);
+
+		$value = 519919827593784.00;
+		$this->Number->addFormat('RUR', array(
+			'thousands'		=> 'ø€ƒ‡™',
+			'decimals'		=> '(§.§)',
+			'escape'		=> false,
+			'wholeSymbol'	=> '€',
+			'wholePosition'	=> 'after',
+		));
+		$result = $this->Number->currency($value, 'RUR');
+		$expected = '519ø€ƒ‡™919ø€ƒ‡™827ø€ƒ‡™593ø€ƒ‡™784(§.§)00€';
+		$this->assertEquals($expected, $result);
+
+		$value = '13371337.1337';
+		$result = CakeNumber::format($value, array(
+			'thousands'	=> '- |-| /-\ >< () |2 -',
+			'decimals'	=> '- £€€† -',
+			'before'	=> ''
+		));
+		$expected = '13- |-| /-\ &gt;&lt; () |2 -371- |-| /-\ &gt;&lt; () |2 -337- £€€† -13';
+		$this->assertEquals($expected, $result);
+	}
+
+/**
  * Test currency method.
  *
  * @return void
@@ -108,7 +156,7 @@ class CakeNumberTest extends CakeTestCase {
 		$expected = '100 100 100,00€';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->currency(1000.45, NULL, array('after' => 'øre', 'before' => 'Kr. ', 'decimals' => ',', 'thousands' => '.'));
+		$result = $this->Number->currency(1000.45, null, array('after' => 'øre', 'before' => 'Kr. ', 'decimals' => ',', 'thousands' => '.'));
 		$expected = 'Kr. 1.000,45';
 		$this->assertEquals($expected, $result);
 
@@ -116,7 +164,7 @@ class CakeNumberTest extends CakeTestCase {
 		$expected = '50c';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->currency(0.5, NULL, array('after' => 'øre'));
+		$result = $this->Number->currency(0.5, null, array('after' => 'øre'));
 		$expected = '50øre';
 		$this->assertEquals($expected, $result);
 
@@ -180,7 +228,7 @@ class CakeNumberTest extends CakeTestCase {
 		$this->Number->addFormat('Other2', array('before' => '$ ', 'after' => false));
 		$result = $this->Number->currency(0.22, 'Other2');
 		$expected = '$ 0.22';
-		$this->assertEquals($expected,$result);
+		$this->assertEquals($expected, $result);
 	}
 
 /**
@@ -247,7 +295,6 @@ class CakeNumberTest extends CakeTestCase {
 		$result = $this->Number->currency($value, 'GBP', array('negative' => '-'));
 		$expected = '-&#163;100,100,100.00';
 		$this->assertEquals($expected, $result);
-
 	}
 
 /**
@@ -400,41 +447,57 @@ class CakeNumberTest extends CakeTestCase {
 		$expected = '1 KB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*512);
+		$result = $this->Number->toReadableSize(1024 * 512);
 		$expected = '512 KB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*1024-1);
+		$result = $this->Number->toReadableSize(1024 * 1024 - 1);
 		$expected = '1.00 MB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*1024*512);
+		$result = $this->Number->toReadableSize(1024 * 1024 * 512);
 		$expected = '512.00 MB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*1024*1024-1);
+		$result = $this->Number->toReadableSize(1024 * 1024 * 1024 - 1);
 		$expected = '1.00 GB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*1024*1024*512);
+		$result = $this->Number->toReadableSize(1024 * 1024 * 1024 * 512);
 		$expected = '512.00 GB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*1024*1024*1024-1);
+		$result = $this->Number->toReadableSize(1024 * 1024 * 1024 * 1024 - 1);
 		$expected = '1.00 TB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*1024*1024*1024*512);
+		$result = $this->Number->toReadableSize(1024 * 1024 * 1024 * 1024 * 512);
 		$expected = '512.00 TB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*1024*1024*1024*1024-1);
+		$result = $this->Number->toReadableSize(1024 * 1024 * 1024 * 1024 * 1024 - 1);
 		$expected = '1024.00 TB';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Number->toReadableSize(1024*1024*1024*1024*1024*1024);
+		$result = $this->Number->toReadableSize(1024 * 1024 * 1024 * 1024 * 1024 * 1024);
 		$expected = (1024 * 1024) . '.00 TB';
 		$this->assertEquals($expected, $result);
+	}
+
+/**
+ * test toReadableSize() with locales
+ *
+ * @return void
+ */
+	public function testReadableSizeLocalized() {
+		$restore = setlocale(LC_NUMERIC, 0);
+		setlocale(LC_NUMERIC, 'de_DE');
+		$result = $this->Number->toReadableSize(1321205);
+		$this->assertRegExp('/1[,.]26 MB/', $result);
+
+		$result = $this->Number->toReadableSize(1024 * 1024 * 1024 * 512);
+		$this->assertRegExp('/512[,.]00 GB/', $result);
+		setlocale(LC_NUMERIC, $restore);
 	}
 
 /**
@@ -459,4 +522,5 @@ class CakeNumberTest extends CakeTestCase {
 		$expected = '0.0000%';
 		$this->assertEquals($expected, $result);
 	}
+
 }

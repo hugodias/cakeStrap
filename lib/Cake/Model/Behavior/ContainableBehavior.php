@@ -7,12 +7,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Model.Behavior
  * @since         CakePHP(tm) v 1.2.0.5669
@@ -186,7 +186,7 @@ class ContainableBehavior extends ModelBehavior {
 			if (!empty($Model->{$type})) {
 				foreach ($Model->{$type} as $assoc => $data) {
 					if ($Model->useDbConfig == $Model->{$assoc}->useDbConfig && !empty($data['fields'])) {
-						foreach ((array) $data['fields'] as $field) {
+						foreach ((array)$data['fields'] as $field) {
 							$query['fields'][] = (strpos($field, '.') === false ? $assoc . '.' : '') . $field;
 						}
 					}
@@ -286,7 +286,7 @@ class ContainableBehavior extends ModelBehavior {
 			$children = (array)$children;
 			foreach ($children as $key => $val) {
 				if (is_string($key) && is_string($val) && !in_array($key, $options, true)) {
-					$children[$key] = (array) $val;
+					$children[$key] = (array)$val;
 				}
 			}
 
@@ -304,7 +304,7 @@ class ContainableBehavior extends ModelBehavior {
 					$option = 'fields';
 					$val = array($key);
 					if ($key{0} == '(') {
-						$val = preg_split('/\s*,\s*/', substr(substr($key, 1), 0, -1));
+						$val = preg_split('/\s*,\s*/', substr($key, 1, -1));
 					} elseif (preg_match('/ASC|DESC$/', $key)) {
 						$option = 'order';
 						$val = $Model->{$name}->alias . '.' . $key;
@@ -321,12 +321,12 @@ class ContainableBehavior extends ModelBehavior {
 					$key = $option;
 					$optionKey = true;
 					if (!empty($newChildren)) {
-						$children = Set::merge($children, $newChildren);
+						$children = Hash::merge($children, $newChildren);
 					}
 				}
 				if ($optionKey && isset($children[$key])) {
 					if (!empty($keep[$name][$key]) && is_array($keep[$name][$key])) {
-						$keep[$name][$key] = array_merge((isset($keep[$name][$key]) ? $keep[$name][$key] : array()), (array) $children[$key]);
+						$keep[$name][$key] = array_merge((isset($keep[$name][$key]) ? $keep[$name][$key] : array()), (array)$children[$key]);
 					} else {
 						$keep[$name][$key] = $children[$key];
 					}
@@ -362,7 +362,7 @@ class ContainableBehavior extends ModelBehavior {
  *
  * @param Model $Model Model
  * @param array $map Map of relations for given model
- * @param mixed $fields If array, fields to initially load, if false use $Model as primary model
+ * @param array|boolean $fields If array, fields to initially load, if false use $Model as primary model
  * @return array Fields
  */
 	public function fieldDependencies(Model $Model, $map, $fields = array()) {
@@ -424,4 +424,5 @@ class ContainableBehavior extends ModelBehavior {
 		}
 		return $map;
 	}
+
 }

@@ -4,14 +4,14 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.View
  * @since         CakePHP(tm) v 2.1.0
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -43,8 +43,8 @@ class JsonViewTest extends CakeTestCase {
 		$View = new JsonView($Controller);
 		$output = $View->render(false);
 
-		$this->assertIdentical(json_encode($data), $output);
-		$this->assertIdentical('application/json', $Response->type());
+		$this->assertSame(json_encode($data), $output);
+		$this->assertSame('application/json', $Response->type());
 	}
 
 /**
@@ -62,8 +62,8 @@ class JsonViewTest extends CakeTestCase {
 		$View = new JsonView($Controller);
 		$output = $View->render(false);
 
-		$this->assertIdentical(json_encode(array('no' =>$data['no'], 'user' => $data['user'])), $output);
-		$this->assertIdentical('application/json', $Response->type());
+		$this->assertSame(json_encode(array('no' => $data['no'], 'user' => $data['user'])), $output);
+		$this->assertSame('application/json', $Response->type());
 	}
 
 /**
@@ -94,8 +94,8 @@ class JsonViewTest extends CakeTestCase {
 		$output = $View->render('index');
 
 		$expected = json_encode(array('user' => 'fake', 'list' => array('item1', 'item2')));
-		$this->assertIdentical($expected, $output);
-		$this->assertIdentical('application/json', $Response->type());
+		$this->assertSame($expected, $output);
+		$this->assertSame('application/json', $Response->type());
 	}
 
 }

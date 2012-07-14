@@ -4,14 +4,14 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2011, Cake Software Foundation, Inc.
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright 2005-2012, Cake Software Foundation, Inc.
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc.
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc.
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.Console
  * @since         CakePHP(tm) v 1.2.0.5432
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -61,7 +61,6 @@ class TestShellDispatcher extends ShellDispatcher {
  * @return void
  */
 	public function clear() {
-
 	}
 
 /**
@@ -77,7 +76,7 @@ class TestShellDispatcher extends ShellDispatcher {
 /**
  * getShell
  *
- * @param mixed $shell
+ * @param string $shell
  * @return mixed
  */
 	public function getShell($shell) {
@@ -87,7 +86,7 @@ class TestShellDispatcher extends ShellDispatcher {
 /**
  * _getShell
  *
- * @param mixed $plugin
+ * @param string $plugin
  * @return mixed
  */
 	protected function _getShell($shell) {
@@ -96,6 +95,7 @@ class TestShellDispatcher extends ShellDispatcher {
 		}
 		return parent::_getShell($shell);
 	}
+
 }
 
 /**
@@ -437,7 +437,7 @@ class ShellDispatcherTest extends CakeTestCase {
  */
 	public function testDispatchShellWithMain() {
 		$Dispatcher = new TestShellDispatcher();
-		$Mock = $this->getMock('Shell', array(), array(&$Dispatcher), 'MockWithMainShell');
+		$Mock = $this->getMock('Shell', array(), array(), 'MockWithMainShell');
 
 		$Mock->expects($this->once())->method('initialize');
 		$Mock->expects($this->once())->method('loadTasks');
@@ -450,7 +450,7 @@ class ShellDispatcherTest extends CakeTestCase {
 		$Dispatcher->args = array('mock_with_main');
 		$result = $Dispatcher->dispatch();
 		$this->assertTrue($result);
-		$this->assertEquals($Dispatcher->args, array());
+		$this->assertEquals(array(), $Dispatcher->args);
 	}
 
 /**
@@ -460,9 +460,9 @@ class ShellDispatcherTest extends CakeTestCase {
  */
 	public function testDispatchShellWithoutMain() {
 		$Dispatcher = new TestShellDispatcher();
-		$Shell = $this->getMock('Shell', array(), array(&$Dispatcher), 'MockWithoutMainShell');
+		$Shell = $this->getMock('Shell', array(), array(), 'MockWithoutMainShell');
 
-		$Shell = new MockWithoutMainShell($Dispatcher);
+		$Shell = new MockWithoutMainShell();
 		$this->mockObjects[] = $Shell;
 
 		$Shell->expects($this->once())->method('initialize');
@@ -498,7 +498,7 @@ class ShellDispatcherTest extends CakeTestCase {
 		$Dispatcher->args = array('mock_with_main_not_a');
 		$result = $Dispatcher->dispatch();
 		$this->assertTrue($result);
-		$this->assertEquals($Dispatcher->args, array());
+		$this->assertEquals(array(), $Dispatcher->args);
 
 		$Shell = new MockWithMainNotAShell($Dispatcher);
 		$this->mockObjects[] = $Shell;
@@ -531,7 +531,7 @@ class ShellDispatcherTest extends CakeTestCase {
 		$Dispatcher->args = array('mock_without_main_not_a');
 		$result = $Dispatcher->dispatch();
 		$this->assertTrue($result);
-		$this->assertEquals($Dispatcher->args, array());
+		$this->assertEquals(array(), $Dispatcher->args);
 
 		$Shell = new MockWithoutMainNotAShell($Dispatcher);
 		$this->mockObjects[] = $Shell;
@@ -553,24 +553,24 @@ class ShellDispatcherTest extends CakeTestCase {
 		$Dispatcher = new TestShellDispatcher();
 
 		$Dispatcher->args = array('a', 'b', 'c');
-		$this->assertEquals($Dispatcher->shiftArgs(), 'a');
+		$this->assertEquals('a', $Dispatcher->shiftArgs());
 		$this->assertSame($Dispatcher->args, array('b', 'c'));
 
 		$Dispatcher->args = array('a' => 'b', 'c', 'd');
-		$this->assertEquals($Dispatcher->shiftArgs(), 'b');
+		$this->assertEquals('b', $Dispatcher->shiftArgs());
 		$this->assertSame($Dispatcher->args, array('c', 'd'));
 
 		$Dispatcher->args = array('a', 'b' => 'c', 'd');
-		$this->assertEquals($Dispatcher->shiftArgs(), 'a');
+		$this->assertEquals('a', $Dispatcher->shiftArgs());
 		$this->assertSame($Dispatcher->args, array('b' => 'c', 'd'));
 
 		$Dispatcher->args = array(0 => 'a',  2 => 'b', 30 => 'c');
-		$this->assertEquals($Dispatcher->shiftArgs(), 'a');
+		$this->assertEquals('a', $Dispatcher->shiftArgs());
 		$this->assertSame($Dispatcher->args, array(0 => 'b', 1 => 'c'));
 
 		$Dispatcher->args = array();
 		$this->assertNull($Dispatcher->shiftArgs());
-		$this->assertSame($Dispatcher->args, array());
+		$this->assertSame(array(), $Dispatcher->args);
 	}
 
 }

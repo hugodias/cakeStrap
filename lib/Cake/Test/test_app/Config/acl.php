@@ -6,12 +6,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  *  Licensed under The MIT License
  *  Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Test.test_app.Config
  * @since         CakePHP(tm) v 0.10.0.1076
@@ -53,16 +53,16 @@ $config['roles'] = array(
 // Rules
 //-------------------------------------
 $config['rules']['allow'] = array(
-	'/*' 						=> 'Role/admin',
-	'/controllers/*/manager_*'	=> 'Role/manager',
-	'/controllers/reports/*' 	=> 'Role/sales',
-	'/controllers/invoices/*' 	=> 'Role/accounting',
-	'/controllers/invoices/edit'=> 'User/db_manager_2',
-	'/controllers/db/*'			=> 'Role/database_manager',
-	'/controllers/*/(add|edit|publish)'		=> 'User/stan',
+	'/*' => 'Role/admin',
+	'/controllers/*/manager_*' => 'Role/manager',
+	'/controllers/reports/*' => 'Role/sales',
+	'/controllers/invoices/*' => 'Role/accounting',
+	'/controllers/invoices/edit' => 'User/db_manager_2',
+	'/controllers/db/*' => 'Role/database_manager',
+	'/controllers/*/(add|edit|publish)' => 'User/stan',
 	'/controllers/users/dashboard' => 'Role/default',
 	// test for case insensitivity
-	'controllers/Forms/NEW' 	=> 'Role/data_acquirer',
+	'controllers/Forms/NEW' => 'Role/data_acquirer',
 );
 $config['rules']['deny'] = array(
 	// accountants and sales should not delete anything

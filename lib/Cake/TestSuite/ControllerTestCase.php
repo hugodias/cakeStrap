@@ -4,14 +4,14 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.TestSuite
  * @since         CakePHP(tm) v 2.0
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -23,6 +23,7 @@ App::uses('Router', 'Routing');
 App::uses('CakeRequest', 'Network');
 App::uses('CakeResponse', 'Network');
 App::uses('Helper', 'View');
+App::uses('CakeEvent', 'Event');
 
 /**
  * ControllerTestDispatcher class
@@ -62,9 +63,9 @@ class ControllerTestDispatcher extends Dispatcher {
 			if (isset($object->response)) {
 				$object->response = $response;
 			}
-		}
-		if (isset($object->request)) {
-			$object->request = $request;
+			if (isset($object->request)) {
+				$object->request = $request;
+			}
 		}
 		return $this->testController;
 	}
@@ -80,6 +81,7 @@ class ControllerTestDispatcher extends Dispatcher {
 			Router::reload();
 		}
 	}
+
 }
 
 /**
@@ -98,6 +100,7 @@ class InterceptContentHelper extends Helper {
 		$this->_View->assign('__view_no_layout__', $this->_View->fetch('content'));
 		$this->_View->Helpers->unload('InterceptContent');
 	}
+
 }
 
 /**
@@ -215,6 +218,8 @@ abstract class ControllerTestCase extends CakeTestCase {
 			'return' => 'result'
 		), $options);
 
+		$restore = array('get' => $_GET, 'post' => $_POST);
+
 		$_SERVER['REQUEST_METHOD'] = strtoupper($options['method']);
 		if (is_array($options['data'])) {
 			if (strtoupper($options['method']) == 'GET') {
@@ -240,7 +245,7 @@ abstract class ControllerTestCase extends CakeTestCase {
 			}
 		}
 		$Dispatch->loadRoutes = $this->loadRoutes;
-		$request = $Dispatch->parseParams($request);
+		$Dispatch->parseParams(new CakeEvent('ControllerTestCase', $Dispatch, array('request' => $request)));
 		if (!isset($request->params['controller'])) {
 			$this->headers = Router::currentRoute()->response->header();
 			return;
@@ -270,6 +275,10 @@ abstract class ControllerTestCase extends CakeTestCase {
 		}
 		$this->__dirtyController = true;
 		$this->headers = $Dispatch->response->header();
+
+		$_GET = $restore['get'];
+		$_POST = $restore['post'];
+
 		return $this->{$options['return']};
 	}
 
@@ -291,6 +300,8 @@ abstract class ControllerTestCase extends CakeTestCase {
  * @param string $controller Controller name
  * @param array $mocks List of classes and methods to mock
  * @return Controller Mocked controller
+ * @throws MissingControllerException When controllers could not be created.
+ * @throws MissingComponentException When components could not be created.
  */
 	public function generate($controller, $mocks = array()) {
 		list($plugin, $controller) = pluginSplit($controller);
@@ -299,7 +310,7 @@ abstract class ControllerTestCase extends CakeTestCase {
 			$plugin .= '.';
 		}
 		App::uses($controller . 'Controller', $plugin . 'Controller');
-		if (!class_exists($controller.'Controller')) {
+		if (!class_exists($controller . 'Controller')) {
 			throw new MissingControllerException(array(
 				'class' => $controller . 'Controller',
 				'plugin' => substr($plugin, 0, -1)
@@ -314,7 +325,7 @@ abstract class ControllerTestCase extends CakeTestCase {
 		), (array)$mocks);
 
 		list($plugin, $name) = pluginSplit($controller);
-		$_controller = $this->getMock($name.'Controller', $mocks['methods'], array(), '', false);
+		$_controller = $this->getMock($name . 'Controller', $mocks['methods'], array(), '', false);
 		$_controller->name = $name;
 		$request = $this->getMock('CakeRequest');
 		$response = $this->getMock('CakeResponse', array('_sendHeader'));
@@ -363,4 +374,5 @@ abstract class ControllerTestCase extends CakeTestCase {
 		$this->controller = $_controller;
 		return $this->controller;
 	}
+
 }

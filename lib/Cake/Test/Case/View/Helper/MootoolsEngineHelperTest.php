@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright       Copyright 2005-2011, Cake Software Foundation, Inc.
+ * @copyright       Copyright 2005-2012, Cake Software Foundation, Inc.
  * @link            http://cakephp.org CakePHP Project
  * @package       Cake.Test.Case.View.Helper
  * @license         MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -22,6 +22,7 @@ App::uses('JsHelper', 'View/Helper');
 App::uses('MootoolsEngineHelper', 'View/Helper');
 
 class MootoolsEngineHelperTest extends CakeTestCase {
+
 /**
  * setUp
  *
@@ -51,27 +52,27 @@ class MootoolsEngineHelperTest extends CakeTestCase {
  */
 	public function testSelector() {
 		$result = $this->Moo->get('#content');
-		$this->assertEquals($result, $this->Moo);
+		$this->assertEquals($this->Moo, $result);
 		$this->assertEquals($this->Moo->selection, '$("content")');
 
 		$result = $this->Moo->get('a .remove');
-		$this->assertEquals($result, $this->Moo);
+		$this->assertEquals($this->Moo, $result);
 		$this->assertEquals($this->Moo->selection, '$$("a .remove")');
 
 		$result = $this->Moo->get('document');
-		$this->assertEquals($result, $this->Moo);
+		$this->assertEquals($this->Moo, $result);
 		$this->assertEquals($this->Moo->selection, "$(document)");
 
 		$result = $this->Moo->get('window');
-		$this->assertEquals($result, $this->Moo);
+		$this->assertEquals($this->Moo, $result);
 		$this->assertEquals($this->Moo->selection, "$(window)");
 
 		$result = $this->Moo->get('ul');
-		$this->assertEquals($result, $this->Moo);
+		$this->assertEquals($this->Moo, $result);
 		$this->assertEquals($this->Moo->selection, '$$("ul")');
 
 		$result = $this->Moo->get('#some_long-id.class');
-		$this->assertEquals($result, $this->Moo);
+		$this->assertEquals($this->Moo, $result);
 		$this->assertEquals($this->Moo->selection, '$$("#some_long-id.class")');
 	}
 

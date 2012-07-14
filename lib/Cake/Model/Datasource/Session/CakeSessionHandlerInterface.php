@@ -1,12 +1,12 @@
 <?php
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Model.Datasource
  * @since         CakePHP(tm) v 2.1
@@ -20,6 +20,7 @@
  * @package       Cake.Model.Datasource.Session
  */
 interface CakeSessionHandlerInterface {
+
 /**
  * Method called on open of a session.
  *
@@ -37,7 +38,7 @@ interface CakeSessionHandlerInterface {
 /**
  * Method used to read from a session.
  *
- * @param mixed $id The key of the value to read
+ * @param string $id The key of the value to read
  * @return mixed The value of the key or false if it does not exist
  */
 	public function read($id);
@@ -67,4 +68,5 @@ interface CakeSessionHandlerInterface {
  * @return boolean Success
  */
 	public function gc($expires = null);
+
 }

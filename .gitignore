@@ -1,10 +1,9 @@
-/app/tmp/cache/models/*
-/app/tmp/cache/persistent/*
-/app/tmp/logs/*
-
-# OS generated files #
-######################
-.DS_Store*
-ehthumbs.db
-Icon?
-Thumbs.db
+/app/Config
+/app/tmp
+/lib/Cake/Console/Templates/skel/tmp/
+/plugins
+/vendors
+/build
+/dist
+.DS_Store
+/tags

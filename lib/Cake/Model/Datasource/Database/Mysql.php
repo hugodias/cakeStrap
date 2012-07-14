@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Model.Datasource.Database
  * @since         CakePHP(tm) v 0.10.5.1790
@@ -76,17 +76,6 @@ class Mysql extends DboSource {
  * @var boolean
  */
 	protected $_useAlias = true;
-
-/**
- * Index of basic SQL commands
- *
- * @var array
- */
-	protected $_commands = array(
-		'begin'    => 'START TRANSACTION',
-		'commit'   => 'COMMIT',
-		'rollback' => 'ROLLBACK'
-	);
 
 /**
  * List of engine specific additional field parameters used on table creating
@@ -263,15 +252,6 @@ class Mysql extends DboSource {
 	}
 
 /**
- * Gets the version string of the database server
- *
- * @return string The database encoding
- */
-	public function getVersion() {
-		return $this->_connection->getAttribute(PDO::ATTR_SERVER_VERSION);
-	}
-
-/**
  * Query charset by collation
  *
  * @param string $name Collation name
@@ -297,7 +277,8 @@ class Mysql extends DboSource {
  * @throws CakeException
  */
 	public function describe($model) {
-		$cache = parent::describe($model);
+		$key = $this->fullTableName($model, false);
+		$cache = parent::describe($key);
 		if ($cache != null) {
 			return $cache;
 		}
@@ -331,7 +312,7 @@ class Mysql extends DboSource {
 				}
 			}
 		}
-		$this->_cacheDescription($this->fullTableName($model, false), $fields);
+		$this->_cacheDescription($key, $fields);
 		$cols->closeCursor();
 		return $fields;
 	}
@@ -442,9 +423,11 @@ class Mysql extends DboSource {
 		$old = version_compare($this->getVersion(), '4.1', '<=');
 		if ($table) {
 			$indices = $this->_execute('SHOW INDEX FROM ' . $table);
+			// @codingStandardsIgnoreStart
+			// MySQL columns don't match the cakephp conventions.
 			while ($idx = $indices->fetch(PDO::FETCH_OBJ)) {
 				if ($old) {
-					$idx = (object) current((array)$idx);
+					$idx = (object)current((array)$idx);
 				}
 				if (!isset($index[$idx->Key_name]['column'])) {
 					$col = array();
@@ -458,6 +441,7 @@ class Mysql extends DboSource {
 					$index[$idx->Key_name]['column'] = $col;
 				}
 			}
+			// @codingStandardsIgnoreEnd
 			$indices->closeCursor();
 		}
 		return $index;
@@ -589,9 +573,9 @@ class Mysql extends DboSource {
 					}
 				}
 				if (is_array($value['column'])) {
-					$out .= 'KEY '. $name .' (' . implode(', ', array_map(array(&$this, 'name'), $value['column'])) . ')';
+					$out .= 'KEY ' . $name . ' (' . implode(', ', array_map(array(&$this, 'name'), $value['column'])) . ')';
 				} else {
-					$out .= 'KEY '. $name .' (' . $this->name($value['column']) . ')';
+					$out .= 'KEY ' . $name . ' (' . $this->name($value['column']) . ')';
 				}
 				$alter[] = $out;
 			}
@@ -618,7 +602,7 @@ class Mysql extends DboSource {
 		} else {
 			$tables = array();
 			foreach ($result as $row) {
-				$tables[$row['Name']] = (array) $row;
+				$tables[$row['Name']] = (array)$row;
 				unset($tables[$row['Name']]['queryString']);
 				if (!empty($row['Collation'])) {
 					$charset = $this->getCharsetName($row['Collation']);
@@ -634,7 +618,6 @@ class Mysql extends DboSource {
 			return $tables;
 		}
 	}
-
 
 /**
  * Converts database-layer column types to basic types
@@ -691,6 +674,15 @@ class Mysql extends DboSource {
  */
 	public function getSchemaName() {
 		return $this->config['database'];
+	}
+
+/**
+ * Check if the server support nested transactions
+ *
+ * @return boolean
+ */
+	public function nestedTransactionSupported() {
+		return $this->useNestedTransactions && version_compare($this->getVersion(), '4.1', '>=');
 	}
 
 }

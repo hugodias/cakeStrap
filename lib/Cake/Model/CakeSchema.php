@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Model
  * @since         CakePHP(tm) v 1.2.0.5550
@@ -20,6 +20,7 @@
 App::uses('Model', 'Model');
 App::uses('AppModel', 'Model');
 App::uses('ConnectionManager', 'Model');
+App::uses('File', 'Utility');
 
 /**
  * Base Class for Schema management
@@ -161,13 +162,13 @@ class CakeSchema extends Object {
 		$this->build($options);
 		extract(get_object_vars($this));
 
-		$class =  $name .'Schema';
+		$class = $name . 'Schema';
 
 		if (!class_exists($class)) {
 			if (file_exists($path . DS . $file) && is_file($path . DS . $file)) {
-				require_once($path . DS . $file);
+				require_once $path . DS . $file;
 			} elseif (file_exists($path . DS . 'schema.php') && is_file($path . DS . 'schema.php')) {
-				require_once($path . DS . 'schema.php');
+				require_once $path . DS . 'schema.php';
 			}
 		}
 
@@ -175,7 +176,6 @@ class CakeSchema extends Object {
 			$Schema = new $class($options);
 			return $Schema;
 		}
-
 		return false;
 	}
 
@@ -207,7 +207,7 @@ class CakeSchema extends Object {
 		}
 
 		$tables = array();
-		$currentTables = (array) $db->listSources();
+		$currentTables = (array)$db->listSources();
 
 		$prefix = null;
 		if (isset($db->config['prefix'])) {
@@ -338,7 +338,7 @@ class CakeSchema extends Object {
 /**
  * Writes schema file from object or options
  *
- * @param mixed $object schema object or options array
+ * @param array|object $object schema object or options array
  * @param array $options schema object properties to override object
  * @return mixed false or string written to file
  */
@@ -414,12 +414,12 @@ class CakeSchema extends Object {
 					unset($value['type']);
 					$col .= join(', ',  $this->_values($value));
 				} elseif ($field == 'indexes') {
-					$col = "\t\t'indexes' => array(";
+					$col = "\t\t'indexes' => array(\n\t\t\t";
 					$props = array();
 					foreach ((array)$value as $key => $index) {
 						$props[] = "'{$key}' => array(" . join(', ',  $this->_values($index)) . ")";
 					}
-					$col .= join(', ', $props);
+					$col .= join(",\n\t\t\t", $props) . "\n\t\t";
 				} elseif ($field == 'tableParameters') {
 					$col = "\t\t'tableParameters' => array(";
 					$props = array();
@@ -440,8 +440,8 @@ class CakeSchema extends Object {
 /**
  * Compares two sets of schemas
  *
- * @param mixed $old Schema object or array
- * @param mixed $new Schema object or array
+ * @param array|object $old Schema object or array
+ * @param array|object $new Schema object or array
  * @return array Tables (that are added, dropped, or changed)
  */
 	public function compare($old, $new = null) {
@@ -485,7 +485,7 @@ class CakeSchema extends Object {
 				if (!empty($old[$table][$field])) {
 					$diff = $this->_arrayDiffAssoc($value, $old[$table][$field]);
 					if (!empty($diff) && $field !== 'indexes' && $field !== 'tableParameters') {
-						$tables[$table]['change'][$field] = array_merge($old[$table][$field], $diff);
+						$tables[$table]['change'][$field] = $value;
 					}
 				}
 
@@ -577,6 +577,9 @@ class CakeSchema extends Object {
 					$vals[] = "'{$key}' => array('" . implode("', '",  $val) . "')";
 				} elseif (!is_numeric($key)) {
 					$val = var_export($val, true);
+					if ($val === 'NULL') {
+						$val = 'null';
+					}
 					$vals[] = "'{$key}' => {$val}";
 				}
 			}
@@ -703,4 +706,5 @@ class CakeSchema extends Object {
 	protected function _noPrefixTable($prefix, $table) {
 		return preg_replace('/^' . preg_quote($prefix) . '/', '', $table);
 	}
+
 }

@@ -1,12 +1,12 @@
 <?php
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Utility
  * @since         CakePHP(tm) v 0.9.2
@@ -85,7 +85,7 @@ class ClassRegistry {
  *		array('class' => 'ClassName', 'alias' => 'AliasNameStoredInTheRegistry')
  * );
  * }}}
- * @param mixed $class as a string or a single key => value array instance will be created,
+ * @param string|array $class as a string or a single key => value array instance will be created,
  *  stored in the registry and returned.
  * @param boolean $strict if set to true it will return false if the class was not found instead
  *	of trying to create an AppModel
@@ -195,8 +195,8 @@ class ClassRegistry {
 /**
  * Add $object to the registry, associating it with the name $key.
  *
- * @param string $key	Key for the object in registry
- * @param mixed $object	Object to store
+ * @param string $key		Key for the object in registry
+ * @param object $object	Object to store
  * @return boolean True if the object was written, false if $key already exists
  */
 	public static function addObject($key, $object) {

@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.View.Helper
  * @since         CakePHP(tm) v 1.0.0.2277
@@ -291,7 +291,7 @@ class CacheHelper extends AppHelper {
 		}
 
 		$file .= '
-				$request = unserialize(\'' . str_replace("'", "\\'", serialize($this->request)) . '\');
+				$request = unserialize(base64_decode(\'' . base64_encode(serialize($this->request)) . '\'));
 				$response = new CakeResponse(array("charset" => Configure::read("App.encoding")));
 				$controller = new ' . $this->_View->name . 'Controller($request, $response);
 				$controller->plugin = $this->plugin = \'' . $this->_View->plugin . '\';
@@ -313,7 +313,7 @@ class CacheHelper extends AppHelper {
 				$this->loadHelpers();
 				extract($this->viewVars, EXTR_SKIP);
 		?>';
-		$content = preg_replace("/(<\\?xml)/", "<?php echo '$1';?>", $content);
+		$content = preg_replace("/(<\\?xml)/", "<?php echo '$1'; ?>", $content);
 		$file .= $content;
 		return cache('views' . DS . $cache, $file, $timestamp);
 	}

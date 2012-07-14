@@ -4,14 +4,14 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.View.Helper
  * @since         CakePHP(tm) v 1.2.0.4206
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -377,7 +377,7 @@ class RssHelperTest extends CakeTestCase {
 				'url' => 'http://example.com/foo?a=1&b=2',
 				'convertEntities' => false
 			),
-			'description' =>  array(
+			'description' => array(
 				'value' => 'descriptive words',
 				'cdata' => true,
 			),
@@ -430,6 +430,37 @@ class RssHelperTest extends CakeTestCase {
 			'source' => array('url' => 'http://www.example.com/'),
 			'Example website',
 			'/source',
+			'<guid',
+			'http://www.google.com/',
+			'/guid',
+			'/item'
+		);
+		$this->assertTags($result, $expected);
+
+		$item = array(
+			'title' => 'My title',
+			'description' => 'My description',
+			'link' => 'http://www.google.com/',
+			'category' => array('Category One', 'Category Two')
+		);
+		$result = $this->Rss->item(null, $item);
+		$expected = array(
+			'<item',
+			'<title',
+			'My title',
+			'/title',
+			'<description',
+			'My description',
+			'/description',
+			'<link',
+			'http://www.google.com/',
+			'/link',
+			'<category',
+			'Category One',
+			'/category',
+			'<category',
+			'Category Two',
+			'/category',
 			'<guid',
 			'http://www.google.com/',
 			'/guid',
@@ -576,7 +607,12 @@ class RssHelperTest extends CakeTestCase {
 		$File = new File($tmpFile, true);
 
 		$this->assertTrue($File->write('123'), 'Could not write to ' . $tmpFile);
-		clearstatcache(true, $tmpFile);
+
+		if (50300 <= PHP_VERSION_ID) {
+			clearstatcache(true, $tmpFile);
+		} else {
+			clearstatcache();
+		}
 
 		$item = array(
 			'title' => array(
@@ -606,6 +642,13 @@ class RssHelperTest extends CakeTestCase {
 			)
 		);
 		$result = $this->Rss->item(null, $item);
+		if (!function_exists('finfo_open') &&
+			(function_exists('mime_content_type') && false === mime_content_type($tmpFile))
+		) {
+			$type = false;
+		} else {
+			$type = 'text/plain';
+		}
 		$expected = array(
 			'<item',
 			'<title',
@@ -620,7 +663,7 @@ class RssHelperTest extends CakeTestCase {
 			'enclosure' => array(
 				'url' => $this->Rss->url('/tests/cakephp.file.test.tmp', true),
 				'length' => filesize($tmpFile),
-				'type' => 'text/plain'
+				'type' => $type
 			),
 			'<pubDate',
 			date('r', strtotime('2008-05-31 12:00:00')),

@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Test.Case.Model.Datasource.Database
  * @since         CakePHP(tm) v 1.2.0
@@ -55,6 +55,7 @@ class DboSqliteTestDb extends Sqlite {
 	public function getLastQuery() {
 		return $this->simulated[count($this->simulated) - 1];
 	}
+
 }
 
 /**
@@ -170,13 +171,13 @@ class SqliteTest extends CakeTestCase {
 		$db->execute("CREATE TABLE test_list (id VARCHAR(255));");
 
 		$db->cacheSources = true;
-		$this->assertEquals($db->listSources(), array('test_list'));
+		$this->assertEquals(array('test_list'), $db->listSources());
 		$db->cacheSources = false;
 
 		$fileName = '_' . preg_replace('/[^A-Za-z0-9_\-+]/', '_', TMP . $dbName) . '_list';
 
 		$result = Cache::read($fileName, '_cake_model_');
-		$this->assertEquals($result, array('test_list'));
+		$this->assertEquals(array('test_list'), $result);
 
 		Cache::delete($fileName, '_cake_model_');
 		Configure::write('Cache.disable', true);
@@ -326,7 +327,7 @@ class SqliteTest extends CakeTestCase {
 			'default' => null,
 			'key' => 'primary',
 		);
-		$this->assertEquals($result['id'], $expected);
+		$this->assertEquals($expected, $result['id']);
 		$this->Dbo->query('DROP TABLE ' . $tableName);
 
 		$tableName = 'uuid_tests';
@@ -340,7 +341,7 @@ class SqliteTest extends CakeTestCase {
 			'default' => null,
 			'key' => 'primary',
 		);
-		$this->assertEquals($result['id'], $expected);
+		$this->assertEquals($expected, $result['id']);
 		$this->Dbo->query('DROP TABLE ' . $tableName);
 	}
 
@@ -352,7 +353,7 @@ class SqliteTest extends CakeTestCase {
 	public function testVirtualFieldWithFunction() {
 		$this->loadFixtures('User');
 		$User = ClassRegistry::init('User');
-		$User->virtualFields = array('name' => 'SUBSTR(User.user, 5)');
+		$User->virtualFields = array('name' => 'SUBSTR(User.user, 5, LENGTH(User.user) - 4)');
 
 		$result = $User->find('first', array(
 			'conditions' => array('User.user' => 'garrett')
@@ -380,6 +381,39 @@ class SqliteTest extends CakeTestCase {
 
 		$this->assertEquals($data['title'], $result['Uuid']['title']);
 		$this->assertTrue(Validation::uuid($result['Uuid']['id']), 'Not a uuid');
+	}
+
+/**
+ * Test nested transaction
+ *
+ * @return void
+ */
+	public function testNestedTransaction() {
+		$this->skipIf($this->Dbo->nestedTransactionSupported() === false, 'The Sqlite version do not support nested transaction');
+
+		$this->loadFixtures('User');
+		$model = new User();
+		$model->hasOne = $model->hasMany = $model->belongsTo = $model->hasAndBelongsToMany = array();
+		$model->cacheQueries = false;
+		$this->Dbo->cacheMethods = false;
+
+		$this->assertTrue($this->Dbo->begin());
+		$this->assertNotEmpty($model->read(null, 1));
+
+		$this->assertTrue($this->Dbo->begin());
+		$this->assertTrue($model->delete(1));
+		$this->assertEmpty($model->read(null, 1));
+		$this->assertTrue($this->Dbo->rollback());
+		$this->assertNotEmpty($model->read(null, 1));
+
+		$this->assertTrue($this->Dbo->begin());
+		$this->assertTrue($model->delete(1));
+		$this->assertEmpty($model->read(null, 1));
+		$this->assertTrue($this->Dbo->commit());
+		$this->assertEmpty($model->read(null, 1));
+
+		$this->assertTrue($this->Dbo->rollback());
+		$this->assertNotEmpty($model->read(null, 1));
 	}
 
 }

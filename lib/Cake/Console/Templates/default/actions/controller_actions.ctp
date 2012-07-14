@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Console.Templates.default.actions
  * @since         CakePHP(tm) v 1.3
@@ -31,6 +31,7 @@
 /**
  * <?php echo $admin ?>view method
  *
+ * @throws NotFoundException
  * @param string $id
  * @return void
  */
@@ -85,6 +86,7 @@
 /**
  * <?php echo $admin ?>edit method
  *
+ * @throws NotFoundException
  * @param string $id
  * @return void
  */
@@ -129,6 +131,8 @@
 /**
  * <?php echo $admin ?>delete method
  *
+ * @throws MethodNotAllowedException
+ * @throws NotFoundException
  * @param string $id
  * @return void
  */

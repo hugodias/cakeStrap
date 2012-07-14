@@ -18,9 +18,13 @@ class User extends AppModel
 
     public $validate = array(
         'username' => array(
-            'required' => array(
+            array(
                 'rule' => array('notEmpty'),
-                'message' => 'A username is required'
+                'message' => 'A username is required.'
+            ),
+            array(
+                'rule' => 'isUnique',
+                'message' => 'This user already exists.'
             )
         ),
         'password' => array(

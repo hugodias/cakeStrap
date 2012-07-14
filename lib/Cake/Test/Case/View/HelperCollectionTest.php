@@ -5,13 +5,13 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.View
  * @since         CakePHP(tm) v 2.0
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -28,6 +28,7 @@ class HtmlAliasHelper extends HtmlHelper {
 }
 
 class HelperCollectionTest extends CakeTestCase {
+
 /**
  * setUp
  *
@@ -64,6 +65,35 @@ class HelperCollectionTest extends CakeTestCase {
 		$this->assertEquals(array('Html'), $result, 'attached() results are wrong.');
 
 		$this->assertTrue($this->Helpers->enabled('Html'));
+	}
+
+/**
+ * test lazy loading of helpers
+ *
+ * @return void
+ */
+	public function testLazyLoad() {
+		$result = $this->Helpers->Html;
+		$this->assertInstanceOf('HtmlHelper', $result);
+
+		$result = $this->Helpers->Form;
+		$this->assertInstanceOf('FormHelper', $result);
+
+		App::build(array('Plugin' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)));
+		$this->View->plugin = 'TestPlugin';
+		CakePlugin::load(array('TestPlugin'));
+		$result = $this->Helpers->OtherHelper;
+		$this->assertInstanceOf('OtherHelperHelper', $result);
+	}
+
+/**
+ * test lazy loading of helpers
+ *
+ * @expectedException MissingHelperException
+ * @return void
+ */
+	public function testLazyLoadException() {
+		$result = $this->Helpers->NotAHelper;
 	}
 
 /**
@@ -148,8 +178,8 @@ class HelperCollectionTest extends CakeTestCase {
 		$this->assertEquals(array('Form', 'Html'), $result, 'loaded helpers is wrong');
 
 		$this->Helpers->unload('Html');
-		$this->assertFalse(isset($this->Helpers->Html));
-		$this->assertTrue(isset($this->Helpers->Form));
+		$this->assertNotContains('Html', $this->Helpers->attached());
+		$this->assertContains('Form', $this->Helpers->attached());
 
 		$result = $this->Helpers->attached();
 		$this->assertEquals(array('Form'), $result, 'loaded helpers is wrong');

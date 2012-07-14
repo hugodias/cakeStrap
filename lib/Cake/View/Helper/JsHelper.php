@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP :  Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc.
+ * Copyright 2005-2012, Cake Software Foundation, Inc.
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.View.Helper
  * @since         CakePHP(tm) v 1.2
@@ -283,7 +283,7 @@ class JsHelper extends AppHelper {
  * - `buffer` - Disable the buffering and return a script tag in addition to the link.
  *
  * @param string $title Title for the link.
- * @param mixed $url Mixed either a string URL or an cake url array.
+ * @param string|array $url Mixed either a string URL or an cake url array.
  * @param array $options Options for both the HTML element and Js::request()
  * @return string Completed link. If buffering is disabled a script tag will be returned as well.
  * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::link
@@ -321,8 +321,8 @@ class JsHelper extends AppHelper {
  * output when the buffer is fetched with `JsHelper::getBuffer()` or `JsHelper::writeBuffer()`
  * The Javascript variable used to output set variables can be controlled with `JsHelper::$setVariable`
  *
- * @param mixed $one Either an array of variables to set, or the name of the variable to set.
- * @param mixed $two If $one is a string, $two is the value for that key.
+ * @param string|array $one Either an array of variables to set, or the name of the variable to set.
+ * @param string|array $two If $one is a string, $two is the value for that key.
  * @return void
  * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/js.html#JsHelper::set
  */

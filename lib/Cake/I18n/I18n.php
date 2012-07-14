@@ -5,12 +5,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.I18n
  * @since         CakePHP(tm) v 1.2.0.4116
@@ -385,7 +385,7 @@ class I18n {
 				$this->_domains[$domain][$this->_lang][$this->category]["%plural-c"] = $switch;
 				unset($this->_domains[$domain][$this->_lang][$this->category]["%po-header"]);
 			}
-			$this->_domains = Set::pushDiff($this->_domains, $merge);
+			$this->_domains = Hash::mergeDiff($this->_domains, $merge);
 
 			if (isset($this->_domains[$domain][$this->_lang][$this->category][null])) {
 				unset($this->_domains[$domain][$this->_lang][$this->category][null]);
@@ -404,6 +404,8 @@ class I18n {
 	public static function loadMo($filename) {
 		$translations = false;
 
+		// @codingStandardsIgnoreStart
+		// Binary files extracted makes non-standard local variables
 		if ($data = file_get_contents($filename)) {
 			$translations = array();
 			$header = substr($data, 0, 20);
@@ -433,6 +435,7 @@ class I18n {
 				}
 			}
 		}
+		// @codingStandardsIgnoreEnd
 
 		return $translations;
 	}

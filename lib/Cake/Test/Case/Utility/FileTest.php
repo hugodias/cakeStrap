@@ -4,14 +4,14 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.Utility
  * @since         CakePHP(tm) v 1.2.0.4206
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -53,6 +53,9 @@ class FileTest extends CakeTestCase {
 		parent::tearDown();
 		$this->File->close();
 		unset($this->File);
+
+		$Folder = new Folder();
+		$Folder->delete(TMP . 'tests' . DS . 'permissions');
 	}
 
 /**
@@ -76,10 +79,15 @@ class FileTest extends CakeTestCase {
 			'dirname' => dirname(__FILE__),
 			'basename' => basename(__FILE__),
 			'extension' => 'php',
-			'filename' =>'FileTest',
+			'filename' => 'FileTest',
 			'filesize' => filesize($file),
 			'mime' => 'text/x-php'
 		);
+		if (!function_exists('finfo_open') && (!function_exists('mime_content_type') ||
+				function_exists('mime_content_type') && false === mime_content_type($this->File->pwd()))) {
+			$expecting['mime'] = false;
+		}
+
 		$this->assertEquals($expecting, $result);
 
 		$result = $this->File->ext();
@@ -112,12 +120,52 @@ class FileTest extends CakeTestCase {
 
 		$result = $this->File->Folder();
 		$this->assertInstanceOf('Folder', $result);
+	}
 
+/**
+ * testPermission method
+ */
+	public function testPermission() {
 		$this->skipIf(DIRECTORY_SEPARATOR === '\\', 'File permissions tests not supported on Windows.');
 
-		$result = $this->File->perms();
-		$expecting = decoct(0644 & ~umask());
+		$dir = TMP . 'tests' . DS . 'permissions' . DS;
+		$Folder = new Folder($dir);
+
+		$old = umask();
+
+		umask(0002);
+		$file = $dir . 'permission_' . uniqid();
+		$expecting = decoct(0664 & ~umask());
+		$File = new File($file, true);
+		$result = $File->perms();
 		$this->assertEquals($expecting, $result);
+		$File->delete();
+
+		umask(0022);
+		$file = $dir . 'permission_' . uniqid();
+		$expecting = decoct(0644 & ~umask());
+		$File = new File($file, true);
+		$result = $File->perms();
+		$this->assertEquals($expecting, $result);
+		$File->delete();
+
+		umask(0422);
+		$file = $dir . 'permission_' . uniqid();
+		$expecting = decoct(0244 & ~umask());
+		$File = new File($file, true);
+		$result = $File->perms();
+		$this->assertEquals($expecting, $result);
+		$File->delete();
+
+		umask(0444);
+		$file = $dir . 'permission_' . uniqid();
+		$expecting = decoct(0222 & ~umask());
+		$File = new File($file, true);
+		$result = $File->perms();
+		$this->assertEquals($expecting, $result);
+		$File->delete();
+
+		umask($old);
 	}
 
 /**
@@ -137,7 +185,7 @@ class FileTest extends CakeTestCase {
 		$this->File->lock = true;
 		$result = $this->File->read();
 		$expecting = file_get_contents(__FILE__);
-		$this->assertEquals($result, trim($expecting));
+		$this->assertEquals(trim($expecting), $result);
 		$this->File->lock = null;
 
 		$data = $expecting;
@@ -179,7 +227,7 @@ class FileTest extends CakeTestCase {
 		$this->assertEquals($expecting, $result);
 
 		$result = $this->File->offset();
-		$expecting = 5+3;
+		$expecting = 5 + 3;
 		$this->assertSame($result, $expecting);
 	}
 
@@ -230,7 +278,7 @@ class FileTest extends CakeTestCase {
  * @return void
  */
 	public function testCreate() {
-		$tmpFile = TMP.'tests' . DS . 'cakephp.file.test.tmp';
+		$tmpFile = TMP . 'tests' . DS . 'cakephp.file.test.tmp';
 		$File = new File($tmpFile, true, 0777);
 		$this->assertTrue($File->exists());
 	}
@@ -473,9 +521,14 @@ class FileTest extends CakeTestCase {
  * @return void
  */
 	public function testMime() {
+		$this->skipIf(!function_exists('finfo_open') && !function_exists('mime_content_type'), 'Not able to read mime type');
 		$path = CAKE . 'Test' . DS . 'test_app' . DS . 'webroot' . DS . 'img' . DS . 'cake.power.gif';
 		$file = new File($path);
-		$this->assertEquals('image/gif', $file->mime());
+		$expected = 'image/gif';
+		if (function_exists('mime_content_type') && false === mime_content_type($file->pwd())) {
+			$expected = false;
+		}
+		$this->assertEquals($expected, $file->mime());
 	}
 
 /**

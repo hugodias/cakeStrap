@@ -1,12 +1,12 @@
 <?php
 /**
  * CakePHP :  Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc.
+ * Copyright 2005-2012, Cake Software Foundation, Inc.
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.View.Helper
  * @since         CakePHP(tm) v 2.0
@@ -69,7 +69,7 @@ abstract class JsBaseEngineHelper extends AppHelper {
  * Redirects to a URL.  Creates a window.location modification snippet
  * that can be used to trigger 'redirects' from Javascript.
  *
- * @param mixed $url
+ * @param string|array $url
  * @param array  $options
  * @return string completed redirect in javascript
  */
@@ -366,7 +366,7 @@ abstract class JsBaseEngineHelper extends AppHelper {
  * - `dataExpression` - Should the `data` key be treated as a callback.  Useful for supplying `$options['data']` as
  *    another Javascript expression.
  *
- * @param mixed $url Array or String URL to target with the request.
+ * @param string|array $url Array or String URL to target with the request.
  * @param array $options Array of options. See above for cross library supported options
  * @return string XHR request.
  */

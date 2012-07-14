@@ -4,12 +4,12 @@
  * and constructing helper class objects.
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.View
  * @since         CakePHP(tm) v 2.0
@@ -41,6 +41,53 @@ class HelperCollection extends ObjectCollection implements CakeEventListener {
  */
 	public function __construct(View $view) {
 		$this->_View = $view;
+	}
+
+/**
+ * Tries to lazy load a helper based on its name, if it cannot be found
+ * in the application folder, then it tries looking under the current plugin
+ * if any
+ *
+ * @param string $helper The helper name to be loaded
+ * @return boolean wheter the helper could be loaded or not
+ * @throws MissingHelperException When a helper could not be found.
+ *    App helpers are searched, and then plugin helpers.
+ */
+	public function __isset($helper) {
+		if (parent::__isset($helper)) {
+			return true;
+		}
+
+		try {
+			$this->load($helper);
+		} catch (MissingHelperException $exception) {
+			if ($this->_View->plugin) {
+				$this->load($this->_View->plugin . '.' . $helper);
+				return true;
+			}
+		}
+
+		if (!empty($exception)) {
+			throw $exception;
+		}
+
+		return true;
+	}
+
+/**
+ * Provide public read access to the loaded objects
+ *
+ * @param string $name Name of property to read
+ * @return mixed
+ */
+	public function __get($name) {
+		if ($result = parent::__get($name)) {
+			return $result;
+		}
+		if ($this->__isset($name)) {
+			return $this->_loaded[$name];
+		}
+		return null;
 	}
 
 /**

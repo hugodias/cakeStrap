@@ -7,12 +7,12 @@
  * PHP 5
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2011, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       Cake.Utility
  * @since         CakePHP(tm) v 0.10.0.1076
@@ -203,8 +203,8 @@ class Sanitize {
  * - backslash -
  * - remove_html - Strip HTML with strip_tags. `encode` must be true for this option to work.
  *
- * @param mixed $data Data to sanitize
- * @param mixed $options If string, DB connection being used, otherwise set of options
+ * @param string|array $data Data to sanitize
+ * @param string|array $options If string, DB connection being used, otherwise set of options
  * @return mixed Sanitized data
  */
 	public static function clean($data, $options = array()) {

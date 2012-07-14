@@ -2,7 +2,7 @@
 	<div class="hero-unit">
 		<div class="row-fluid">
 			<div class="span8">
-			<h1>CakeStrap v 0.1</h1>	
+			<h1>CakeStrap v 0.2</h1>	
 			<hr>
 			<h3>Features</h3>
 			<ul>
@@ -17,7 +17,7 @@
 				<li>
 					<strong>Back-end</strong>
 					<ul>
-						<li> <i class="icon-ok"></i> <a href="http://cakephp.org/" target="_blank">CakePHP</a> 2.1.0 Security Login</li>
+						<li> <i class="icon-ok"></i> <a href="http://cakephp.org/" target="_blank">CakePHP</a> 2.2.0 Security Login</li>
 						<li> <i class="icon-ok"></i> Users <a href="http://en.wikipedia.org/wiki/Crud" target="_blank">CRUD</a></li>		
 					</ul>
 				</li>
