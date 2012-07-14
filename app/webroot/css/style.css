@@ -1,0 +1,8 @@
+#main ul{
+	padding:0;
+	margin:0;
+}
+#main ul li{
+	padding-left:20px;
+	list-style:none;
+}
