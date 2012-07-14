@@ -8,32 +8,32 @@ class UsersController extends AppController
     $this->Auth->allow('register','logout');
   }
 
-	public function home()
-	{
+  public function home()
+  {
     $this->User->recursive = 0;
     $this->set('users', $this->paginate());
-	}
+  }
 
-	public function login() 
-	{
+  public function login() 
+  {
     if ($this->request->is('post')) 
     {
       if ($this->Auth->login()) 
       {
-          $this->redirect($this->Auth->redirect());
+        $this->redirect($this->Auth->redirect());
       } 
       else 
       {
-          $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
+        $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
       }
     }
-	}
+  }
 
 
-	public function logout() 
-	{
+  public function logout() 
+  {
     $this->redirect($this->Auth->logout());
-	}
+  }
 
 
   public function view($id = null) 
@@ -49,8 +49,8 @@ class UsersController extends AppController
   }	
 
 
-	public function register()
-	{
+  public function register()
+  {
     if ($this->request->is('post')) 
     {
       $this->User->create();
@@ -66,7 +66,7 @@ class UsersController extends AppController
         $this->Error->set( $this->User->invalidFields() );
       }
     }
-	}
+  }
 
   public function edit($id = null) 
   {
