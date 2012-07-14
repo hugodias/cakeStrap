@@ -14,10 +14,12 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 2. HTML5 Boilerplate
 4. Modernizr
 5. Twitter Bootstrap
+6. Multi-Language ( English and Portuguese )
 
 ##### Back-end
 1. CakePHP 2.2 Security Authentication
 2. Users CRUD
+
 
 
 ## Quick start
@@ -40,6 +42,16 @@ PRIMARY KEY (id)
 
 - Open the file `app/Config/database.php` and change the database information
 - Change the permissions of the folder `app/tmp` to 777 ( and all the folders inside of it )
+
+
+
+## ## Internationalization
+
+Currently cakeStrap supports two languages, **English** and **Portuguese**. To enable the Portuguese language as the main just add the following line in your `app/Controllers/AppController.php` at `beforeFilter` action:
+<pre>
+Configure::write('Config.language', 'por');
+</pre> 
+
 
 
 ## Questions / Bugs

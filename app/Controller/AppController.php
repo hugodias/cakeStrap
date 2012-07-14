@@ -42,6 +42,9 @@ class AppController extends Controller
 		$this->Auth->loginRedirect = array('action' => 'home', 'controller' => 'users');
 		$this->Auth->logoutRedirect = array('action' => 'home', 'controller' => 'pages');
 		$this->Auth->authError = 'You are not allowed to see that.';
+
+		# To enable portuguese language as main
+		#Configure::write('Config.language', 'por');
 	}	
 }
 
