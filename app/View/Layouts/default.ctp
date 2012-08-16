@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <?php echo $this->Html->link('CakeTrap',"/",array('class' => 'brand')) ?>
+          <?php echo $this->Html->link( Configure::read('Application.name') ,"/",array('class' => 'brand')) ?>
           <div class="nav-collapse">
             <ul class="nav">
               <?php if( AuthComponent::user('id') ) { ?>
@@ -64,7 +64,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; <?php echo Configure::read('Application.name') ?> 2012</p>
       </footer>
 
     </div> <!-- /container -->
