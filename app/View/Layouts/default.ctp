@@ -87,8 +87,8 @@
     </div> <!-- /container -->
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="<?php echo $this->params->webroot ?>js/lib/jquery-1.7.2.min.js"><\/script>')</script>
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="<?php echo $this->params->webroot ?>js/lib/jquery.min.js"><\/script>')</script>
 
     <?php echo $this->Html->script(
       array(
