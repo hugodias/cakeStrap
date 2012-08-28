@@ -24,7 +24,7 @@ echo $this->Form->create
 echo $this->Form->input('username',
 	array(
 		'placeholder' => __('Username'),
-		'class' => 'span3',
+		'class' => 'span12',
 		'value' => !empty( $user['User']['username'] ) ? $user['User']['username'] : ''
 	)
 );
@@ -32,7 +32,7 @@ echo $this->Form->input('username',
 echo $this->Form->input('password',
 	array(
 		'type' => 'password', 
-		'class' => 'span3',
+		'class' => 'span12',
 		'placeholder' => __('Password')
 	)
 );

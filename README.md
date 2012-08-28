@@ -1,4 +1,4 @@
-# CakeStrap v 0.2
+# CakeStrap v 0.3
 ---
 CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 
@@ -13,7 +13,7 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 1. Responsive Web Design
 2. HTML5 Boilerplate
 4. Modernizr
-5. Twitter Bootstrap
+5. Twitter Bootstrap 2.1.0
 6. Multi-Language ( English and Portuguese )
 
 ##### Back-end

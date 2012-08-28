@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -37,20 +37,37 @@
             <ul class="nav">
               <?php if( AuthComponent::user('id') ) { ?>
               <li class="<?php echo $this->params->controller == 'users' && $this->action == 'home' ? 'active' : '';  ?>">
-                <?php echo $this->Html->link('Home','/users/home') ?>
+                <?php echo $this->Html->link('Home',array('controller' => 'users','action' => 'home')) ?>
               </li>
               <?php } ?>
               <li class="<?php echo $this->action == 'register' ? 'active' : ''; ?>">
-                <?php echo $this->Html->link(__('Register'),'/users/register') ?>
+                <?php echo $this->Html->link(__('Register'),array('controller' => 'users','action' => 'register')) ?>
               </li>
 
               
             </ul>
+
+            <?php if( AuthComponent::user('id') ) { ?>
             <ul class="nav pull-right">
-              <?php if( AuthComponent::user('id') ) { ?>
-                <li><?php echo $this->Html->link('Logout','/users/logout') ?></li>
-              <?php } ?>
-            </ul>
+              <li id="fat-menu" class="dropdown">
+                <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-black icon-user"></i> 
+                  <?php echo AuthComponent::user('username') ?> <b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                  <li>
+                    <?php echo $this->Html->link(
+                      '<i class="icon-black icon-off"></i> Logout','/users/logout',
+                      array(
+                        'tabindex' => '-1',
+                        'escape' => false
+                        )
+                    ) ?>
+                  </li>
+                </ul>
+              </li>
+            </ul>   
+            <?php } ?>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
