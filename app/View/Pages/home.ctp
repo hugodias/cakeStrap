@@ -25,8 +25,12 @@
 			</ul>
 			<hr>
 			<h3> Ready Scripts </h3>
-			<div class="checkjs">
+			<div class="checkscripts">
 				Loading scripts...<br/><br/>
+			</div>
+			<h3> Browser features</h3>
+			<div class="checkmodernizr">
+				Verifying browser features...<br/><br/>
 			</div>
 
 			</div>

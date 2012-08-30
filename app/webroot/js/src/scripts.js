@@ -9,11 +9,29 @@
   App = (function() {
   	// Constructor
     function App() {
-      $('.checkjs').html( this.status() );
+      $('.checkscripts').html( this.status() );
+      $('.checkmodernizr').html( this.mdzfeatures() );
     }
 
     App.prototype.status = function() {
-    	return '<strong>Jquery</strong> Ready. <br/> <strong>Modernizr</strong> Ready. <br/> <strong>Bootstrap</strong> Ready.<br/><strong>Scripts.js</strong> Ready.';
+      var status = '';
+
+      if( Modernizr ) status += '<strong>Modernizr</strong> READY!<br/>';
+      if( $ ) status += '<strong>Jquery</strong> READY!<br/>';
+
+      return status;
+    }
+
+    App.prototype.mdzfeatures = function() {
+      var features = '';
+
+      if( Modernizr.touch ) features += '<strong>Touch</strong> READY!<br/>';
+      if( Modernizr.localstorage ) features += '<strong>LocalStorage</strong> READY!<br/>';
+      if( Modernizr.postmessage ) features += '<strong>Cross-window Messaging</strong> READY!<br/>';
+      if( Modernizr.sessionstorage ) features += '<strong>sessionStorage</strong> READY!<br/>';
+      if( Modernizr.websockets ) features += '<strong>Websockets</strong> READY!<br/>';
+
+      return features;
     }
 
     return App;
