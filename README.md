@@ -16,6 +16,7 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 4. Modernizr v2.6.1
 5. Twitter Bootstrap v2.1.0
 6. Multi-Language ( English and Portuguese )
+7. Custom themes ( Bootswatch )
 
 ##### Back-end
 1. CakePHP 2.2 Security Authentication
