@@ -89,12 +89,12 @@ class UsersController extends AppController
 
       if ($this->User->save($this->request->data)) 
       {
-          $this->Session->setFlash(__('The user has been saved'),'flash_success');
-          $this->redirect(array('action' => 'home'));
+        $this->Session->setFlash(__('The user has been saved'),'flash_success');
+        $this->redirect(array('action' => 'home'));
       } 
       else 
       {
-          $this->Session->setFlash(__('The user could not be saved. Please, try again.'),'flash_fail');
+        $this->Session->setFlash(__('The user could not be saved. Please, try again.'),'flash_fail');
       }
     } 
     else 
@@ -194,20 +194,20 @@ class UsersController extends AppController
         'User' => array(
           'id' => $user['User']['id'],
           'hash_change_password' => $hash
-        )
-      );
+          )
+        );
 
       $this->User->save($data);
 
       $email = new CakeEmail();
       $email->template('remember_password', 'default')
-          ->config('gmail')
-          ->emailFormat('html')
-          ->subject(__('Remember password - '.Configure::read('Application.name')))
-          ->to( $user['User']['email'] )
-          ->from( Configure::read('Application.from_email') )
-          ->viewVars(array('hash' => $hash))
-          ->send();        
+      ->config('gmail')
+      ->emailFormat('html')
+      ->subject(__('Remember password - '.Configure::read('Application.name')))
+      ->to( $user['User']['email'] )
+      ->from( Configure::read('Application.from_email') )
+      ->viewVars(array('hash' => $hash))
+      ->send();        
 
       $this->Session->setFlash('Check your e-mail to continue the process of recovering password.','flash_success');
 
