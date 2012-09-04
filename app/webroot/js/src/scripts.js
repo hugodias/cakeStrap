@@ -30,6 +30,9 @@
 
       $('.change-theme').bind('click',function() {
         var theme,oldhref,pattern;
+
+        $('.change-themes-list a').removeClass('active');
+        $(this).addClass('active');
         
         theme = $(this).attr('alt');
         

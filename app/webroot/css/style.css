@@ -1,3 +1,7 @@
 .center{
 	text-align: center;
 }
+
+.change-themes-list .active{
+	font-weight: bold;
+}

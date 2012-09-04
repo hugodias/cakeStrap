@@ -6,7 +6,7 @@
 			<hr>
 			<h3>Themes</h3>
 
-			<ul class="breadcrumb">
+			<ul class="breadcrumb change-themes-list">
 				<li><a href="javascript:void(0)" class="change-theme" alt="default">Default</a> <span class="divider">/</span></li>
 				<li><a href="javascript:void(0)" class="change-theme" alt="amelia">Amelia</a> <span class="divider">/</span></li>
 				<li><a href="javascript:void(0)" class="change-theme" alt="cerulean">Cerulean</a> <span class="divider">/</span></li>
@@ -18,13 +18,13 @@
 				<li><a href="javascript:void(0)" class="change-theme" alt="spacelab">Spacelab</a></li> 
 			</ul>	
 
-			<ul class="breadcrumb">
+			<ul class="breadcrumb change-themes-list">
 				<li><a href="javascript:void(0)" class="change-theme" alt="spruce">Spruce</a> <span class="divider">/</span></li>
 				<li><a href="javascript:void(0)" class="change-theme" alt="superhero">Superhero</a> <span class="divider">/</span></li>
 				<li><a href="javascript:void(0)" class="change-theme" alt="united">United</a> </li> 
 			</ul>
 
-			<pre>To change the theme go to <u>app/Config/bootstrap.php</u> at line 175</pre>
+			<pre>To permanently change the theme go to <u>app/Config/bootstrap.php</u> at line 175</pre>
 
 			<hr>
 			<h3>Features</h3>
