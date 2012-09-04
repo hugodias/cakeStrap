@@ -1,4 +1,4 @@
-# CakeStrap v 0.3
+# CakeStrap v 0.4
 ---
 CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 
@@ -20,7 +20,7 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 ##### Back-end
 1. CakePHP 2.2 Security Authentication
 2. Users CRUD
-
+3. Remember password with email send **(NEW)**
 
 
 ## Quick start
@@ -28,22 +28,25 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 - Create a table named `users` in your database with the following structure:
 
 
-<pre>CREATE TABLE users (
-id int(11) NOT NULL AUTO_INCREMENT,
-username varchar(255) NOT NULL,
-password varchar(255) NOT NULL,
-name varchar(255) NOT NULL,
-role varchar(20) NOT NULL,
-created datetime NOT NULL,
-modified datetime NOT NULL,
-PRIMARY KEY (id)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+<pre>CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `hash_change_password` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 </pre>
 
 
 - Open the file `app/Config/database.php` and change the database information
 - Change the permissions of the folder `app/tmp` to 777 ( and all the folders inside of it )
 - Change your app name and email in `app/Config/bootstrap.php` at line 149
+- Change your SMTP email settings in `app/Config/email.php` at line 66
 
 
 ## Internationalization

@@ -37,6 +37,14 @@ echo $this->Form->input('password',
 	)
 );
 
+echo $this->Form->input('email',
+	array(
+		'type' => 'text', 
+		'class' => 'span12',
+		'placeholder' => __('Email')
+	)
+);
+
 echo $this->Form->input('role', array(
     'options' => array('admin' => __('Admin'), 'author' => __('Author')),
     'selected' => !empty( $user['User']['role'] ) ? $user['User']['role'] : ''

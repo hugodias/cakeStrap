@@ -149,9 +149,13 @@ Cache::config('default', array('engine' => 'File'));
 Configure::write(
 	'Application', array(
 		'name' => 'CakeStrap', 
+		'from_email' => 'from@your_app_domain.com',
 		'contact_mail' => 'contact@your_app_domain.com'
 	)
 );
+
+
+App::uses('CakeEmail', 'Network/Email');
 
 /**
  * You can attach event listeners to the request lifecyle as Dispatcher Filter . By Default CakePHP bundles two filters:

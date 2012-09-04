@@ -23,5 +23,15 @@ echo $this->Form->input('username',array('placeholder' => __('Username'),'class'
 echo $this->Form->input('password',array('placeholder' => __('Password'),'type' => 'password', 'class' => 'span12'));
 
 ?> 
-<button class="btn btn-primary"><i class="icon-play-circle icon-white"></i> Login</button> 
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-primary"><i class="icon-play-circle icon-white"></i> Login</button>      
+    </div>
+  </div>
+
+  <div class="control-group">
+  	<div class="controls">
+  		<span><?php echo __('Forgot your password?') ?><br/> <?php echo $this->Html->link(__('Remember my password'),array('controller' => 'users', 'action' => 'remember_password')) ?></span>
+  	</div>
+  </div> 
 </form>
