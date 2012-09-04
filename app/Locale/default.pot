@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-07-14 19:45+0000\n"
+"POT-Creation-Date: 2012-09-04 20:03+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -38,6 +38,18 @@ msgstr ""
 msgid "User was not deleted"
 msgstr ""
 
+#: Controller/UsersController.php:157
+msgid "Invalid action"
+msgstr ""
+
+#: Controller/UsersController.php:206
+msgid "Remember password - "
+msgstr ""
+
+#: Controller/UsersController.php:228
+msgid "Link inválido"
+msgstr ""
+
 #: View/Elements/flash_fail.ctp:3
 msgid "Error!"
 msgstr ""
@@ -46,8 +58,75 @@ msgstr ""
 msgid "Success!"
 msgstr ""
 
-#: View/Elements/form_users.ctp:48
+#: View/Elements/form_login.ctp:22
+#: View/Elements/form_users.ctp:26
+#: View/Users/home.ctp:14
+msgid "Username"
+msgstr ""
+
+#: View/Elements/form_login.ctp:23
+#: View/Elements/form_users.ctp:36
+msgid "Password"
+msgstr ""
+
+#: View/Elements/form_login.ctp:34
+#: View/Users/remember_password.ctp:24
+msgid "Forgot your password?"
+msgstr ""
+
+#: View/Elements/form_login.ctp:34
+#: View/Users/remember_password.ctp:31
+msgid "Remember my password"
+msgstr ""
+
+#: View/Elements/form_users.ctp:44
+msgid "Email"
+msgstr ""
+
+#: View/Elements/form_users.ctp:49
+msgid "Admin"
+msgstr ""
+
+#: View/Elements/form_users.ctp:49
+msgid "Author"
+msgstr ""
+
+#: View/Elements/form_users.ctp:56
+#: View/Users/change_password.ctp:50
 msgid "Submit"
+msgstr ""
+
+#: View/Emails/html/remember_password.ctp:3
+msgid "Register new password"
+msgstr ""
+
+#: View/Layouts/default.ctp:49
+#: View/Users/register.ctp:2
+msgid "Register"
+msgstr ""
+
+#: View/Users/change_password.ctp:1
+msgid "Change password"
+msgstr ""
+
+#: View/Users/change_password.ctp:34
+msgid "New password"
+msgstr ""
+
+#: View/Users/change_password.ctp:42
+msgid "Confirm new password"
+msgstr ""
+
+#: View/Users/home.ctp:6
+msgid "You are logged in"
+msgstr ""
+
+#: View/Users/home.ctp:8
+msgid "All Users"
+msgstr ""
+
+#: View/Users/home.ctp:15
+msgid "Role"
 msgstr ""
 
 #: View/Users/home.ctp:26
@@ -62,12 +141,24 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: View/Users/register.ctp:6
+msgid "Add User"
+msgstr ""
+
+#: View/Users/remember_password.ctp:28
+msgid "E-mail"
+msgstr ""
+
 #: Model/User.php:validation for field username
 msgid "A username is required."
 msgstr ""
 
-#: Model/User.php:validation for field username
+#: Model/User.php:validation for field username;validation for field email
 msgid "This user already exists."
+msgstr ""
+
+#: Model/User.php:validation for field email
+msgid "Invalid email."
 msgstr ""
 
 #: Model/User.php:validation for field password
