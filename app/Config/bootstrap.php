@@ -148,9 +148,31 @@ Cache::config('default', array('engine' => 'File'));
 */
 Configure::write(
 	'Application', array(
-		'name' => 'CakeStrap', 
+		'name' => 'CakeStrap',
 		'from_email' => 'from@your_app_domain.com',
 		'contact_mail' => 'contact@your_app_domain.com'
+	)
+);
+
+/**
+* Choose your application theme
+* The list of supported themes are:
+* 	-> default
+*	-> amelia
+*	-> cerulean
+*	-> cyborg
+*	-> journal
+*	-> readable
+*	-> simplex
+*	-> slate
+*	-> spacelab
+*	-> spruce
+*	-> superhero
+*	-> united
+*/
+Configure::write(
+	'Layout', array(
+		'theme' => 'default'
 	)
 );
 

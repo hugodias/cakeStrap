@@ -11,6 +11,9 @@
     function App() {
       $('.checkscripts').html( this.status() );
       $('.checkmodernizr').html( this.mdzfeatures() );
+
+      // Allow to change the app theme
+      this.changeTheme();
     }
 
     App.prototype.status = function() {
@@ -20,6 +23,23 @@
       if( $ ) status += '<strong>Jquery</strong> READY!<br/>';
 
       return status;
+    }
+
+    App.prototype.changeTheme = function() {
+      var $stylesheet = $('link[data-extra="theme"]');
+
+      $('.change-theme').bind('click',function() {
+        var theme,oldhref,pattern;
+        
+        theme = $(this).attr('alt');
+        
+        oldhref = $stylesheet.attr('href');
+
+        pattern = /bootstrap.*\.min/g
+        
+        $stylesheet.attr('href', oldhref.replace(pattern,"bootstrap-" + theme + ".min") );
+
+      })
     }
 
     App.prototype.mdzfeatures = function() {

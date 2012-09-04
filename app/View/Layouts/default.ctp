@@ -18,7 +18,8 @@
   }
   </style>
   <?php echo $this->Html->css('normalize.css') ?>
-  <?php echo $this->Html->css('bootstrap.min') ?>
+  <?php echo $this->Html->css('bootstrap-'.Configure::read('Layout.theme').'.min', null, array('data-extra' => 'theme')) ?>
+  <?php echo $this->Html->css('bootstrap-responsive.min') ?>
   <?php echo $this->Html->css('style') ?>
 
   <?php echo $this->Html->script('lib/modernizr') ?>
