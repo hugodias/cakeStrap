@@ -47,7 +47,7 @@ class EmailConfig {
 		'from' => 'you@localhost',
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
-	);
+		);
 
 	public $smtp = array(
 		'transport' => 'Smtp',
@@ -61,15 +61,15 @@ class EmailConfig {
 		'log' => false,
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
-	);
+		);
 
-    public $gmail = array(
-        'host' => 'ssl://smtp.gmail.com',
-        'port' => 465,
-        'username' => 'your@gmail.com',
-        'password' => 'password',
-        'transport' => 'Smtp'
-    );	
+	public $gmail = array(
+		'host' => 'ssl://smtp.gmail.com',
+		'port' => 465,
+		'username' => 'your@gmail.com',
+		'password' => 'password',
+		'transport' => 'Smtp'
+		);	
 
 	public $fast = array(
 		'from' => 'you@localhost',
@@ -100,6 +100,6 @@ class EmailConfig {
 		'log' => true,
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
-	);
+		);
 
 }
