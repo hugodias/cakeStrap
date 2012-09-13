@@ -12,8 +12,16 @@
       $('.checkscripts').html( this.status() );
       $('.checkmodernizr').html( this.mdzfeatures() );
 
+      this.initialize();
+    }
+
+    App.prototype.initialize = function() {
+
       // Allow to change the app theme
       this.changeTheme();
+
+      // Allow to delete users using twitter bootstrap modal
+      this.deleteUserModal();
     }
 
     App.prototype.status = function() {
@@ -23,6 +31,30 @@
       if( $ ) status += '<strong>Jquery</strong> READY!<br/>';
 
       return status;
+    }
+
+    // Delete users modal
+    App.prototype.deleteUserModal = function() {
+
+      // Changes the URL to delete on each user click
+      $('.btn-remove-modal').bind('click',function(e) {
+        var uid,name,href,pattern,$label,$link;
+
+        $label  = $('.label-uname');
+        $link   = $('.delete-user-link');
+        uid     = $(this).attr('data-uid');
+        name    = $(this).attr('data-uname');
+        href    = $link.attr('href');
+        pattern = /\d+$/g;
+
+        // Find the last ID in URL
+        aux     = href.replace(pattern,uid);
+
+        $link.attr('href', aux );
+
+        // Changes modal label
+        $label.html(name);
+      });
     }
 
     App.prototype.changeTheme = function() {

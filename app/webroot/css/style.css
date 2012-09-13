@@ -5,3 +5,13 @@
 .change-themes-list .active{
 	font-weight: bold;
 }
+
+.strong{
+	font-weight: bold;
+}
+
+/* Modal outline fix */
+*:focus,
+a:focus{
+	outline: none;
+}
