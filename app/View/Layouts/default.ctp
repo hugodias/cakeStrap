@@ -22,6 +22,16 @@
   <?php echo $this->Html->css('bootstrap-responsive.min') ?>
   <?php echo $this->Html->css('style') ?>
 
+  <?php
+  if (is_file(WWW_ROOT . 'css' . DS . $this->params->controller . '.css')) {
+  echo $this->Html->css($this->params->controller);
+  }
+  if (is_file(WWW_ROOT . 'css' . DS . $this->params->controller . DS . $this->params->action . '.css')) {
+  echo $this->Html->css($this->params->controller . '/' . $this->params->action);
+  }
+  ?>
+
+
   <?php echo $this->Html->script('lib/modernizr') ?>
 </head>
 <body>
@@ -93,6 +103,16 @@
 
                   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
                   <script>window.jQuery || document.write('<script src="<?php echo $this->params->webroot ?>js/lib/jquery.min.js"><\/script>')</script>
+
+                  <?php
+                  if (is_file(WWW_ROOT . 'js' . DS . $this->params->controller . '.js')) {
+                  echo $this->Html->script($this->params->controller);
+                  }
+                  if (is_file(WWW_ROOT . 'js' . DS . $this->params->controller . DS . $this->params->action . '.js')) {
+                  echo $this->Html->script($this->params->controller . '/' . $this->params->action);
+                  }
+                  ?>
+
                   <?php echo $this->Html->script(
                     array(
                       'lib/bootstrap.min',
