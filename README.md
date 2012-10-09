@@ -1,4 +1,4 @@
-# CakeStrap v 0.4
+# CakeStrap v 0.5
 ---
 CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 
@@ -16,12 +16,13 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 4. Modernizr v2.6.1
 5. Twitter Bootstrap v2.1.0
 6. Multi-Language ( English and Portuguese )
-7. Custom themes ( Bootswatch )
+7. Custom themes ( Bootswatch ) **(NEW)**
 
 ##### Back-end
 1. CakePHP 2.2 Security Authentication
 2. Users CRUD
-3. Remember password with email send **(NEW)**
+3. Remember password with email send
+4. Automatic inclusion of  javascript and css files depending of the current controller and action ( Tutorial below ) **(NEW)**
 
 
 ## Quick start
@@ -49,6 +50,20 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 - Change your app name and email in `app/Config/bootstrap.php` at line 149
 - Change your SMTP email settings in `app/Config/email.php` at line 66
 
+
+## Automatic inclusion of JS and CSS
+CakeStrap has a JS and CSS folder structure allowing to automatic load files for each action of each controller.
+For example, if you have this JS structure folder:
+
+<pre>
+/js
+	/pages
+		/home.js		
+</pre>
+
+This script will be automatic loaded when the user is in controller `pages` and in action `home`
+
+The same structure exists for `CSS` files.
 
 ## Internationalization
 
