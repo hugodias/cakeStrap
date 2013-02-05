@@ -25,6 +25,10 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.2 Applications.
 4. Automatic inclusion of  javascript and css files depending of the current controller and action ( Tutorial below ) **(NEW)**
 
 
+##### Modules
+1. [Photos end videos gallery](https://github.com/hugodias/CakeStrap-Manager-Module)
+
+
 ## Quick start
 
 - Create a table named `users` in your database with the following structure:
