@@ -76,7 +76,8 @@ Currently cakeStrap supports two languages, **English** and **Portuguese**. To e
 Configure::write('Config.language', 'por');
 </pre> 
 
-
+## Deploy
+[Lee Graham](https://github.com/leegraham) created a easy way do deploy CakeStrap to OpenShift, check it out: [cakeStrap Openshift](https://github.com/leegraham/cakeStrap-example)
 
 ## Questions / Bugs
 
