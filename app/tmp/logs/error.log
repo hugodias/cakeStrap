@@ -1,14 +1,12 @@
-2012-09-04 18:04:03 Error: [MissingControllerException] Controller class CssController could not be found.
-#0 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2012-09-04 18:22:02 Error: [MissingControllerException] Controller class CssController could not be found.
-#0 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
-#1 {main}
-2012-09-04 18:35:02 Error: Fatal Error (4): syntax error, unexpected ')', expecting ',' or ';' in [/Applications/MAMP/htdocs/cakeStrap/app/View/Layouts/default.ctp, line 21]
-2012-09-04 18:35:02 Error: [FatalErrorException] syntax error, unexpected ')', expecting ',' or ';'
-#0 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Error/ErrorHandler.php(162): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 21)
-#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 21, Array)
-#2 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 21, Array)
-#3 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Core/App.php(899): App::_checkFatalError()
-#4 [internal function]: App::shutdown()
+2013-07-29 17:01:36 Error: [MissingViewException] View file "/Applications/MAMP/htdocs/admin-docs/app/View/Pages/display.ctp" is missing.
+Exception Attributes: array (
+  'file' => '/Applications/MAMP/htdocs/admin-docs/app/View/Pages/display.ctp',
+)
+Request URL: /admin-docs/pages/home
+Stack Trace:
+#0 /Applications/MAMP/htdocs/admin-docs/lib/Cake/View/View.php(468): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/admin-docs/lib/Cake/Controller/Controller.php(948): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/admin-docs/lib/Cake/Routing/Dispatcher.php(194): Controller->render()
+#3 /Applications/MAMP/htdocs/admin-docs/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#4 /Applications/MAMP/htdocs/admin-docs/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}

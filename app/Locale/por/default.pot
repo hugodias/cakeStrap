@@ -81,6 +81,9 @@ msgstr "Você está logado"
 msgid "All Users"
 msgstr "Todos usuários"
 
+msgid "Remove user"
+msgstr "Remover usuário"
+
 #: View/Users/home.ctp:15
 msgid "Role"
 msgstr "Regra"

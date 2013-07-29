@@ -67,7 +67,6 @@ class DATABASE_CONFIG {
 		'password' => 'root',
 		'database' => 'cakestrap',
 		'prefix' => '',
-		'port'	 => 8889,
 		'encoding' => 'utf8',
 	);
 

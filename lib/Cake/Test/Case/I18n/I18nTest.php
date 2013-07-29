@@ -5,17 +5,19 @@
  * PHP 5
  *
  * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.I18n
  * @since         CakePHP(tm) v 1.2.0.5432
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 App::uses('I18n', 'I18n');
 
 /**
@@ -31,6 +33,8 @@ class I18nTest extends CakeTestCase {
  * @return void
  */
 	public function setUp() {
+		parent::setUp();
+
 		Cache::delete('object_map', '_cake_core_');
 		App::build(array(
 			'Locale' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'Locale' . DS),
@@ -45,6 +49,8 @@ class I18nTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
+		parent::tearDown();
+
 		Cache::delete('object_map', '_cake_core_');
 		App::build();
 		CakePlugin::unload();
@@ -188,7 +194,7 @@ class I18nTest extends CakeTestCase {
 /**
  * Assertions for rules zero.
  *
- * @return
+ * @return void
  */
 	public function assertRulesZero() {
 		$singular = $this->__singular();
@@ -1889,7 +1895,7 @@ class I18nTest extends CakeTestCase {
 	private function __domainPlural($domain = 'test_plugin') {
 		$plurals = array();
 		for ($number = 0; $number <= 25; $number++) {
-			$plurals[] = sprintf(__dn($domain, '%d = 1', '%d = 0 or > 1', (float)$number), (float)$number );
+			$plurals[] = sprintf(__dn($domain, '%d = 1', '%d = 0 or > 1', (float)$number), (float)$number);
 		}
 		return $plurals;
 	}
@@ -1945,7 +1951,7 @@ class I18nTest extends CakeTestCase {
 	private function __pluralFromCore() {
 		$plurals = array();
 		for ($number = 0; $number <= 25; $number++) {
-			$plurals[] = sprintf(__n('%d = 1 (from core)', '%d = 0 or > 1 (from core)', (float)$number), (float)$number );
+			$plurals[] = sprintf(__n('%d = 1 (from core)', '%d = 0 or > 1 (from core)', (float)$number), (float)$number);
 		}
 		return $plurals;
 	}

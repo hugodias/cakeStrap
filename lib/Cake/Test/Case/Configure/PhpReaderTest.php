@@ -5,19 +5,26 @@
  * PHP 5
  *
  * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.Configure
  * @since         CakePHP(tm) v 2.0
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 App::uses('PhpReader', 'Configure');
 
+/**
+ * Class PhpReaderTest
+ *
+ * @package       Cake.Test.Case.Configure
+ */
 class PhpReaderTest extends CakeTestCase {
 
 /**
@@ -41,7 +48,7 @@ class PhpReaderTest extends CakeTestCase {
 	);
 
 /**
- * setup
+ * Setup.
  *
  * @return void
  */
@@ -51,7 +58,7 @@ class PhpReaderTest extends CakeTestCase {
 	}
 
 /**
- * test reading files
+ * Test reading files.
  *
  * @return void
  */
@@ -66,20 +73,31 @@ class PhpReaderTest extends CakeTestCase {
 	}
 
 /**
+ * Test an exception is thrown by reading files that exist without .php extension.
+ *
+ * @expectedException ConfigureException
+ * @return void
+ */
+	public function testReadWithExistentFileWithoutExtension() {
+		$reader = new PhpReader($this->path);
+		$reader->read('no_php_extension');
+	}
+
+/**
  * Test an exception is thrown by reading files that don't exist.
  *
  * @expectedException ConfigureException
  * @return void
  */
-	public function testReadWithNonExistantFile() {
+	public function testReadWithNonExistentFile() {
 		$reader = new PhpReader($this->path);
 		$reader->read('fake_values');
 	}
 
 /**
- * test reading an empty file.
+ * Test reading an empty file.
  *
- * @expectedException RuntimeException
+ * @expectedException ConfigureException
  * @return void
  */
 	public function testReadEmptyFile() {
@@ -88,7 +106,7 @@ class PhpReaderTest extends CakeTestCase {
 	}
 
 /**
- * test reading keys with ../ doesn't work
+ * Test reading keys with ../ doesn't work.
  *
  * @expectedException ConfigureException
  * @return void
@@ -99,7 +117,7 @@ class PhpReaderTest extends CakeTestCase {
 	}
 
 /**
- * test reading from plugins
+ * Test reading from plugins.
  *
  * @return void
  */
@@ -151,6 +169,13 @@ PHP;
 
 		unlink($file);
 		$this->assertTextEquals($expected, $contents);
+
+		$result = $reader->dump('test', $this->testData);
+		$this->assertTrue($result > 0);
+
+		$contents = file_get_contents($file);
+		$this->assertTextEquals($expected, $contents);
+		unlink($file);
 	}
 
 /**

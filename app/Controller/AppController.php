@@ -31,7 +31,7 @@ App::uses('Controller', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
-class AppController extends Controller 
+class AppController extends Controller
 {
 	public $components = array('Auth','Session','Error');
 
@@ -40,12 +40,16 @@ class AppController extends Controller
 		$this->Auth->authenticate = array('Form');
 
 		$this->Auth->loginRedirect = array('action' => 'home', 'controller' => 'users');
-		$this->Auth->logoutRedirect = array('action' => 'home', 'controller' => 'pages');
+		$this->Auth->logoutRedirect = array('action' => 'login', 'controller' => 'users');
 		$this->Auth->authError = 'You are not allowed to see that.';
 
+		# Redirect to home if is logged in
+		if(AuthComponent::user('id') && $this->params->controller == 'users' && $this->params->action == 'login')
+			$this->redirect('/home');
+
 		# To enable portuguese language as main
-		#Configure::write('Config.language', 'por');
-	}	
+		# Configure::write('Config.language', 'por');
+	}
 }
 
 

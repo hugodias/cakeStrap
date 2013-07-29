@@ -185,3 +185,11 @@ msgstr "Erro interno."
 #: webroot/test.php:87
 msgid "Debug setting does not allow access to this url."
 msgstr "As configurações de debug não permitem o acesso a esta url."
+
+#: View/Users/home.ctp:54
+msgid "Remove user"
+msgstr "Remover usuário"
+
+#: View/users/home.ctp
+msgid "Are you sure you want to delete the user "
+msgstr "Deseja realmente remover o usuário "

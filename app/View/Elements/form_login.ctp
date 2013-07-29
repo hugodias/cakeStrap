@@ -9,29 +9,19 @@ echo $this->Form->create
 			'controller' => 'users',
 			'action'	 => 'login'
 		),
-		'class'			=> 'well',
+		'class'			=> 'form-signin center',
 		'inputDefaults' => array
 		(
 			'label' => false,
 			'error' => false
 		)
 	)
-); 
+);?>
 
+<h2 class="form-signin-heading"><?php echo Configure::read('Application.name') ?></h2>
 
-echo $this->Form->input('username',array('placeholder' => __('Username'),'class' => 'span12'));
-echo $this->Form->input('password',array('placeholder' => __('Password'),'type' => 'password', 'class' => 'span12'));
+<?php echo $this->Form->input('username',array('placeholder' => __('Username'),'class' => 'form-control', 'autofocus')); ?>
+<?php echo $this->Form->input('password', array('placeholder' => __('Password'),'type' => 'password', 'class' => 'form-control')) ?>
 
-?> 
-  <div class="control-group">
-    <div class="controls">
-      <button type="submit" class="btn btn-primary"><i class="icon-play-circle icon-white"></i> Login</button>      
-    </div>
-  </div>
-
-  <div class="control-group">
-  	<div class="controls">
-  		<span><?php echo __('Forgot your password?') ?><br/> <?php echo $this->Html->link(__('Remember my password'),array('controller' => 'users', 'action' => 'remember_password')) ?></span>
-  	</div>
-  </div> 
+  <button class="btn btn-large btn-primary btn-block" type="submit">Login</button>
 </form>

@@ -5,16 +5,17 @@
  * PHP 5
  *
  * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://book.cakephp.org/2.0/en/development/testing.html CakePHP(tm) Tests
  * @package       Cake.Test.Case.Log
  * @since         CakePHP(tm) v 1.2.0.5432
- * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CakeLog', 'Log');
@@ -150,7 +151,7 @@ class CakeLogTest extends CakeTestCase {
 		$this->assertEquals(array('file'), $result);
 
 		if (file_exists(LOGS . 'error.log')) {
-			@unlink(LOGS . 'error.log');
+			unlink(LOGS . 'error.log');
 		}
 		CakeLog::write(LOG_WARNING, 'Test warning');
 		$this->assertTrue(file_exists(LOGS . 'error.log'));
@@ -164,7 +165,7 @@ class CakeLogTest extends CakeTestCase {
  * explicit tests for drop()
  *
  * @return void
- **/
+ */
 	public function testDrop() {
 		CakeLog::config('file', array(
 			'engine' => 'FileLog',
@@ -175,7 +176,7 @@ class CakeLogTest extends CakeTestCase {
 
 		CakeLog::drop('file');
 		$result = CakeLog::configured();
-		$this->assertEquals(array(), $result);
+		$this->assertSame(array(), $result);
 	}
 
 /**
@@ -214,12 +215,12 @@ class CakeLogTest extends CakeTestCase {
 		}
 		CakeLog::config('spam', array(
 			'engine' => 'FileLog',
-			'types' => 'info',
+			'types' => 'debug',
 			'file' => 'spam',
 		));
 		CakeLog::config('eggs', array(
 			'engine' => 'FileLog',
-			'types' => array('eggs', 'info', 'error', 'warning'),
+			'types' => array('eggs', 'debug', 'error', 'warning'),
 			'file' => 'eggs',
 		));
 
@@ -229,13 +230,13 @@ class CakeLogTest extends CakeTestCase {
 		$this->assertTrue(file_exists(LOGS . 'eggs.log'));
 		$this->assertFalse(file_exists(LOGS . 'spam.log'));
 
-		CakeLog::write(LOG_INFO, $testMessage);
+		CakeLog::write(LOG_DEBUG, $testMessage);
 		$this->assertTrue(file_exists(LOGS . 'spam.log'));
 
 		$contents = file_get_contents(LOGS . 'spam.log');
-		$this->assertContains('Info: ' . $testMessage, $contents);
+		$this->assertContains('Debug: ' . $testMessage, $contents);
 		$contents = file_get_contents(LOGS . 'eggs.log');
-		$this->assertContains('Info: ' . $testMessage, $contents);
+		$this->assertContains('Debug: ' . $testMessage, $contents);
 
 		if (file_exists(LOGS . 'spam.log')) {
 			unlink(LOGS . 'spam.log');
@@ -331,21 +332,22 @@ class CakeLogTest extends CakeTestCase {
 
 /**
  * test backward compatible scoped logging
+ *
+ * @return void
  */
 	public function testScopedLoggingBC() {
-		$this->_deleteLogs();
-
 		$this->_resetLogConfig();
+
 		CakeLog::config('shops', array(
 			'engine' => 'FileLog',
 			'types' => array('info', 'notice', 'warning'),
 			'scopes' => array('transactions', 'orders'),
 			'file' => 'shops',
-			));
+		));
+		$this->_deleteLogs();
 
 		CakeLog::write('info', 'info message');
 		$this->assertFalse(file_exists(LOGS . 'error.log'));
-		$this->assertTrue(file_exists(LOGS . 'shops.log'));
 		$this->assertTrue(file_exists(LOGS . 'debug.log'));
 
 		$this->_deleteLogs();
@@ -375,7 +377,6 @@ class CakeLogTest extends CakeTestCase {
 
 		CakeLog::write('warning', 'warning message');
 		$this->assertTrue(file_exists(LOGS . 'error.log'));
-		$this->assertTrue(file_exists(LOGS . 'shops.log'));
 		$this->assertFalse(file_exists(LOGS . 'debug.log'));
 
 		$this->_deleteLogs();
@@ -384,28 +385,63 @@ class CakeLogTest extends CakeTestCase {
 	}
 
 /**
+ * Test that scopes are exclusive and don't bleed.
+ *
+ * @return void
+ */
+	public function testScopedLoggingExclusive() {
+		$this->_deleteLogs();
+
+		CakeLog::config('shops', array(
+			'engine' => 'FileLog',
+			'types' => array('info', 'notice', 'warning'),
+			'scopes' => array('transactions', 'orders'),
+			'file' => 'shops.log',
+		));
+		CakeLog::config('eggs', array(
+			'engine' => 'FileLog',
+			'types' => array('info', 'notice', 'warning'),
+			'scopes' => array('eggs'),
+			'file' => 'eggs.log',
+		));
+
+		CakeLog::write('info', 'transactions message', 'transactions');
+		$this->assertFalse(file_exists(LOGS . 'eggs.log'));
+		$this->assertTrue(file_exists(LOGS . 'shops.log'));
+
+		$this->_deleteLogs();
+
+		CakeLog::write('info', 'eggs message', 'eggs');
+		$this->assertTrue(file_exists(LOGS . 'eggs.log'));
+		$this->assertFalse(file_exists(LOGS . 'shops.log'));
+	}
+
+/**
  * test scoped logging
  *
  * @return void
  */
 	public function testScopedLogging() {
-		if (file_exists(LOGS . 'shops.log')) {
-			unlink(LOGS . 'shops.log');
-		}
-		if (file_exists(LOGS . 'error.log')) {
-			unlink(LOGS . 'error.log');
-		}
-		if (file_exists(LOGS . 'debug.log')) {
-			unlink(LOGS . 'debug.log');
-		}
-
 		$this->_resetLogConfig();
+		$this->_deleteLogs();
+
+		CakeLog::config('string-scope', array(
+			'engine' => 'FileLog',
+			'types' => array('info', 'notice', 'warning'),
+			'scopes' => 'string-scope',
+			'file' => 'string-scope.log'
+		));
+		CakeLog::write('info', 'info message', 'string-scope');
+		$this->assertTrue(file_exists(LOGS . 'string-scope.log'));
+
+		CakeLog::drop('string-scope');
+
 		CakeLog::config('shops', array(
 			'engine' => 'FileLog',
 			'types' => array('info', 'notice', 'warning'),
 			'scopes' => array('transactions', 'orders'),
-			'file' => 'shops',
-			));
+			'file' => 'shops.log',
+		));
 
 		CakeLog::write('info', 'info message', 'transactions');
 		$this->assertFalse(file_exists(LOGS . 'error.log'));
@@ -491,10 +527,10 @@ class CakeLogTest extends CakeTestCase {
 		$this->_resetLogConfig();
 		CakeLog::config('shops', array(
 			'engine' => 'FileLog',
-			'types' => array('info', 'notice', 'warning'),
+			'types' => array('info', 'debug', 'notice', 'warning'),
 			'scopes' => array('transactions', 'orders'),
 			'file' => 'shops',
-			));
+		));
 
 		CakeLog::info('info message', 'transactions');
 		$this->assertFalse(file_exists(LOGS . 'error.log'));
@@ -540,14 +576,14 @@ class CakeLogTest extends CakeTestCase {
 		$testMessage = 'emergency message';
 		CakeLog::emergency($testMessage);
 		$contents = file_get_contents(LOGS . 'error.log');
-		$this->assertContains('Emergency: ' . $testMessage, $contents);
+		$this->assertRegExp('/(Emergency|Critical): ' . $testMessage . '/', $contents);
 		$this->assertFalse(file_exists(LOGS . 'debug.log'));
 		$this->_deleteLogs();
 
 		$testMessage = 'alert message';
 		CakeLog::alert($testMessage);
 		$contents = file_get_contents(LOGS . 'error.log');
-		$this->assertContains('Alert: ' . $testMessage, $contents);
+		$this->assertRegExp('/(Alert|Critical): ' . $testMessage . '/', $contents);
 		$this->assertFalse(file_exists(LOGS . 'debug.log'));
 		$this->_deleteLogs();
 
@@ -575,14 +611,14 @@ class CakeLogTest extends CakeTestCase {
 		$testMessage = 'notice message';
 		CakeLog::notice($testMessage);
 		$contents = file_get_contents(LOGS . 'debug.log');
-		$this->assertContains('Notice: ' . $testMessage, $contents);
+		$this->assertRegExp('/(Notice|Debug): ' . $testMessage . '/', $contents);
 		$this->assertFalse(file_exists(LOGS . 'error.log'));
 		$this->_deleteLogs();
 
 		$testMessage = 'info message';
 		CakeLog::info($testMessage);
 		$contents = file_get_contents(LOGS . 'debug.log');
-		$this->assertContains('Info: ' . $testMessage, $contents);
+		$this->assertRegExp('/(Info|Debug): ' . $testMessage . '/', $contents);
 		$this->assertFalse(file_exists(LOGS . 'error.log'));
 		$this->_deleteLogs();
 
@@ -631,7 +667,7 @@ class CakeLogTest extends CakeTestCase {
 		$this->_deleteLogs();
 		$this->_resetLogConfig();
 
-		$levels = CakeLog::levels(array('spam', 'eggs'));
+		CakeLog::levels(array('spam', 'eggs'));
 
 		$testMessage = 'error message';
 		CakeLog::write('error', $testMessage);

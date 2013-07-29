@@ -1,5 +1,5 @@
-<div class="alert alert-error">
+<div class="alert alert-danger">
   <a class="close" data-dismiss="alert">×</a>
-  <h4 class="alert-heading"><?php echo __('Error!') ?></h4>
+  <h4 class="alert-heading">Error!</h4>
   <?php echo $message ?>
 </div>
