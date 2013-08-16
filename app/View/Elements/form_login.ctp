@@ -20,7 +20,7 @@ echo $this->Form->create
 
 <h2 class="form-signin-heading"><?php echo Configure::read('Application.name') ?></h2>
 
-<?php echo $this->Form->input('username',array('placeholder' => __('Username'),'class' => 'form-control', 'autofocus')); ?>
+<?php echo $this->Form->input('username',array('placeholder' => __('Username or Email'),'class' => 'form-control', 'autofocus')); ?>
 <?php echo $this->Form->input('password', array('placeholder' => __('Password'),'type' => 'password', 'class' => 'form-control')) ?>
 
   <button class="btn btn-large btn-primary btn-block" type="submit">Login</button>

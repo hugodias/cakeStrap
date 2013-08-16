@@ -1,13 +1,13 @@
-<?php 
+<?php
 App::uses('AuthComponent', 'Controller/Component');
 
 class User extends AppModel
 {
   public $name = 'User';
-  
-  public function beforeSave($options = array()) 
+
+  public function beforeSave($options = array())
   {
-    if (isset($this->data[$this->alias]['password'])) 
+    if (isset($this->data[$this->alias]['password']) && !empty($this->data[$this->alias]['password']))
     {
       $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
     }
@@ -34,7 +34,7 @@ class User extends AppModel
         'rule' => 'isUnique',
         'message' => 'This user already exists.'
         )
-      ),    
+      ),
     'password' => array(
       'required' => array(
         'rule' => array('notEmpty'),
@@ -49,7 +49,7 @@ class User extends AppModel
         'allowEmpty' => false
         )
       )
-    );   
+    );
 
   public function generateHashChangePassword()
   {
@@ -61,6 +61,6 @@ class User extends AppModel
     $hash = hash('sha256',$salt.$rand.$salt_v2.$rand_v2);
 
     return $hash;
-  }   
+  }
 }
 ?>

@@ -28,7 +28,7 @@
         uid     = $(this).attr('data-uid');
         name    = $(this).attr('data-uname');
         href    = $link.attr('href');
-        pattern = /\d+$/g;
+        pattern = '#{uid}';
 
         // Find the last ID in URL
         aux     = href.replace(pattern,uid);
