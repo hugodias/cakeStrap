@@ -1,4 +1,4 @@
-# CakeStrap v 0.6
+# CakeStrap v 0.7
 ---
 CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.3.8 Applications.
 
@@ -20,7 +20,7 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.3.8 Applications.
 1. CakePHP 2.3.8 Security Authentication **(NEW)**
 2. Users CRUD
 3. Remember password with email send
-4. Automatic inclusion of  javascript and css files depending of the current controller and action ( Tutorial below ) 
+4. Automatic inclusion of  javascript and css files depending of the current controller and action ( Tutorial below )
 
 
 ##### Modules
@@ -60,7 +60,7 @@ For example, if you have this JS structure folder:
 <pre>
 /js
 	/pages
-		/home.js		
+		/home.js
 </pre>
 
 This script will be automatic loaded when the user is in controller `pages` and in action `home`
@@ -72,7 +72,7 @@ The same structure exists for `CSS` files.
 Currently cakeStrap supports two languages, **English** and **Portuguese**. To enable the Portuguese language as the main just add the following line in your `app/Controllers/AppController.php` at `beforeFilter` action:
 <pre>
 Configure::write('Config.language', 'por');
-</pre> 
+</pre>
 
 ## Deploy
 [Lee Graham](https://github.com/leegraham) created a easy way do deploy CakeStrap to OpenShift, check it out: [cakeStrap Openshift](https://github.com/leegraham/cakeStrap-example)
