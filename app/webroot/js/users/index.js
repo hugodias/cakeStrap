@@ -27,7 +27,6 @@
         $link   = $('.delete-user-link');
         uid     = $(this).attr('data-uid');
         name    = $(this).attr('data-uname');
-        console.log($link)
         href    = $link.attr('href');
         pattern = '#{uid}';
 
