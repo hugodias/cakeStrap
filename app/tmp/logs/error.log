@@ -181,3 +181,13 @@ Stack Trace:
 #1 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Routing/Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #2 /Applications/MAMP/htdocs/cakeStrap/app/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2013-08-16 13:59:46 Error: Fatal Error (4): syntax error, unexpected ',' in [/Applications/MAMP/htdocs/cakeStrap/app/Controller/UsersController.php, line 40]
+2013-08-16 13:59:46 Error: [FatalErrorException] syntax error, unexpected ','
+Request URL: /cakeStrap/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Error/ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 40)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 40, Array)
+#2 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Core/App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 40, Array)
+#3 /Applications/MAMP/htdocs/cakeStrap/lib/Cake/Core/App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}

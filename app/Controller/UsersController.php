@@ -36,9 +36,23 @@ class UsersController extends AppController
     {
       if ($this->request->is('post'))
       {
+        # Log in using email
+        if( strstr($this->request->data['User']['username'],'@') )
+        {
+          # Retrieve user username for auth
+          $useraux = $this->User->findByEmail($this->request->data['User']['username'],'username');
+
+          # Change the username from data form
+          $this->request->data['User']['username'] = $useraux['User']['username'];
+        }
+
+        # Try to log in the user
         if ($this->Auth->login())
         {
+          # Write cookie ( 30 Days )
           $this->Cookie->write('User', AuthComponent::user());
+
+          # Redirect to home
           $this->redirect($this->Auth->redirect());
         }
         else
@@ -51,14 +65,16 @@ class UsersController extends AppController
 
   public function logout()
   {
+    # Destroy the Cookie
     $this->Cookie->destroy();
+
+    # Destroy the session
     $this->redirect($this->Auth->logout());
   }
 
 
   public function view($username = null)
   {
-
     if(AuthComponent::user('role') != 'admin')
     {
       throw new ForbiddenException("Você não tem permissão para executar esta ação.");
@@ -72,7 +88,6 @@ class UsersController extends AppController
     {
       throw new NotFoundException(__('Invalid user'));
     }
-
     $this->set('user', $user);
   }
 
