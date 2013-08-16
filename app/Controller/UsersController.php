@@ -1,11 +1,15 @@
 <?php
 class UsersController extends AppController
 {
+  public $components = array('Cookie');
 
   public function beforeFilter()
   {
     parent::beforeFilter();
     $this->Auth->allow('add','logout','change_password','remember_password','remember_password_step_2');
+    $this->Cookie->time = '30 Days';  // or '1 hour'
+    $this->Cookie->key = 'AS()XA(S*D)AS8dA(Sd80A(SDA*SDAS%D4$AS#SD@ASDtyASGH)_AS0dAoIASNKAshgaFA$#S21d24a3s45dAS$3d#A@$SDASCHVASCa4s33%$ˆ$%$#s253$AS5#Â$%s645$#AS@%#AˆS6%A&*SÂ%S$';
+    $this->Cookie->httpOnly = true;
   }
 
   public function index()
@@ -20,22 +24,34 @@ class UsersController extends AppController
 
   public function login()
   {
-    if ($this->request->is('post'))
+    # Login if is in cookie
+    if( $this->Cookie->check('User') )
     {
-      if ($this->Auth->login())
+      if( $this->Auth->login($this->Cookie->read('User')) )
       {
         $this->redirect($this->Auth->redirect());
       }
-      else
+    }
+    else
+    {
+      if ($this->request->is('post'))
       {
-        $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
+        if ($this->Auth->login())
+        {
+          $this->Cookie->write('User', AuthComponent::user());
+          $this->redirect($this->Auth->redirect());
+        }
+        else
+        {
+          $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
+        }
       }
     }
   }
 
-
   public function logout()
   {
+    $this->Cookie->destroy();
     $this->redirect($this->Auth->logout());
   }
 
