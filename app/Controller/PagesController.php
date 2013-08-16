@@ -67,6 +67,11 @@ class PagesController extends AppController {
 	public function display() {
 
 	}
+
+	public function index()
+	{
+		# code...
+	}
 	/* Public page to login */
 	public function home()
 	{

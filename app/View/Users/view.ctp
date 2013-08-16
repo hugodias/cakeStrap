@@ -1,15 +1,15 @@
-<?php  
+<?php
 $breadcrumb = array(
 	array(
 		'label' => 'Users',
-		'link'	=> '/users/home'
+		'link'	=> '/home'
 	),
 	array(
 		'label'	=> $user['User']['username']
 	)
 );
-echo $this->element('breadcrumb',array('links' => $breadcrumb)); 
-?>	
+echo $this->element('breadcrumb',array('links' => $breadcrumb));
+?>
 
 
 <h3><?php echo $user['User']['username'] ?></h3>

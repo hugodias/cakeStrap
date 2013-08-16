@@ -1,28 +1,32 @@
-<?php 
+<?php
 class UsersController extends AppController
 {
-	
+
   public function beforeFilter()
   {
     parent::beforeFilter();
-    $this->Auth->allow('register','logout','change_password','remember_password','remember_password_step_2');
+    $this->Auth->allow('add','logout','change_password','remember_password','remember_password_step_2');
   }
 
-  public function home()
+  public function index()
   {
+    if(AuthComponent::user('role') != 'admin')
+    {
+      throw new ForbiddenException("Você não tem permissão para executar esta ação.");
+    }
     $this->User->recursive = 0;
     $this->set('users', $this->paginate());
   }
 
-  public function login() 
+  public function login()
   {
-    if ($this->request->is('post')) 
+    if ($this->request->is('post'))
     {
-      if ($this->Auth->login()) 
+      if ($this->Auth->login())
       {
         $this->redirect($this->Auth->redirect());
-      } 
-      else 
+      }
+      else
       {
         $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
       }
@@ -30,99 +34,118 @@ class UsersController extends AppController
   }
 
 
-  public function logout() 
+  public function logout()
   {
     $this->redirect($this->Auth->logout());
   }
 
 
-  public function view($id = null) 
+  public function view($id = null)
   {
+
+    if(AuthComponent::user('role') != 'admin')
+    {
+      throw new ForbiddenException("Você não tem permissão para executar esta ação.");
+    }
+
     $this->User->id = $id;
 
-    if (!$this->User->exists()) 
+    if (!$this->User->exists())
     {
       throw new NotFoundException(__('Invalid user'));
     }
 
-    $this->set('user', $this->User->read(null, $id));
-  }	
+    $this->set('user', $this->User->read(null));
+  }
 
 
-  public function register()
+  public function add()
   {
-    if ($this->request->is('post')) 
+    if ($this->request->is('post'))
     {
       $this->User->create();
 
-      if ($this->User->save($this->request->data)) 
+      if ($this->User->save($this->request->data))
       {
         $this->Session->setFlash(__('The user has been saved'),'flash_success');
-        $this->redirect(array('controller' => 'pages','action' => 'home'));
-      } 
-      else 
-      {   
+        $this->redirect('/home');
+      }
+      else
+      {
         # Create a loop with validation errors
         $this->Error->set( $this->User->invalidFields() );
       }
     }
+    $this->set('label', 'Register user');
+    $this->render('_form');
   }
 
-  public function edit($id = null) 
+  public function edit($id = null)
   {
+    if(AuthComponent::user('role') != 'admin')
+    {
+      throw new ForbiddenException("Você não tem permissão para executar esta ação.");
+    }
+
     $this->User->id = $id;
 
-    if (!$this->User->exists()) 
+    if (!$this->User->exists())
     {
       throw new NotFoundException(__('Invalid user'));
     }
+    $this->set('user', $this->User->findById($id));
 
-    $user = $this->User->findById( $id );
-    $this->set('user',$user);
-
-    if ($this->request->is('post') || $this->request->is('put')) 
+    if ($this->request->is('post') || $this->request->is('put'))
     {
       if( empty($this->request->data['User']['password']) )
       {
         unset($this->request->data['User']['password']);
       }
 
-      if ($this->User->save($this->request->data)) 
+
+      if ($this->User->save($this->request->data))
       {
         $this->Session->setFlash(__('The user has been saved'),'flash_success');
-        $this->redirect(array('action' => 'home'));
-      } 
-      else 
+        $this->redirect(array('action' => 'index'));
+      }
+      else
       {
         $this->Session->setFlash(__('The user could not be saved. Please, try again.'),'flash_fail');
       }
-    } 
-    else 
+    }
+    else
     {
       $this->request->data = $this->User->read(null, $id);
       unset($this->request->data['User']['password']);
     }
-  }	
+    $this->set('label', 'Edit user');
+    $this->render('_form');
+  }
 
-  public function delete($id = null) 
+  public function delete($id = null)
   {
+    if(AuthComponent::user('role') != 'admin')
+    {
+      throw new ForbiddenException("Você não tem permissão para executar esta ação.");
+    }
+
     $this->User->id = $id;
 
-    if (!$this->User->exists()) 
+    if (!$this->User->exists())
     {
       throw new NotFoundException(__('Invalid user'));
     }
 
-    if ($this->User->delete()) 
+    if ($this->User->delete())
     {
       $this->Session->setFlash(__('User deleted'),'flash_success');
-      $this->redirect(array('action' => 'home'));
+      $this->redirect('/home');
     }
 
     $this->Session->setFlash(__('User was not deleted'),'flash_fail');
 
-    $this->redirect(array('action' => 'home'));
-  }    
+    $this->redirect('/home');
+  }
 
 
   public function change_password()
@@ -144,7 +167,7 @@ class UsersController extends AppController
         {
           # Check the hash in database
           $user = $this->User->findByHashChangePassword( $this->request->data['User']['hash'] );
-          
+
           if( !empty($user) )
           {
             $this->request->data['User']['id'] = $user['User']['id'];
@@ -161,7 +184,7 @@ class UsersController extends AppController
         if( $this->User->save( $this->request->data ) )
         {
           $this->Session->setFlash('Password updated successfully!','flash_success');
-          $this->redirect(array('controller' => 'users', 'action' => 'home'));
+          $this->redirect(array('/home'));
         }
       }
       else
@@ -207,7 +230,7 @@ class UsersController extends AppController
       ->to( $user['User']['email'] )
       ->from( Configure::read('Application.from_email') )
       ->viewVars(array('hash' => $hash))
-      ->send();        
+      ->send();
 
       $this->Session->setFlash('Check your e-mail to continue the process of recovering password.','flash_success');
 
@@ -220,7 +243,7 @@ class UsersController extends AppController
   */
   public function remember_password_step_2( $hash = null )
   {
-    
+
     $user = $this->User->findByHashChangePassword( $hash );
 
     if( $user['User']['hash_change_password'] != $hash || empty($user))
@@ -232,7 +255,7 @@ class UsersController extends AppController
     $this->set('hash',$hash);
 
     $this->render('/Users/change_password');
-    
-  }  
+
+  }
 }
 ?>
