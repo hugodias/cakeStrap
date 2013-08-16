@@ -41,16 +41,24 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<?php echo $this->Html->link( Configure::read('Application.name') ,"/",array('class' => 'navbar-brand')) ?>
+				<?php echo $this->Html->link(
+					Configure::read('Application.name') ,
+					AuthComponent::user('id') ? "/home" : "/"
+					,array('class' => 'navbar-brand')) ?>
 				<div class="nav-collapse collapse">
 					<ul class="nav navbar-nav">
 							<?php if( AuthComponent::user('id') ) { ?>
-							<li class="<?php echo $this->params->controller == 'users' && $this->action == 'home' ? 'active' : '';  ?>">
-								<?php echo $this->Html->link('Home',array('controller' => 'users','action' => 'home')) ?>
+							<li class="<?php echo $this->params->controller == 'pages' && $this->action == 'index' ? 'active' : '';  ?>">
+								<?php echo $this->Html->link('Home','/home') ?>
 							</li>
 							<?php } ?>
-							<li class="<?php echo $this->params->controller == 'users' && $this->params->action == 'register' ? 'active' : '' ?>">
-								<?php echo $this->Html->link(__('Register'), array('controller' => 'users', 'action' => 'register')) ?>
+							<?php if( AuthComponent::user('role') == 'admin' ) { ?>
+							<li class="<?php echo $this->params->controller == 'users' ? 'active' : '';  ?>">
+								<?php echo $this->Html->link('Users','/users') ?>
+							</li>
+							<?php } ?>
+							<li class="<?php echo $this->params->controller == 'users' && $this->params->action == 'add' ? 'active' : '' ?>">
+								<?php echo $this->Html->link(__('Register'), array('controller' => 'users', 'action' => 'add')) ?>
 							</li>
 					</ul>
 

@@ -67,12 +67,9 @@ class PagesController extends AppController {
 	public function display() {
 
 	}
-	/* Public page to login */
-	public function home()
+
+	public function index()
 	{
-		if( AuthComponent::user('id') )
-		{
-			$this->redirect(array('controller' => 'users','action' => 'home'));
-		}
+		# code...
 	}
 }
