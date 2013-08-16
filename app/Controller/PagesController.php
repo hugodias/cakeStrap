@@ -72,12 +72,4 @@ class PagesController extends AppController {
 	{
 		# code...
 	}
-	/* Public page to login */
-	public function home()
-	{
-		if( AuthComponent::user('id') )
-		{
-			$this->redirect(array('controller' => 'users','action' => 'home'));
-		}
-	}
 }

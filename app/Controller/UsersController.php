@@ -56,7 +56,7 @@ class UsersController extends AppController
   }
 
 
-  public function view($id = null)
+  public function view($username = null)
   {
 
     if(AuthComponent::user('role') != 'admin')
@@ -64,14 +64,16 @@ class UsersController extends AppController
       throw new ForbiddenException("Você não tem permissão para executar esta ação.");
     }
 
-    $this->User->id = $id;
+    $user = $this->User->findByUsername($username);
+
+    $this->User->id = $user['User']['id'];
 
     if (!$this->User->exists())
     {
       throw new NotFoundException(__('Invalid user'));
     }
 
-    $this->set('user', $this->User->read(null));
+    $this->set('user', $user);
   }
 
 

@@ -27,7 +27,7 @@
           <td><?php echo $user['User']['username'] ?></td>
           <td><?php echo $user['User']['role'] ?></td>
           <td width="150px">
-            <?php echo $this->Html->link(__('View'),'/users/view/'.$user['User']['id']) ?> |
+            <?php echo $this->Html->link(__('View'),'/users/view/'.$user['User']['username']) ?> |
             <?php echo $this->Html->link(__('Edit'),'/users/edit/'.$user['User']['id']) ?> |
             <?php echo $this->Html->link(
               __('Delete'),

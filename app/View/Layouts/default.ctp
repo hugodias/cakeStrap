@@ -41,7 +41,10 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<?php echo $this->Html->link( Configure::read('Application.name') ,"/",array('class' => 'navbar-brand')) ?>
+				<?php echo $this->Html->link(
+					Configure::read('Application.name') ,
+					AuthComponent::user('id') ? "/home" : "/"
+					,array('class' => 'navbar-brand')) ?>
 				<div class="nav-collapse collapse">
 					<ul class="nav navbar-nav">
 							<?php if( AuthComponent::user('id') ) { ?>
