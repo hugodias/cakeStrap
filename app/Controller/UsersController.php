@@ -49,9 +49,11 @@ class UsersController extends AppController
         # Try to log in the user
         if ($this->Auth->login())
         {
-          # Write cookie ( 30 Days )
-          $this->Cookie->write('User', AuthComponent::user());
-
+          if( !empty($this->request->data['User']['remember_me']) && $this->request->data['User']['remember_me'] == 'S')
+          {
+            # Write cookie ( 30 Days )
+            $this->Cookie->write('User', AuthComponent::user());
+          }
           # Redirect to home
           $this->redirect($this->Auth->redirect());
         }
