@@ -1,15 +1,11 @@
 <?php
 class UsersController extends AppController
 {
-  public $components = array('Cookie');
-
   public function beforeFilter()
   {
     parent::beforeFilter();
     $this->Auth->allow('add','logout','change_password','remember_password','remember_password_step_2');
-    $this->Cookie->time = '30 Days';  // or '1 hour'
-    $this->Cookie->key = 'AS()XA(S*D)AS8dA(Sd80A(SDA*SDAS%D4$AS#SD@ASDtyASGH)_AS0dAoIASNKAshgaFA$#S21d24a3s45dAS$3d#A@$SDASCHVASCa4s33%$ˆ$%$#s253$AS5#Â$%s645$#AS@%#AˆS6%A&*SÂ%S$';
-    $this->Cookie->httpOnly = true;
+
   }
 
   public function index()
@@ -24,43 +20,38 @@ class UsersController extends AppController
 
   public function login()
   {
-    # Login if is in cookie
-    if( $this->Cookie->check('User') )
+    if ($this->request->is('post'))
     {
-      if( $this->Auth->login($this->Cookie->read('User')) )
+      # Log in using email
+      if( strstr($this->request->data['User']['username'],'@') )
       {
+        # Retrieve user username for auth
+        $useraux = $this->User->findByEmail($this->request->data['User']['username'],'username');
+
+        # Change the username from data form
+        $this->request->data['User']['username'] = $useraux['User']['username'];
+      }
+
+      # Try to log in the user
+      if ($this->Auth->login())
+      {
+        if( !empty($this->request->data['User']['remember_me']) && $this->request->data['User']['remember_me'] == 'S')
+        {
+
+          $cookie = array();
+          $cookie['username'] = $this->request->data['User']['username'];
+          $cookie['password'] = $this->Auth->password($this->request->data['User']['password']);
+
+          # Write cookie ( 30 Days )
+          $this->Cookie->write('Auth.User', $cookie, true);
+        }
+
+        # Redirect to home
         $this->redirect($this->Auth->redirect());
       }
-    }
-    else
-    {
-      if ($this->request->is('post'))
+      else
       {
-        # Log in using email
-        if( strstr($this->request->data['User']['username'],'@') )
-        {
-          # Retrieve user username for auth
-          $useraux = $this->User->findByEmail($this->request->data['User']['username'],'username');
-
-          # Change the username from data form
-          $this->request->data['User']['username'] = $useraux['User']['username'];
-        }
-
-        # Try to log in the user
-        if ($this->Auth->login())
-        {
-          if( !empty($this->request->data['User']['remember_me']) && $this->request->data['User']['remember_me'] == 'S')
-          {
-            # Write cookie ( 30 Days )
-            $this->Cookie->write('User', AuthComponent::user());
-          }
-          # Redirect to home
-          $this->redirect($this->Auth->redirect());
-        }
-        else
-        {
-          $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
-        }
+        $this->Session->setFlash(__('Invalid username or password, try again'),'flash_fail');
       }
     }
   }

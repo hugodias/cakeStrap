@@ -33,23 +33,45 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller
 {
-	public $components = array('Auth','Session','Error');
+  public $components = array('Auth','Session','Error','Cookie');
 
-	public function beforeFilter()
-	{
-		$this->Auth->authenticate = array('Form');
+  public function beforeFilter()
+  {
+    $this->Cookie->time = '30 Days';  // or '1 hour'
+    $this->Cookie->key = 'AS()XA(S*D)AS8dA(Sd80A(SDA*SDAS%D4$AS#SD@ASDtyASGH)_AS0dAoIASNKAshgaFA$#S21d24a3s45dAS$3d#A@$SDASCHVASCa4s33%$ˆ$%$#s253$AS5#Â$%s645$#AS@%#AˆS6%A&*SÂ%S$';
+    $this->Cookie->httpOnly = true;
 
-		$this->Auth->loginRedirect = array('action' => 'home', 'controller' => 'users');
-		$this->Auth->logoutRedirect = array('action' => 'login', 'controller' => 'users');
-		$this->Auth->authError = 'You are not allowed to see that.';
+    $this->Auth->authenticate = array('Form');
 
-		# Redirect to home if is logged in
-		if(AuthComponent::user('id') && $this->params->controller == 'users' && $this->params->action == 'login')
-			$this->redirect('/home');
+    $this->Auth->loginRedirect = array('action' => 'index', 'controller' => 'pages');
+    $this->Auth->logoutRedirect = array('action' => 'login', 'controller' => 'users');
+    $this->Auth->authError = 'You are not allowed to see that.';
 
-		# To enable portuguese language as main
-		# Configure::write('Config.language', 'por');
-	}
+    # Redirect to home if is logged in
+    if(AuthComponent::user('id') && $this->params->controller == 'users' && $this->params->action == 'login')
+      $this->redirect('/home');
+
+    # Login with Cookie
+    if(!$this->Auth->loggedIn() && $this->Cookie->check('Auth.User'))
+    {
+      $cookie = $this->Cookie->check('Auth.User');
+
+      $user = $this->User->find('first', array(
+        'conditions' => array(
+          'User.username' => $cookie['username'],
+          'User.password' => $cookie['password']
+          )
+        )
+      );
+
+      if ($user && !$this->Auth->login($user)) {
+          $this->redirect('/users/logout'); // destroy session & cookie
+      }
+    }
+
+    # To enable portuguese language as main
+    # Configure::write('Config.language', 'por');
+  }
 }
 
 

@@ -50,7 +50,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('User');
 
 	public function beforeFilter()
 	{
@@ -70,6 +70,5 @@ class PagesController extends AppController {
 
 	public function index()
 	{
-		# code...
 	}
 }
