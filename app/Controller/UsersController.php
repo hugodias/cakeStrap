@@ -37,7 +37,6 @@ class UsersController extends AppController
       {
         if( !empty($this->request->data['User']['remember_me']) && $this->request->data['User']['remember_me'] == 'S')
         {
-
           $cookie = array();
           $cookie['username'] = $this->request->data['User']['username'];
           $cookie['password'] = $this->Auth->password($this->request->data['User']['password']);
@@ -59,7 +58,7 @@ class UsersController extends AppController
   public function logout()
   {
     # Destroy the Cookie
-    $this->Cookie->destroy();
+    $this->Cookie->delete('Auth.User');
 
     # Destroy the session
     $this->redirect($this->Auth->logout());
