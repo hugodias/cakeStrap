@@ -47,14 +47,10 @@ class AppController extends Controller
     $this->Auth->logoutRedirect = array('action' => 'login', 'controller' => 'users');
     $this->Auth->authError = 'You are not allowed to see that.';
 
-    # Redirect to home if is logged in
-    if(AuthComponent::user('id') && $this->params->controller == 'users' && $this->params->action == 'login')
-      $this->redirect('/home');
-
     # Login with Cookie
     if(!$this->Auth->loggedIn() && $this->Cookie->check('Auth.User'))
     {
-      $cookie = $this->Cookie->check('Auth.User');
+      $cookie = $this->Cookie->read('Auth.User');
 
       $user = $this->User->find('first', array(
         'conditions' => array(
@@ -67,6 +63,11 @@ class AppController extends Controller
       if ($user && !$this->Auth->login($user)) {
           $this->redirect('/users/logout'); // destroy session & cookie
       }
+
+      # Redirect to home if is logged in
+      if($this->Auth->loggedIn() && $this->params->controller == 'users' && $this->params->action == 'login')
+        $this->redirect('/home');
+
     }
 
     # To enable portuguese language as main
