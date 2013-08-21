@@ -34,6 +34,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller
 {
   public $components = array('Auth','Session','Error','Cookie');
+  public $uses = array('User');
 
   public function beforeFilter()
   {
@@ -60,14 +61,14 @@ class AppController extends Controller
         )
       );
 
-      if ($user && !$this->Auth->login($user)) {
-          $this->redirect('/users/logout'); // destroy session & cookie
+      # Manually login the user
+      if( $this->Auth->login($user['User']) ){
+        $this->redirect('/home');
       }
 
       # Redirect to home if is logged in
       if($this->Auth->loggedIn() && $this->params->controller == 'users' && $this->params->action == 'login')
         $this->redirect('/home');
-
     }
 
     # To enable portuguese language as main
