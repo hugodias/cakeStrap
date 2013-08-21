@@ -31,6 +31,9 @@
 		    <label for="exampleInputPassword1">Password</label>
 		    <input type="password" class="form-control" id="exampleInputPassword1" name="data[User][password]" placeholder="Password">
 		  </div>
+		  <div class="form-group">
+		  	<?php echo $this->Html->link(__('Forgot your password?'),array('controller' => 'users','action' => 'remember_password')) ?>
+		  </div>
 		  <div class="checkbox">
 		    <label>
 		      <input type="checkbox" name="data[User][remember_me]" value="S"> Remember me
