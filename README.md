@@ -1,6 +1,6 @@
-# CakeStrap v 0.7
+# CakeStrap v 0.7.1
 ---
-CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.3.8 Applications.
+CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.4.1 Applications.
 
 
 ### Video tutorial ( Portuguese )
@@ -17,7 +17,7 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.3.8 Applications.
 6. Multi-Language ( English and Portuguese )
 
 ##### Back-end
-1. CakePHP 2.3.8 Security Authentication **(NEW)**
+1. CakePHP 2.4.1 Security Authentication **(NEW)**
 2. Users CRUD
 3. Remember password with email send
 4. Automatic inclusion of  javascript and css files depending of the current controller and action ( Tutorial below )
