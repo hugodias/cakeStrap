@@ -25,11 +25,14 @@ class UsersController extends AppController
       # Log in using email
       if( strstr($this->request->data['User']['username'],'@') )
       {
-        # Retrieve user username for auth
-        $useraux = $this->User->findByEmail($this->request->data['User']['username'],'username');
-
-        # Change the username from data form
-        $this->request->data['User']['username'] = $useraux['User']['username'];
+        try{
+          # Retrieve user username for auth
+          $this->request->data['User']['username'] = $this->User->getUsername($this->request->data['User']['username']);
+        } catch( Exception $e ){
+          # In case that this email dont exists in database
+          $this->Session->setFlash($e->getMessage(), 'flash_fail');
+          $this->redirect('/');
+        }
       }
 
       # Try to log in the user
