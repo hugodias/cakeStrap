@@ -193,6 +193,7 @@ class HttpSocketTest extends CakeTestCase {
  * @return void
  */
 	public function setUp() {
+		parent::setUp();
 		if (!class_exists('MockHttpSocket')) {
 			$this->getMock('TestHttpSocket', array('read', 'write', 'connect'), array(), 'MockHttpSocket');
 			$this->getMock('TestHttpSocket', array('read', 'write', 'connect', 'request'), array(), 'MockHttpSocketRequests');
@@ -208,6 +209,7 @@ class HttpSocketTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
+		parent::tearDown();
 		unset($this->Socket, $this->RequestSocket);
 	}
 
@@ -254,6 +256,7 @@ class HttpSocketTest extends CakeTestCase {
 			'port' => 23,
 			'timeout' => 30,
 			'ssl_verify_peer' => true,
+			'ssl_allow_self_signed' => false,
 			'ssl_verify_depth' => 5,
 			'ssl_verify_host' => true,
 			'request' => array(
@@ -282,6 +285,7 @@ class HttpSocketTest extends CakeTestCase {
 			'port' => 80,
 			'timeout' => 30,
 			'ssl_verify_peer' => true,
+			'ssl_allow_self_signed' => false,
 			'ssl_verify_depth' => 5,
 			'ssl_verify_host' => true,
 			'request' => array(
@@ -320,6 +324,7 @@ class HttpSocketTest extends CakeTestCase {
 		$context = array(
 			'ssl' => array(
 				'verify_peer' => true,
+				'allow_self_signed' => false,
 				'verify_depth' => 5,
 				'CN_match' => 'www.cakephp.org',
 				'cafile' => CAKE . 'Config' . DS . 'cacert.pem'
@@ -1147,6 +1152,30 @@ class HttpSocketTest extends CakeTestCase {
 	}
 
 /**
+ * testPatch
+ *
+ * @return void
+ */
+	public function testPatch() {
+		$this->RequestSocket->reset();
+		$this->RequestSocket->expects($this->at(0))
+			->method('request')
+			->with(array('method' => 'PATCH', 'uri' => 'http://www.google.com/', 'body' => array()));
+
+		$this->RequestSocket->expects($this->at(1))
+			->method('request')
+			->with(array('method' => 'PATCH', 'uri' => 'http://www.google.com/', 'body' => array('Foo' => 'bar')));
+
+		$this->RequestSocket->expects($this->at(2))
+			->method('request')
+			->with(array('method' => 'PATCH', 'uri' => 'http://www.google.com/', 'body' => null, 'line' => 'Hey Server'));
+
+		$this->RequestSocket->patch('http://www.google.com/');
+		$this->RequestSocket->patch('http://www.google.com/', array('Foo' => 'bar'));
+		$this->RequestSocket->patch('http://www.google.com/', null, array('line' => 'Hey Server'));
+	}
+
+/**
  * testDelete
  *
  * @return void
@@ -1518,8 +1547,8 @@ class HttpSocketTest extends CakeTestCase {
 					'name' => 'jim',
 					'items' => array(
 						'personal' => array(
-							'book'
-							, 'pen'
+							'book',
+							'pen'
 						),
 						'ball'
 					)
@@ -1606,10 +1635,10 @@ class HttpSocketTest extends CakeTestCase {
 		$this->Socket->reset();
 
 		$expected = array(
-			'\x22','\x28','\x29','\x3c','\x3e','\x40','\x2c','\x3b','\x3a','\x5c','\x2f','\x5b','\x5d','\x3f','\x3d','\x7b',
-			'\x7d','\x20','\x00','\x01','\x02','\x03','\x04','\x05','\x06','\x07','\x08','\x09','\x0a','\x0b','\x0c','\x0d',
-			'\x0e','\x0f','\x10','\x11','\x12','\x13','\x14','\x15','\x16','\x17','\x18','\x19','\x1a','\x1b','\x1c','\x1d',
-			'\x1e','\x1f','\x7f'
+			'\x22', '\x28', '\x29', '\x3c', '\x3e', '\x40', '\x2c', '\x3b', '\x3a', '\x5c', '\x2f', '\x5b', '\x5d', '\x3f', '\x3d', '\x7b',
+			'\x7d', '\x20', '\x00', '\x01', '\x02', '\x03', '\x04', '\x05', '\x06', '\x07', '\x08', '\x09', '\x0a', '\x0b', '\x0c', '\x0d',
+			'\x0e', '\x0f', '\x10', '\x11', '\x12', '\x13', '\x14', '\x15', '\x16', '\x17', '\x18', '\x19', '\x1a', '\x1b', '\x1c', '\x1d',
+			'\x1e', '\x1f', '\x7f'
 		);
 		$r = $this->Socket->tokenEscapeChars();
 		$this->assertEquals($expected, $r);
@@ -1707,9 +1736,11 @@ class HttpSocketTest extends CakeTestCase {
 		$this->Socket->reset();
 		$this->Socket->request('http://example.com');
 		$this->assertTrue($this->Socket->config['context']['ssl']['verify_peer']);
+		$this->assertFalse($this->Socket->config['context']['ssl']['allow_self_signed']);
 		$this->assertEquals(5, $this->Socket->config['context']['ssl']['verify_depth']);
 		$this->assertEquals('example.com', $this->Socket->config['context']['ssl']['CN_match']);
 		$this->assertArrayNotHasKey('ssl_verify_peer', $this->Socket->config);
+		$this->assertArrayNotHasKey('ssl_allow_self_signed', $this->Socket->config);
 		$this->assertArrayNotHasKey('ssl_verify_host', $this->Socket->config);
 		$this->assertArrayNotHasKey('ssl_verify_depth', $this->Socket->config);
 	}

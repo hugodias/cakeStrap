@@ -66,6 +66,9 @@ class BakeShell extends AppShell {
 				$this->{$task}->connection = $this->params['connection'];
 			}
 		}
+		if (isset($this->params['connection'])) {
+			$this->connection = $this->params['connection'];
+		}
 	}
 
 /**
@@ -242,6 +245,9 @@ class BakeShell extends AppShell {
 			'help' => __d('cake_console', 'Database connection to use in conjunction with `bake all`.'),
 			'short' => 'c',
 			'default' => 'default'
+		))->addOption('theme', array(
+			'short' => 't',
+			'help' => __d('cake_console', 'Theme to use when baking code.')
 		));
 	}
 

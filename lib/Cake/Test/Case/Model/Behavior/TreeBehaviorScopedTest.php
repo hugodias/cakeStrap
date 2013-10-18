@@ -64,6 +64,7 @@ class TreeBehaviorScopedTest extends CakeTestCase {
  */
 	public function testStringScope() {
 		$this->Tree = new FlagTree();
+		$this->Tree->order = null;
 		$this->Tree->initialize(2, 3);
 
 		$this->Tree->id = 1;
@@ -100,6 +101,7 @@ class TreeBehaviorScopedTest extends CakeTestCase {
  */
 	public function testArrayScope() {
 		$this->Tree = new FlagTree();
+		$this->Tree->order = null;
 		$this->Tree->initialize(2, 3);
 
 		$this->Tree->id = 1;
@@ -136,6 +138,7 @@ class TreeBehaviorScopedTest extends CakeTestCase {
  */
 	public function testMoveUpWithScope() {
 		$this->Ad = new Ad();
+		$this->Ad->order = null;
 		$this->Ad->Behaviors->attach('Tree', array('scope' => 'Campaign'));
 		$this->Ad->moveUp(6);
 
@@ -152,6 +155,7 @@ class TreeBehaviorScopedTest extends CakeTestCase {
  */
 	public function testMoveDownWithScope() {
 		$this->Ad = new Ad();
+		$this->Ad->order = null;
 		$this->Ad->Behaviors->attach('Tree', array('scope' => 'Campaign'));
 		$this->Ad->moveDown(6);
 
@@ -169,6 +173,7 @@ class TreeBehaviorScopedTest extends CakeTestCase {
  */
 	public function testTranslatingTree() {
 		$this->Tree = new FlagTree();
+		$this->Tree->order = null;
 		$this->Tree->cacheQueries = false;
 		$this->Tree->Behaviors->attach('Translate', array('title'));
 
@@ -286,9 +291,11 @@ class TreeBehaviorScopedTest extends CakeTestCase {
 	public function testAliasesWithScopeInTwoTreeAssociations() {
 		extract($this->settings);
 		$this->Tree = new $modelClass();
+		$this->Tree->order = null;
 		$this->Tree->initialize(2, 2);
 
 		$this->TreeTwo = new NumberTreeTwo();
+		$this->TreeTwo->order = null;
 
 		$record = $this->Tree->find('first');
 
@@ -333,4 +340,44 @@ class TreeBehaviorScopedTest extends CakeTestCase {
 		));
 		$this->assertEquals($expected, $result);
 	}
+
+/**
+ * testGenerateTreeListWithScope method
+ *
+ * @return void
+ */
+	public function testGenerateTreeListWithScope() {
+		extract($this->settings);
+		$this->Tree = new $modelClass();
+		$this->Tree->order = null;
+		$this->Tree->initialize(2, 3);
+
+		$this->Tree->id = 1;
+		$this->Tree->saveField('flag', 1);
+		$this->Tree->id = 2;
+		$this->Tree->saveField('flag', 1);
+
+		$this->Tree->Behaviors->attach('Tree', array('scope' => array('FlagTree.flag' => 1)));
+
+		$result = $this->Tree->generateTreeList();
+		$expected = array(
+			1 => '1. Root',
+			2 => '_1.1'
+		);
+		$this->assertEquals($expected, $result);
+
+		// As string.
+		$this->Tree->Behaviors->attach('Tree', array('scope' => 'FlagTree.flag = 1'));
+
+		$result = $this->Tree->generateTreeList();
+		$this->assertEquals($expected, $result);
+
+		// Merging conditions.
+		$result = $this->Tree->generateTreeList(array('FlagTree.id >' => 1));
+		$expected = array(
+			2 => '1.1'
+		);
+		$this->assertEquals($expected, $result);
+	}
+
 }

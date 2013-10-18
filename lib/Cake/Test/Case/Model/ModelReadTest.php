@@ -6302,6 +6302,7 @@ class ModelReadTest extends BaseModelTest {
 		$this->loadFixtures('User');
 		$TestModel = new User();
 		$TestModel->cacheQueries = false;
+		$TestModel->order = null;
 
 		$expected = array(
 			'conditions' => array(
@@ -6849,6 +6850,8 @@ class ModelReadTest extends BaseModelTest {
 		));
 		$this->assertEquals('mariano', $result);
 
+		$TestModel->order = null;
+
 		$result = $TestModel->field('COUNT(*) AS count', true);
 		$this->assertEquals(4, $result);
 
@@ -6904,7 +6907,9 @@ class ModelReadTest extends BaseModelTest {
 		$this->assertNotRegExp('/ORDER\s+BY/', $log['log'][0]['query']);
 
 		$Article = new Article();
+		$Article->order = null;
 		$Article->recursive = -1;
+
 		$expected = count($Article->find('all', array(
 			'fields' => array('Article.user_id'),
 			'group' => 'Article.user_id')
@@ -7761,6 +7766,8 @@ class ModelReadTest extends BaseModelTest {
 		));
 		$this->assertEquals(2, $result['Post']['id']);
 
+		$Post->order = null;
+
 		$Post->virtualFields = array('other_field' => 'Post.id + 1');
 		$result = $Post->find('all', array(
 			'fields' => array($dbo->calculate($Post, 'max', array('other_field')))
@@ -7940,6 +7947,27 @@ class ModelReadTest extends BaseModelTest {
 			array(
 				'conditions' => array(
 					'Article.id NOT' => array(1)
+				)
+			)
+		);
+		$this->assertTrue(is_array($result) && !empty($result));
+	}
+
+/**
+ * test to assert that != in key together with a single element array will work
+ *
+ * @return void
+ */
+	public function testNotEqualsInArrayWithOneValue() {
+		$this->loadFixtures('Article');
+		$Article = new Article();
+		$Article->recursive = -1;
+
+		$result = $Article->find(
+			'all',
+			array(
+				'conditions' => array(
+					'Article.id !=' => array(1)
 				)
 			)
 		);

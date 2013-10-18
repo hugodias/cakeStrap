@@ -218,11 +218,9 @@ class FormHelper extends AppHelper {
 
 		if ($key === 'validates' && !isset($this->fieldset[$model]['validates'])) {
 			$validates = array();
-			if (!empty($object->validate)) {
-				foreach ($object->validator() as $validateField => $validateProperties) {
-					if ($this->_isRequiredField($validateProperties)) {
-						$validates[$validateField] = true;
-					}
+			foreach ($object->validator() as $validateField => $validateProperties) {
+				if ($this->_isRequiredField($validateProperties)) {
+					$validates[$validateField] = true;
 				}
 			}
 			$this->fieldset[$model]['validates'] = $validates;
@@ -1522,8 +1520,9 @@ class FormHelper extends AppHelper {
 			);
 
 			if ($label) {
-				$optTitle = $this->Html->useTag('label', $tagName, '', $optTitle);
+				$optTitle = $this->label($tagName, $optTitle, is_array($label) ? $label : null);
 			}
+
 			if (is_array($between)) {
 				$optTitle .= array_shift($between);
 			}
@@ -1786,12 +1785,11 @@ class FormHelper extends AppHelper {
 		$url = '#';
 		$onClick = 'document.' . $formName . '.submit();';
 		if ($confirmMessage) {
-			$confirmMessage = str_replace(array("'", '"'), array("\'", '\"'), $confirmMessage);
-			$options['onclick'] = "if (confirm('{$confirmMessage}')) { {$onClick} }";
+			$options['onclick'] = $this->_confirm($confirmMessage, $onClick, '', $options);
 		} else {
-			$options['onclick'] = $onClick;
+			$options['onclick'] = $onClick . ' ';
 		}
-		$options['onclick'] .= ' event.returnValue = false; return false;';
+		$options['onclick'] .= 'event.returnValue = false; return false;';
 
 		$out .= $this->Html->link($title, $url, $options);
 		return $out;
@@ -1880,7 +1878,7 @@ class FormHelper extends AppHelper {
 		} elseif ($isImage) {
 			unset($options['type']);
 			if ($caption{0} !== '/') {
-				$url = $this->webroot(IMAGES_URL . $caption);
+				$url = $this->webroot(Configure::read('App.imageBaseUrl') . $caption);
 			} else {
 				$url = $this->webroot(trim($caption, '/'));
 			}
@@ -2010,6 +2008,14 @@ class FormHelper extends AppHelper {
 			}
 		} else {
 			$tag = 'selectstart';
+		}
+
+		if ($tag !== 'checkboxmultiplestart' &&
+			!isset($attributes['required']) &&
+			empty($attributes['disabled']) &&
+			$this->_introspectModel($this->model(), 'validates', $this->field())
+		) {
+			$attributes['required'] = true;
 		}
 
 		if (!empty($tag) || isset($template)) {
@@ -2337,6 +2343,7 @@ class FormHelper extends AppHelper {
  * - `separator` The contents of the string between select elements. Defaults to '-'
  * - `empty` - If true, the empty select option is shown. If a string,
  *   that string is displayed as the empty element.
+ * - `round` - Set to `up` or `down` if you want to force rounding in either direction. Defaults to null.
  * - `value` | `default` The default value to be used by the input. A value in `$this->data`
  *   matching the field name will override this value. If no default is provided `time()` will be used.
  *
@@ -2371,7 +2378,7 @@ class FormHelper extends AppHelper {
 
 		$defaults = array(
 			'minYear' => null, 'maxYear' => null, 'separator' => '-',
-			'interval' => 1, 'monthNames' => true
+			'interval' => 1, 'monthNames' => true, 'round' => null
 		);
 		$attributes = array_merge($defaults, (array)$attributes);
 		if (isset($attributes['minuteInterval'])) {
@@ -2383,6 +2390,7 @@ class FormHelper extends AppHelper {
 		$separator = $attributes['separator'];
 		$interval = $attributes['interval'];
 		$monthNames = $attributes['monthNames'];
+		$round = $attributes['round'];
 		$attributes = array_diff_key($attributes, $defaults);
 
 		if ($timeFormat == 12 && $hour == 12) {
@@ -2397,7 +2405,18 @@ class FormHelper extends AppHelper {
 			if ($hour !== null) {
 				$current->setTime($hour, $min);
 			}
-			$change = (round($min * (1 / $interval)) * $interval) - $min;
+			$changeValue = $min * (1 / $interval);
+			switch ($round) {
+				case 'up':
+					$changeValue = ceil($changeValue);
+					break;
+				case 'down':
+					$changeValue = floor($changeValue);
+					break;
+				default:
+					$changeValue = round($changeValue);
+			}
+			$change = ($changeValue * $interval) - $min;
 			$current->modify($change > 0 ? "+$change minutes" : "$change minutes");
 			$format = ($timeFormat == 12) ? 'Y m d h i a' : 'Y m d H i a';
 			$newTime = explode(' ', $current->format($format));
@@ -2866,7 +2885,7 @@ class FormHelper extends AppHelper {
  * @return array inputDefaults
  */
 	public function inputDefaults($defaults = null, $merge = false) {
-		if (!is_null($defaults)) {
+		if ($defaults !== null) {
 			if ($merge) {
 				$this->_inputDefaults = array_merge($this->_inputDefaults, (array)$defaults);
 			} else {

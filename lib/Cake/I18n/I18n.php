@@ -124,12 +124,14 @@ class I18n {
  *
  * @param string $singular String to translate
  * @param string $plural Plural string (if any)
- * @param string $domain Domain The domain of the translation. Domains are often used by plugin translations
+ * @param string $domain Domain The domain of the translation. Domains are often used by plugin translations.
+ *    If null, the default domain will be used.
  * @param string $category Category The integer value of the category to use.
  * @param integer $count Count Count is used with $plural to choose the correct plural form.
  * @param string $language Language to translate string to.
- * 	If null it checks for language in session followed by Config.language configuration variable.
+ *    If null it checks for language in session followed by Config.language configuration variable.
  * @return string translated string.
+ * @throws CakeException When '' is provided as a domain.
  */
 	public static function translate($singular, $plural = null, $domain = null, $category = 6, $count = null, $language = null) {
 		$_this = I18n::getInstance();
@@ -159,8 +161,11 @@ class I18n {
 			$_this->_lang = $lang;
 		}
 
-		if (is_null($domain)) {
+		if ($domain === null) {
 			$domain = self::$defaultDomain;
+		}
+		if ($domain === '') {
+			throw new CakeException(__d('cake_dev', 'You cannot use "" as a domain.'));
 		}
 
 		$_this->domain = $domain . '_' . $_this->l10n->lang;
@@ -321,7 +326,7 @@ class I18n {
 				if (is_file($localeDef)) {
 					$definitions = self::loadLocaleDefinition($localeDef);
 					if ($definitions !== false) {
-						$this->_domains[$domain][$this->_lang][$this->category] = self::loadLocaleDefinition($localeDef);
+						$this->_domains[$domain][$this->_lang][$this->category] = $definitions;
 						$this->_noLocale = false;
 						return $domain;
 					}
@@ -544,11 +549,11 @@ class I18n {
 				continue;
 			}
 			$count = count($parts);
-			if ($count == 2) {
+			if ($count === 2) {
 				$currentToken = $parts[0];
 				$value = $parts[1];
-			} elseif ($count == 1) {
-				$value .= $parts[0];
+			} elseif ($count === 1) {
+				$value = is_array($value) ? $parts[0] : $value . $parts[0];
 			} else {
 				continue;
 			}
@@ -570,7 +575,7 @@ class I18n {
 				$val = str_replace($replacements, $mustEscape, $val);
 				$value[$i] = $val;
 			}
-			if (count($value) == 1) {
+			if (count($value) === 1) {
 				$definitions[$currentToken] = array_pop($value);
 			} else {
 				$definitions[$currentToken] = $value;

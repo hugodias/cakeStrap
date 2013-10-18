@@ -131,6 +131,11 @@ class Postgres extends DboSource {
 			if (!empty($config['schema'])) {
 				$this->_execute('SET search_path TO ' . $config['schema']);
 			}
+			if (!empty($config['settings'])) {
+				foreach ($config['settings'] as $key => $value) {
+					$this->_execute("SET $key TO $value");
+				}
+			}
 		} catch (PDOException $e) {
 			throw new MissingConnectionException(array(
 				'class' => get_class($this),
@@ -341,7 +346,6 @@ class Postgres extends DboSource {
 			$this->cacheSources = $cache;
 		}
 		if ($this->execute('DELETE FROM ' . $this->fullTableName($table))) {
-			$schema = $this->config['schema'];
 			if (isset($this->_sequenceMap[$table]) && $reset != true) {
 				foreach ($this->_sequenceMap[$table] as $sequence) {
 					list($schema, $sequence) = explode('.', $sequence);
@@ -748,11 +752,11 @@ class Postgres extends DboSource {
 
 				switch ($type) {
 					case 'bool':
-						$resultRow[$table][$column] = is_null($row[$index]) ? null : $this->boolean($row[$index]);
+						$resultRow[$table][$column] = $row[$index] === null ? null : $this->boolean($row[$index]);
 						break;
 					case 'binary':
 					case 'bytea':
-						$resultRow[$table][$column] = is_null($row[$index]) ? null : stream_get_contents($row[$index]);
+						$resultRow[$table][$column] = $row[$index] === null ? null : stream_get_contents($row[$index]);
 						break;
 					default:
 						$resultRow[$table][$column] = $row[$index];

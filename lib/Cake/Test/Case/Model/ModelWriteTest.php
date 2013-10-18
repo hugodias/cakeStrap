@@ -567,6 +567,28 @@ class ModelWriteTest extends BaseModelTest {
 	}
 
 /**
+ * Tests that counter caches are unchanged when using 'counterCache' => false
+ *
+ * @return void
+ */
+	public function testCounterCacheSkip() {
+		$this->loadFixtures('CounterCacheUser', 'CounterCachePost');
+		$User = new CounterCacheUser();
+		$Post = new CounterCachePost();
+
+		$data = $Post->find('first', array(
+			'conditions' => array('id' => 1),
+			'recursive' => -1
+		));
+		$data[$Post->alias]['user_id'] = 301;
+		$Post->save($data, array('counterCache' => false));
+
+		$users = $User->find('all', array('order' => 'User.id'));
+		$this->assertEquals(2, $users[0]['User']['post_count']);
+		$this->assertEquals(1, $users[1]['User']['post_count']);
+	}
+
+/**
  * test that beforeValidate returning false can abort saves.
  *
  * @return void
@@ -2498,6 +2520,7 @@ class ModelWriteTest extends BaseModelTest {
 	public function testHabtmSavingWithNoPrimaryKeyUuidJoinTable() {
 		$this->loadFixtures('UuidTag', 'Fruit', 'FruitsUuidTag');
 		$Fruit = new Fruit();
+		$Fruit->FruitsUuidTag->order = null;
 		$data = array(
 			'Fruit' => array(
 				'color' => 'Red',
@@ -4940,7 +4963,7 @@ class ModelWriteTest extends BaseModelTest {
 		$expected = array(
 			'Comment' => array(
 				array(
-					'comment' => array( 'This field cannot be left blank' )
+					'comment' => array('This field cannot be left blank')
 				)
 			)
 		);
@@ -6471,7 +6494,8 @@ class ModelWriteTest extends BaseModelTest {
  */
 	public function testWriteFloatAsGerman() {
 		$restore = setlocale(LC_NUMERIC, 0);
-		setlocale(LC_NUMERIC, 'de_DE');
+
+		$this->skipIf(setlocale(LC_NUMERIC, 'de_DE') === false, "The German locale isn't available.");
 
 		$model = new DataTest();
 		$result = $model->save(array(
@@ -6535,7 +6559,7 @@ class ModelWriteTest extends BaseModelTest {
 			'order' => 'Post.id ASC',
 		));
 		$expected = array(
-			'Post' => array (
+			'Post' => array(
 				'id' => '4',
 				'author_id' => '5',
 				'title' => 'Post without body',
@@ -6544,7 +6568,7 @@ class ModelWriteTest extends BaseModelTest {
 				'created' => self::date(),
 				'updated' => self::date(),
 			),
-			'Author' => array (
+			'Author' => array(
 				'id' => '5',
 				'user' => 'bob',
 				'password' => null,
@@ -6557,6 +6581,66 @@ class ModelWriteTest extends BaseModelTest {
 		$this->assertEquals(4, count($result));
 		$this->assertEquals('', $result[3]['Post']['body']);
 		$this->assertEquals('working', $result[3]['Author']['test']);
+
+		$fieldList = array(
+			'Post' => array('title')
+		);
+		$data = array(
+			'Post' => array(
+				'title' => 'Post without body 2',
+				'body' => 'This will not be saved'
+			),
+			'Author' => array(
+				'user' => 'jack'
+			)
+		);
+		$TestModel->saveAll($data, array('fieldList' => $fieldList));
+		$result = $TestModel->find('all', array(
+			'order' => 'Post.id ASC',
+		));
+		$this->assertNull($result[4]['Post']['body']);
+
+		$fieldList = array(
+			'Author' => array('password')
+		);
+		$data = array(
+			'Post' => array(
+				'id' => '5',
+				'title' => 'Post title',
+				'body' => 'Post body'
+			),
+			'Author' => array(
+				'id' => '6',
+				'user' => 'will not change',
+				'password' => 'foobar'
+			)
+		);
+		$result = $TestModel->saveAll($data, array('fieldList' => $fieldList));
+		$this->assertTrue($result);
+
+		$result = $TestModel->find('all', array(
+			'order' => 'Post.id ASC',
+		));
+		$expected = array(
+			'Post' => array(
+				'id' => '5',
+				'author_id' => '6',
+				'title' => 'Post title',
+				'body' => 'Post body',
+				'published' => 'N',
+				'created' => self::date(),
+				'updated' => self::date()
+			),
+			'Author' => array(
+				'id' => '6',
+				'user' => 'jack',
+				'password' => 'foobar',
+				'created' => self::date(),
+				'updated' => self::date(),
+				'test' => 'working'
+			),
+		);
+		$this->assertEquals($expected, $result[4]);
 
 		// test multirecord
 		$this->db->truncate($TestModel);
@@ -7065,5 +7149,20 @@ class ModelWriteTest extends BaseModelTest {
 			'fields' => array('id', 'published'),
 			'conditions' => array('Item.id' => 1)));
 		$this->assertEquals(true, $result['Item']['published']);
+	}
+
+/**
+ * Test the clear() method.
+ *
+ * @return void
+ */
+	public function testClear() {
+		$this->loadFixtures('Bid');
+		$model = ClassRegistry::init('Bid');
+		$model->set(array('name' => 'Testing', 'message_id' => 3));
+		$this->assertTrue(isset($model->data['Bid']['name']));
+		$this->assertTrue($model->clear());
+		$this->assertFalse(isset($model->data['Bid']['name']));
+		$this->assertFalse(isset($model->data['Bid']['message_id']));
 	}
 }

@@ -313,7 +313,7 @@ class DboSource extends DataSource {
  * Returns a quoted and escaped string of $data for use in an SQL statement.
  *
  * @param string $data String to be prepared for use in an SQL statement
- * @param string $column The column into which this data will be inserted
+ * @param string $column The column datatype into which this data will be inserted.
  * @return string Quoted and escaped data
  */
 	public function value($data, $column = null) {
@@ -898,7 +898,7 @@ class DboSource extends DataSource {
 		if (PHP_SAPI !== 'cli') {
 			$controller = null;
 			$View = new View($controller, false);
-			$View->set('logs', array($this->configKeyName => $log));
+			$View->set('sqlLogs', array($this->configKeyName => $log));
 			echo $View->element('sql_dump', array('_forced_from_dbo_' => true));
 		} else {
 			foreach ($log['log'] as $k => $i) {
@@ -952,14 +952,14 @@ class DboSource extends DataSource {
 
 		if ($quote) {
 			if ($schema && !empty($schemaName)) {
-				if (false == strstr($table, '.')) {
+				if (strstr($table, '.') === false) {
 					return $this->name($schemaName) . '.' . $this->name($table);
 				}
 			}
 			return $this->name($table);
 		}
 		if ($schema && !empty($schemaName)) {
-			if (false == strstr($table, '.')) {
+			if (strstr($table, '.') === false) {
 				return $schemaName . '.' . $table;
 			}
 		}
@@ -1035,7 +1035,7 @@ class DboSource extends DataSource {
 			$recursive = $queryData['recursive'];
 		}
 
-		if (!is_null($recursive)) {
+		if ($recursive !== null) {
 			$_recursive = $model->recursive;
 			$model->recursive = $recursive;
 		}
@@ -1065,7 +1065,7 @@ class DboSource extends DataSource {
 					if ($bypass) {
 						$assocData['fields'] = false;
 					}
-					if (true === $this->generateAssociationQuery($model, $linkModel, $type, $assoc, $assocData, $queryData, $external, $null)) {
+					if ($this->generateAssociationQuery($model, $linkModel, $type, $assoc, $assocData, $queryData, $external, $null) === true) {
 						$linkedModels[$type . '/' . $assoc] = true;
 					}
 				}
@@ -1123,7 +1123,7 @@ class DboSource extends DataSource {
 			}
 		}
 
-		if (!is_null($recursive)) {
+		if ($recursive !== null) {
 			$model->recursive = $_recursive;
 		}
 		return $resultSet;
@@ -1730,8 +1730,10 @@ class DboSource extends DataSource {
  * @return string
  */
 	public function renderJoinStatement($data) {
-		extract($data);
-		return trim("{$type} JOIN {$table} {$alias} ON ({$conditions})");
+		if (strtoupper($data['type']) === 'CROSS') {
+			return "{$data['type']} JOIN {$data['table']} {$data['alias']}";
+		}
+		return trim("{$data['type']} JOIN {$data['table']} {$data['alias']} ON ({$data['conditions']})");
 	}
 
 /**
@@ -2489,7 +2491,7 @@ class DboSource extends DataSource {
 					$keys = array_keys($value);
 					if ($keys === array_values($keys)) {
 						$count = count($value);
-						if ($count === 1 && !preg_match("/\s+NOT$/", $key)) {
+						if ($count === 1 && !preg_match('/\s+(?:NOT|\!=)$/', $key)) {
 							$data = $this->_quoteFields($key) . ' = (';
 							if ($quoteValues) {
 								if (is_object($model)) {

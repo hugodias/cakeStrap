@@ -836,16 +836,16 @@ class ModelIntegrationTest extends BaseModelTest {
 		$this->assertEquals('test_database_three', $Player->ArmorsPlayer->useDbConfig);
 
 		$players = $Player->find('all');
-		$this->assertEquals(4 , count($players));
+		$this->assertEquals(4, count($players));
 		$playersGuilds = Hash::extract($players, '{n}.Guild.{n}.GuildsPlayer');
-		$this->assertEquals(3 , count($playersGuilds));
+		$this->assertEquals(3, count($playersGuilds));
 		$playersArmors = Hash::extract($players, '{n}.Armor.{n}.ArmorsPlayer');
-		$this->assertEquals(3 , count($playersArmors));
+		$this->assertEquals(3, count($playersArmors));
 		unset($players);
 
 		$larry = $Player->findByName('larry');
 		$larrysArmor = Hash::extract($larry, 'Armor.{n}.ArmorsPlayer');
-		$this->assertEquals(1 , count($larrysArmor));
+		$this->assertEquals(1, count($larrysArmor));
 
 		$larry['Guild']['Guild'] = array(1, 3); // larry joins another guild
 		$larry['Armor']['Armor'] = array(2, 3); // purchases chainmail
@@ -854,9 +854,9 @@ class ModelIntegrationTest extends BaseModelTest {
 
 		$larry = $Player->findByName('larry');
 		$larrysGuild = Hash::extract($larry, 'Guild.{n}.GuildsPlayer');
-		$this->assertEquals(2 , count($larrysGuild));
+		$this->assertEquals(2, count($larrysGuild));
 		$larrysArmor = Hash::extract($larry, 'Armor.{n}.ArmorsPlayer');
-		$this->assertEquals(2 , count($larrysArmor));
+		$this->assertEquals(2, count($larrysArmor));
 
 		$Player->ArmorsPlayer->id = 3;
 		$Player->ArmorsPlayer->saveField('broken', true); // larry's cloak broke
@@ -1491,7 +1491,7 @@ class ModelIntegrationTest extends BaseModelTest {
 				'dynamicWith' => true,
 				'associationForeignKey' => 'join_b_id',
 				'conditions' => '', 'fields' => '', 'order' => '', 'limit' => '', 'offset' => '',
-				'finderQuery' => '', 'deleteQuery' => '', 'insertQuery' => ''
+				'finderQuery' => ''
 		));
 		$this->assertEquals($expected, $result);
 
@@ -1568,8 +1568,6 @@ class ModelIntegrationTest extends BaseModelTest {
 				'offset' => '',
 				'unique' => true,
 				'finderQuery' => '',
-				'deleteQuery' => '',
-				'insertQuery' => ''
 		));
 
 		$this->assertSame($TestModel->hasAndBelongsToMany, $expected);

@@ -266,6 +266,7 @@ class SqlserverTest extends CakeTestCase {
  *
  */
 	public function setUp() {
+		parent::setUp();
 		$this->Dbo = ConnectionManager::getDataSource('test');
 		if (!($this->Dbo instanceof Sqlserver)) {
 			$this->markTestSkipped('Please configure the test datasource to use SQL Server.');
@@ -280,6 +281,7 @@ class SqlserverTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
+		parent::tearDown();
 		unset($this->Dbo);
 		unset($this->model);
 	}
@@ -308,6 +310,10 @@ class SqlserverTest extends CakeTestCase {
 
 		$expected = "''";
 		$result = $this->db->value('', 'binary');
+		$this->assertSame($expected, $result);
+
+		$expected = 'NULL';
+		$result = $this->db->value(null, 'string');
 		$this->assertSame($expected, $result);
 	}
 

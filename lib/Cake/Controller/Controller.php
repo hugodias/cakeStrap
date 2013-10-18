@@ -347,7 +347,7 @@ class Controller extends Object implements CakeEventListener {
  * Lazy loads models using the loadModel() method if declared in $uses
  *
  * @param string $name
- * @return void
+ * @return boolean
  */
 	public function __isset($name) {
 		switch ($name) {
@@ -384,8 +384,8 @@ class Controller extends Object implements CakeEventListener {
  * Provides backwards compatibility access to the request object properties.
  * Also provides the params alias.
  *
- * @param string $name
- * @return void
+ * @param string $name The name of the requested value
+ * @return mixed The requested value for valid variables/aliases else null
  */
 	public function __get($name) {
 		switch ($name) {
@@ -422,15 +422,19 @@ class Controller extends Object implements CakeEventListener {
 			case 'here':
 			case 'webroot':
 			case 'data':
-				return $this->request->{$name} = $value;
+				$this->request->{$name} = $value;
+				return;
 			case 'action':
-				return $this->request->params['action'] = $value;
+				$this->request->params['action'] = $value;
+				return;
 			case 'params':
-				return $this->request->params = $value;
+				$this->request->params = $value;
+				return;
 			case 'paginate':
-				return $this->Components->load('Paginator')->settings = $value;
+				$this->Components->load('Paginator')->settings = $value;
+				return;
 		}
-		return $this->{$name} = $value;
+		$this->{$name} = $value;
 	}
 
 /**
@@ -701,7 +705,7 @@ class Controller extends Object implements CakeEventListener {
  *
  * @return array Associative array of the HTTP codes as keys, and the message
  *    strings as values, or null of the given $code does not exist.
- * @deprecated Use CakeResponse::httpCodes();
+ * @deprecated Since 2.4. Will be removed in 3.0. Use CakeResponse::httpCodes().
  */
 	public function httpCodes($code = null) {
 		return $this->response->httpCodes($code);
@@ -714,7 +718,7 @@ class Controller extends Object implements CakeEventListener {
  *
  * @param string $modelClass Name of model class to load
  * @param integer|string $id Initial ID the instanced model class should have
- * @return mixed true when single model found and instance created, error returned if model not found.
+ * @return bool True if the model was found
  * @throws MissingModelException if the model class cannot be found.
  */
 	public function loadModel($modelClass = null, $id = null) {
@@ -816,7 +820,7 @@ class Controller extends Object implements CakeEventListener {
  *
  * @param string $status The header message that is being set.
  * @return void
- * @deprecated Use CakeResponse::header()
+ * @deprecated Will be removed in 3.0. Use CakeResponse::header().
  */
 	public function header($status) {
 		$this->response->header($status);
@@ -974,7 +978,7 @@ class Controller extends Object implements CakeEventListener {
  *
  * @return void
  * @link http://book.cakephp.org/2.0/en/controllers.html#Controller::disableCache
- * @deprecated Use CakeResponse::disableCache()
+ * @deprecated Will be removed in 3.0. Use CakeResponse::disableCache().
  */
 	public function disableCache() {
 		$this->response->disableCache();
@@ -991,6 +995,7 @@ class Controller extends Object implements CakeEventListener {
  * @param string $layout Layout you want to use, defaults to 'flash'
  * @return void
  * @link http://book.cakephp.org/2.0/en/controllers.html#Controller::flash
+ * @deprecated Will be removed in 3.0. Use Session::setFlash().
  */
 	public function flash($message, $url, $pause = 1, $layout = 'flash') {
 		$this->autoRender = false;
@@ -1011,7 +1016,7 @@ class Controller extends Object implements CakeEventListener {
  * @param boolean $exclusive If true, and $op is an array, fields not included in $op will not be
  *        included in the returned conditions
  * @return array An array of model conditions
- * @deprecated Will be removed in 3.0
+ * @deprecated Will be removed in 3.0.
  */
 	public function postConditions($data = array(), $op = null, $bool = 'AND', $exclusive = false) {
 		if (!is_array($data) || empty($data)) {
@@ -1068,7 +1073,7 @@ class Controller extends Object implements CakeEventListener {
  * @param array $whitelist List of allowed options for paging
  * @return array Model query results
  * @link http://book.cakephp.org/2.0/en/controllers.html#Controller::paginate
- * @deprecated Use PaginatorComponent instead
+ * @deprecated Will be removed in 3.0. Use PaginatorComponent instead.
  */
 	public function paginate($object = null, $scope = array(), $whitelist = array()) {
 		return $this->Components->load('Paginator', $this->paginate)->paginate($object, $scope, $whitelist);
@@ -1142,7 +1147,7 @@ class Controller extends Object implements CakeEventListener {
  * @param string $method
  * @return boolean
  * @see Controller::beforeScaffold()
- * @deprecated
+ * @deprecated Will be removed in 3.0.
  */
 	protected function _beforeScaffold($method) {
 		return $this->beforeScaffold($method);
@@ -1165,7 +1170,7 @@ class Controller extends Object implements CakeEventListener {
  * @param string $method
  * @return boolean
  * @see Controller::afterScaffoldSave()
- * @deprecated
+ * @deprecated Will be removed in 3.0.
  */
 	protected function _afterScaffoldSave($method) {
 		return $this->afterScaffoldSave($method);
@@ -1188,7 +1193,7 @@ class Controller extends Object implements CakeEventListener {
  * @param string $method
  * @return boolean
  * @see Controller::afterScaffoldSaveError()
- * @deprecated
+ * @deprecated Will be removed in 3.0.
  */
 	protected function _afterScaffoldSaveError($method) {
 		return $this->afterScaffoldSaveError($method);
@@ -1213,7 +1218,7 @@ class Controller extends Object implements CakeEventListener {
  * @param string $method
  * @return boolean
  * @see Controller::scaffoldError()
- * @deprecated
+ * @deprecated Will be removed in 3.0.
  */
 	protected function _scaffoldError($method) {
 		return $this->scaffoldError($method);
