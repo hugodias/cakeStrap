@@ -70,12 +70,12 @@
           <ul class="nav navbar-nav navbar-right">
             <li id="fat-menu" class="dropdown">
               <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="icon-black icon-user"></i>
+                <i class="glyphicon glyphicon-user"></i>
                 <?php echo AuthComponent::user('username') ?> <b class="caret"></b>
               </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                 <li>
-                  <?php echo $this->Html->link('<i class="icon-black icon-off"></i> Logout','/users/logout',array('tabindex' => '-1','escape' => false)) ?>
+                  <?php echo $this->Html->link('<i class="glyphicon glyphicon-off"></i> Logout','/users/logout',array('tabindex' => '-1','escape' => false)) ?>
                 </li>
               </ul>
             </li>
