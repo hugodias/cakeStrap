@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title><?php echo Configure::read('Application.name') ?> - <?php echo !empty($title_for_layout) ? $title_for_layout : ''; ?></title>
+    <title><?php echo $title_for_layout;?> - <?php echo Configure::read('Application.name') ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -19,16 +19,8 @@
     </style>
     <?php echo $this->Html->css('bootstrap.min') ?>
     <?php echo $this->Html->css('style') ?>
-
-    <?php
-    if (is_file(WWW_ROOT . 'css' . DS . $this->params->controller . '.css')) {
-    echo $this->Html->css($this->params->controller);
-    }
-    if (is_file(WWW_ROOT . 'css' . DS . $this->params->controller . DS . $this->params->action . '.css')) {
-    echo $this->Html->css($this->params->controller . '/' . $this->params->action);
-    }
-    ?>
     <?php echo $this->Html->script('lib/modernizr') ?>
+    <?php echo $this->CakeStrap->automaticCss();?>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -66,7 +58,7 @@
             </li>
           </ul>
 
-          <?php if( AuthComponent::user('id') ) { ?>
+          <?php if (AuthComponent::user('id')): ?>
           <ul class="nav navbar-nav navbar-right">
             <li id="fat-menu" class="dropdown">
               <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -80,18 +72,16 @@
               </ul>
             </li>
           </ul>
-          <?php } ?>
+          <?php endif; ?>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
 
 
     <div class="container" role="main" id="main">
 
       <?php echo $this->Session->flash();?>
       <?php echo $this->fetch('content'); ?>
-
       <hr>
 
       <footer>
@@ -102,22 +92,8 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php echo $this->params->webroot ?>js/lib/jquery.min.js"><\/script>')</script>
-
-    <?php
-    if (is_file(WWW_ROOT . 'js' . DS . $this->params->controller . '.js')) {
-    echo $this->Html->script($this->params->controller);
-    }
-    if (is_file(WWW_ROOT . 'js' . DS . $this->params->controller . DS . $this->params->action . '.js')) {
-    echo $this->Html->script($this->params->controller . '/' . $this->params->action);
-    }
-    ?>
-
-    <?php echo $this->Html->script(
-      array(
-        'lib/bootstrap.min',
-        'src/scripts.js'
-        ));
-        ?>
+    <?php echo $this->Html->script(array('lib/bootstrap.min','src/scripts.js'));?>
+    <?php echo $this->CakeStrap->automaticScript(); ?>    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
