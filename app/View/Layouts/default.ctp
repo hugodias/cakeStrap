@@ -17,10 +17,9 @@
       padding-bottom: 40px;
     }
     </style>
-    <?php echo $this->Html->css('bootstrap.min') ?>
-    <?php echo $this->Html->css('style') ?>
-    <?php echo $this->Html->script('lib/modernizr') ?>
+    <?php echo $this->Html->css(array('bootstrap.min','style'));?>
     <?php echo $this->CakeStrap->automaticCss();?>
+    <?php echo $this->Html->script('lib/modernizr') ?>
   </head>
   <body>
     <!--[if lt IE 7]>
