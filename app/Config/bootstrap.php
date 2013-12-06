@@ -148,16 +148,15 @@ Cache::config('default', array('engine' => 'File'));
     'routes' => true
     )));*/
 
-/**
-* Your application configuration starts here
-*/
-Configure::write(
-	'Application', array(
-		'name' => 'CakeStrap v0.7',
-		'from_email' => 'from@your_app_domain.com',
-		'contact_mail' => 'contact@your_app_domain.com'
-	)
-);
+if (!Configure::read('Application.status')) {
+	Configure::write(
+		'Application', array(
+			'name' => 'CakeStrap v0.7',
+			'status'=> 0,
+		)
+	);
+	CakePlugin::load('Install', array('routes' => true));
+}
 
 /**
 * Choose your application theme
