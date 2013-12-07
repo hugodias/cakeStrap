@@ -1,6 +1,7 @@
 # User specific & automatically generated files #
 #################################################
 /app/Config/database.php
+/app/Config/config.php
 /app/tmp
 app/tmp/*
 /lib/Cake/Console/Templates/skel/tmp/
@@ -20,6 +21,7 @@ app/tmp/*
 Icon?
 ehthumbs.db
 Thumbs.db
+.idea/*
 
 cakestrapgit.sublime-workspace
 
@@ -29,3 +31,5 @@ app/webroot/files/fotos/1384816708394156941567510041_TH.jpg
 
 app/webroot/files/fotos/1384816708394156941567510041.jpg
 
+
+.idea/codeStyleSettings.xml
