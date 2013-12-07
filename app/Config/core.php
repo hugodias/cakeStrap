@@ -34,6 +34,14 @@
  * In development mode, you need to click the flash message to continue.
  */
 	Configure::write('debug', 2);
+	
+	// Carrega arquivos do projeto
+	if (file_exists(APP . 'Config' . DS . 'config.php')) {	
+		App::uses('PhpReader', 'Configure');
+		Configure::config('PhpReader', new PhpReader());
+		Configure::load('config', 'PhpReader');
+	}
+
 
 /**
  * Configure the Error handler used to handle errors for your application. By default
