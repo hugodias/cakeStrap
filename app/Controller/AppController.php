@@ -77,6 +77,10 @@ class AppController extends Controller
         $this->redirect('/home');
       }
 
+	  if( $this->params->params['controller'] == 'users' && $this->params->params['action'] == 'login'){
+		  $this->dbIsConnected();
+	  }
+
     # To enable portuguese language as main
     # Configure::write('Config.language', 'por');
   }
@@ -137,6 +141,30 @@ class AppController extends Controller
     $this->isTablet = $this->MobileDetect->detect('isTablet');
     return $this->isTablet;
   }
+
+
+	/**
+	 * Verifica uma vez se a conexao foi estabelecida
+	 */
+	protected function dbIsConnected()
+	{
+		App::uses('ConnectionManager', 'Model');
+		if( !$this->Cookie->check('Verify.connected') ) {
+			try {
+				$db = ConnectionManager::getDataSource('default');
+			}
+			catch (MissingConnectionException $e) {
+				$this->redirect('/install');
+			}
+
+			if (!$db->isConnected()) {
+				$this->redirect('/install');
+			}
+
+			$this->Cookie->write('Verify.connected',true);
+		}
+
+	}
 }
 
 
