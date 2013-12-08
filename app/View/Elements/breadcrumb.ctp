@@ -6,7 +6,6 @@
 				$link['label'],
 				$link['link']
 			); ?>
-			<span class="divider">/</span>
 		<?php else: ?>
 			<?php echo $link['label'] ?>
 		<?php endif; ?>
