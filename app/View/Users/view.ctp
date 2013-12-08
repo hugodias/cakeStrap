@@ -2,7 +2,7 @@
 $breadcrumb = array(
 	array(
 		'label' => 'Users',
-		'link'	=> '/home'
+		'link'	=> '/users'
 	),
 	array(
 		'label'	=> $user['User']['username']
