@@ -184,6 +184,16 @@ Configure::write(
 App::uses('CakeEmail', 'Network/Email');
 
 /**
+ * Configure log to store edits in users
+ */
+CakeLog::config('users', array(
+	'engine' => 'FileLog',
+	'types' => array('info', 'errors', 'warning'),
+	'scopes' => array('users'),
+	'file' => 'users.log'
+));
+
+/**
  * You can attach event listeners to the request lifecyle as Dispatcher Filter . By Default CakePHP bundles two filters:
  *
  * - AssetDispatcher filter will serve your asset files (css, images, js, etc) from your themes and plugins

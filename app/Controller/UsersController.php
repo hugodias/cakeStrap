@@ -73,6 +73,10 @@ class UsersController extends AppController {
 			$this->User->create();
 
 			if ($this->User->save($this->request->data)) {
+				if( AuthComponent::user('id') ) {
+					# Store log
+					CakeLog::info('The user '.AuthComponent::user('username').' (ID: '.AuthComponent::user('id').') registered user (ID: '.$this->User->id.')','users');
+				}
 				$this->Session->setFlash(__('The user has been saved'), 'flash_success');
 				$this->redirect('/home');
 			} else {
@@ -103,6 +107,9 @@ class UsersController extends AppController {
 
 
 			if ($this->User->save($this->request->data)) {
+				# Store log
+				CakeLog::info('The user '.AuthComponent::user('username').' (ID: '.AuthComponent::user('id').') edited user (ID: '.$this->User->id.')','users');
+
 				$this->Session->setFlash(__('The user has been saved'), 'flash_success');
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -128,6 +135,9 @@ class UsersController extends AppController {
 		}
 
 		if ($this->User->delete()) {
+			# Store log
+			CakeLog::info('The user '.AuthComponent::user('username').' (ID: '.AuthComponent::user('id').') deleted user (ID: '.$this->User->id.')','users');
+
 			$this->Session->setFlash(__('User deleted'), 'flash_success');
 			$this->redirect('/home');
 		}
