@@ -52,9 +52,6 @@
               <?php echo $this->Html->link('Users','/users') ?>
             </li>
             <?php } ?>
-            <li class="<?php echo $this->params->controller == 'users' && $this->params->action == 'add' ? 'active' : '' ?>">
-              <?php echo $this->Html->link(__('Register'), array('controller' => 'users', 'action' => 'add')) ?>
-            </li>
           </ul>
 
           <?php if (AuthComponent::user('id')): ?>
