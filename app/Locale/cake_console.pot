@@ -14,16 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: View/Errors/error400.ctp:22
-#: View/Errors/error500.ctp:22
-msgid "Error"
-msgstr ""
-
-#: View/Errors/error400.ctp:24
-msgid "The requested address %s was not found on this server."
-msgstr ""
-
-#: View/Errors/error500.ctp:23
-msgid "An Internal Error Has Occurred."
+#: Plugin/Install/Console/Command/SchemaInstallShell.php:23
+msgid "Schema is up to date."
 msgstr ""
 

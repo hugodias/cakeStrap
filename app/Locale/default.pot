@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-09-04 20:03+0000\n"
+"POT-Creation-Date: 2013-12-22 15:13+0100\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,85 +14,209 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/UsersController.php:27
+#: Controller/UsersController.php:41
+#: Model/User.php:70
 msgid "Invalid username or password, try again"
 msgstr ""
 
-#: Controller/UsersController.php:45;77;113
+#: Controller/UsersController.php:65;99;134
 msgid "Invalid user"
 msgstr ""
 
-#: Controller/UsersController.php:60;92
+#: Controller/UsersController.php:80;113
 msgid "The user has been saved"
 msgstr ""
 
-#: Controller/UsersController.php:97
+#: Controller/UsersController.php:116
 msgid "The user could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:118
+#: Controller/UsersController.php:141
 msgid "User deleted"
 msgstr ""
 
-#: Controller/UsersController.php:122
+#: Controller/UsersController.php:145
 msgid "User was not deleted"
 msgstr ""
 
-#: Controller/UsersController.php:157
+#: Controller/UsersController.php:172
 msgid "Invalid action"
 msgstr ""
 
-#: Controller/UsersController.php:206
+#: Controller/UsersController.php:215
 msgid "Remember password - "
 msgstr ""
 
-#: Controller/UsersController.php:228
-msgid "Link inválido"
+#: Controller/UsersController.php:235
+msgid "Link invalid"
 msgstr ""
 
-#: View/Elements/flash_fail.ctp:3
-msgid "Error!"
+#: Plugin/Install/Controller/InstallController.php:46
+msgid "Already Installed"
 msgstr ""
 
-#: View/Elements/flash_success.ctp:3
-msgid "Success!"
+#: Plugin/Install/Controller/InstallController.php:61
+msgid "Installation: Welcome"
 msgstr ""
 
-#: View/Elements/form_login.ctp:22
-#: View/Elements/form_users.ctp:26
-#: View/Users/home.ctp:14
-msgid "Username"
+#: Plugin/Install/Controller/InstallController.php:75
+msgid "Step 1: Database"
 msgstr ""
 
-#: View/Elements/form_login.ctp:23
-#: View/Elements/form_users.ctp:36
-msgid "Password"
+#: Plugin/Install/Controller/InstallController.php:87;162
+msgid "File database.php created successfully."
 msgstr ""
 
-#: View/Elements/form_login.ctp:34
+#: Plugin/Install/Controller/InstallController.php:102
+msgid "Step 2: Build database"
+msgstr ""
+
+#: Plugin/Install/Controller/InstallController.php:109
+msgid "Warning: Database \"%s\" is not empty."
+msgstr ""
+
+#: Plugin/Install/Controller/InstallController.php:115
+msgid "Structure of the database successfully created."
+msgstr ""
+
+#: Plugin/Install/Controller/InstallController.php:154
+msgid "Step 4: Config"
+msgstr ""
+
+#: Plugin/Install/Controller/InstallController.php:158
+msgid "File config.php created successfully."
+msgstr ""
+
+#: Plugin/Install/Controller/InstallController.php:177
+msgid "Installation successful"
+msgstr ""
+
+#: Plugin/Install/Controller/InstallController.php:211
+msgid "Could not write database.php file."
+msgstr ""
+
+#: Plugin/Install/Controller/InstallController.php:220
+msgid "Could not connect to database: "
+msgstr ""
+
+#: Plugin/Install/Controller/InstallController.php:225
+msgid "Could not connect to database."
+msgstr ""
+
+#: Plugin/Install/View/Install/adminuser.ctp:7
+msgid "Step 3: Create Admin User"
+msgstr ""
+
+#: Plugin/Install/View/Install/adminuser.ctp:16
+#: Plugin/Install/View/Install/config.ctp:16
+msgid "Save"
+msgstr ""
+
+#: Plugin/Install/View/Install/config.ctp:3
+msgid "Step 4: Create Config"
+msgstr ""
+
+#: Plugin/Install/View/Install/data.ctp:3
+msgid "Create tables"
+msgstr ""
+
+#: Plugin/Install/View/Install/data.ctp:8
+msgid "Build database"
+msgstr ""
+
+#: Plugin/Install/View/Install/finish.ctp:4
+msgid "The user %s has been created with administrative rights.<br>"
+msgstr ""
+
+#: Plugin/Install/View/Install/finish.ctp:6
+msgid "Visit their website: %s"
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:8
+msgid "Your tmp directory is writable."
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:11
+msgid "Your tmp directory is NOT writable."
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:16
+msgid "Your config directory is writable."
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:19
+msgid "Your config directory is NOT writable."
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:27
+msgid "PHP version %s %s %s"
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:30
+msgid "PHP version %s < %s"
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:38
+msgid "CakePhp version %s %s %s"
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:41
+msgid "CakePHP version %s < %s"
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:48
+msgid "Install"
+msgstr ""
+
+#: Plugin/Install/View/Install/index.ctp:51
+msgid "Installation cannot continue as minimum requirements are not met."
+msgstr ""
+
+#: Plugin/Install/View/Layouts/default.ctp:6
+msgid "CakeStrap"
+msgstr ""
+
+#: View/Elements/form_login.ctp:16
 #: View/Users/remember_password.ctp:24
 msgid "Forgot your password?"
 msgstr ""
 
-#: View/Elements/form_login.ctp:34
-#: View/Users/remember_password.ctp:31
-msgid "Remember my password"
+#: View/Elements/form_login.ctp:20
+msgid "Remember me"
 msgstr ""
 
-#: View/Elements/form_users.ctp:44
+#: View/Elements/form_login.ctp:23
+msgid "Login"
+msgstr ""
+
+#: View/Elements/form_users.ctp:25
+#: View/Users/_form.ctp:26
+#: View/Users/index.ctp:18
+msgid "Username"
+msgstr ""
+
+#: View/Elements/form_users.ctp:34
+#: View/Users/_form.ctp:39
 msgid "Email"
 msgstr ""
 
+#: View/Elements/form_users.ctp:42
+#: View/Users/_form.ctp:51
+msgid "Password"
+msgstr ""
+
 #: View/Elements/form_users.ctp:49
+#: View/Users/_form.ctp:60
 msgid "Admin"
 msgstr ""
 
 #: View/Elements/form_users.ctp:49
+#: View/Users/_form.ctp:60
 msgid "Author"
 msgstr ""
 
-#: View/Elements/form_users.ctp:56
-#: View/Users/change_password.ctp:50
+#: View/Elements/form_users.ctp:57
+#: View/Users/_form.ctp:66
 msgid "Submit"
 msgstr ""
 
@@ -100,52 +224,65 @@ msgstr ""
 msgid "Register new password"
 msgstr ""
 
-#: View/Layouts/default.ctp:49
-#: View/Users/register.ctp:2
-msgid "Register"
+#: View/Layouts/default.ctp:47
+msgid "Home"
 msgstr ""
 
-#: View/Users/change_password.ctp:1
-msgid "Change password"
+#: View/Layouts/default.ctp:52
+#: View/Users/index.ctp:2
+msgid "Users"
 msgstr ""
 
-#: View/Users/change_password.ctp:34
-msgid "New password"
-msgstr ""
-
-#: View/Users/change_password.ctp:42
-msgid "Confirm new password"
-msgstr ""
-
-#: View/Users/home.ctp:6
+#: View/Pages/index.ctp:5
 msgid "You are logged in"
 msgstr ""
 
-#: View/Users/home.ctp:8
-msgid "All Users"
+#: View/Users/change_password.ctp:3
+msgid "Change password"
 msgstr ""
 
-#: View/Users/home.ctp:15
-msgid "Role"
+#: View/Users/change_password.ctp:37
+msgid "New password"
 msgstr ""
 
-#: View/Users/home.ctp:26
-msgid "View"
+#: View/Users/change_password.ctp:47
+msgid "Confirm new password"
 msgstr ""
 
-#: View/Users/home.ctp:27
-msgid "Edit"
-msgstr ""
-
-#: View/Users/home.ctp:28
-msgid "Delete"
-msgstr ""
-
-#: View/Users/register.ctp:6
+#: View/Users/index.ctp:4
+#: View/Users/register.ctp:3
 msgid "Add User"
 msgstr ""
 
-#: View/Users/remember_password.ctp:28
+#: View/Users/index.ctp:19
+msgid "Role"
+msgstr ""
+
+#: View/Users/index.ctp:30
+msgid "View"
+msgstr ""
+
+#: View/Users/index.ctp:31
+msgid "Edit"
+msgstr ""
+
+#: View/Users/index.ctp:33;64
+msgid "Delete"
+msgstr ""
+
+#: View/Users/index.ctp:57
+msgid "Remove user"
+msgstr ""
+
+#: View/Users/index.ctp:60
+msgid "Are you sure you want to delete the user "
+msgstr ""
+
+#: View/Users/index.ctp:63
+msgid "Cancel"
+msgstr ""
+
+#: View/Users/remember_password.ctp:30
 msgid "E-mail"
 msgstr ""
 
@@ -167,22 +304,5 @@ msgstr ""
 
 #: Model/User.php:validation for field role
 msgid "Please enter a valid role"
-msgstr ""
-
-#: View/Errors/error400.ctp:21
-#: View/Errors/error500.ctp:21
-msgid "Error"
-msgstr ""
-
-#: View/Errors/error400.ctp:23
-msgid "The requested address %s was not found on this server."
-msgstr ""
-
-#: View/Errors/error500.ctp:22
-msgid "An Internal Error Has Occurred."
-msgstr ""
-
-#: webroot/test.php:87
-msgid "Debug setting does not allow access to this url."
 msgstr ""
 
