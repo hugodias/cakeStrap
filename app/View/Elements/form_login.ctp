@@ -10,8 +10,8 @@
 		</div>
 
 		<hr>
-		  <?php echo $this->CakeStrap->input('email');?>
-		  <?php echo $this->CakeStrap->input('password');?>
+		  <?php echo $this->CakeStrap->input('email', array('placeholder' => __('Email')));?>
+		  <?php echo $this->CakeStrap->input('password', array('placeholder' => __('Password')));?>
 		  <div class="form-group">
 		  	<?php echo $this->Html->link(__('Forgot your password?'),array('controller' => 'users','action' => 'remember_password')) ?>
 		  </div>
