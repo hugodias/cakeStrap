@@ -1,27 +1,24 @@
 <?php 
 App::uses('HtmlHelper', 'View/Helper');
-App::uses('AclComponent', 'Controller/Component');
-App::uses('ComponentCollection', 'Controller');
+
 /**
  * Extendendo as funcionalidades do HtmlHelper
  * 
  */
-class CakeStrapHtmlHelper extends Helper {
+class CakeStrapHtmlHelper extends HtmlHelper {
 
 
 	public $pluginPath;
 	public $controller;
 	public $action;
 
-	var $helpers = array('Form','Html');
+	var $helpers = array('Form');
 	
 
 	function __construct(View $View, $settings = array()) 
 	{
 		parent::__construct($View, $settings);
 		$this->setVariables();
-		$ComponentCollection = new ComponentCollection();
-		$this->Acl = new AclComponent($ComponentCollection);
 	}
 /**
 * Seta o caminho relativo do Plugin
@@ -96,7 +93,7 @@ class CakeStrapHtmlHelper extends Helper {
 	    	$scripts[] = $this->controller . DS . $this->action . '.js';
 		}
 		
-		return $this->Html->script($scripts);
+		return $this->script($scripts);
   	}
 
 /**
@@ -131,7 +128,7 @@ class CakeStrapHtmlHelper extends Helper {
 	  	if (is_file($css_path . $this->controller . DS . $this->action . '.css')) {
 	    	$css[] = $this->controller . DS . $this->action . '.css';
 		}
-		return $this->Html->css($css);
+		return $this->css($css);
   	}
   	
 	/**
@@ -178,27 +175,6 @@ class CakeStrapHtmlHelper extends Helper {
 		$retorno  = $this->Form->submit($string,$options);
 		$retorno .= $this->Form->end();
 		return $retorno;
-	}
-
-	
-/**
-*  Verifica se o usuario autenticado tem permissão a action
-*  caso tenha exibe o  menu, senão retorna null
-*/
-	public function link($title, $url = null, $options = array(), $confirmMessage = false)
-	{
-		if (!isset($url['controller'])) {
-			$controller = array('controller' => $this->params['controller']);
-			$url = array_merge($controller,$url);
-		}
-		
-		$menuUrl = 'controllers/'.join('/',$url);
-		
-		if (!$this->Acl->check(AuthComponent::user(),$menuUrl)) {
-			return false;
-		}
-		
-		return $this->Html->link($title, $url, $options, $confirmMessage);
 	}
 
 	
