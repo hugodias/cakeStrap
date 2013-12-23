@@ -50,7 +50,7 @@ class AppController extends Controller
 
     $this->Auth->authenticate = array('Form');
 
-    $this->Auth->loginRedirect = array('action' => 'index', 'controller' => 'pages');
+    $this->Auth->loginRedirect = array('controller'=>'pages','action'=>'index');
     $this->Auth->logoutRedirect = array('action' => 'login', 'controller' => 'users');
     $this->Auth->authError = 'You are not allowed to see that.';
 
@@ -158,7 +158,7 @@ class AppController extends Controller
 			}
 
 			if (!$db->isConnected()) {
-				$this->redirect('/install');
+        $this->redirect('/install');
 			}
 
 			$this->Cookie->write('Verify.connected',true);
