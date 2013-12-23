@@ -19,6 +19,7 @@ class AppSchema extends CakeSchema {
 		'email' => array('type' => 'string', 'length' => 255),
 		'name' => array('type' => 'string', 'length' => 255),
 		'role' => array('type' => 'string', 'length' => 255),
+		'hash_change_password' => array('type' => 'string', 'length' => 255),
 		'created' => array('type' => 'datetime'),
 		'modified' => array('type' => 'datetime'),
 		'indexes' => array(
