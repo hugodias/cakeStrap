@@ -232,7 +232,7 @@ class UsersController extends AppController {
 		$user = $this->User->findByHashChangePassword($hash);
 
 		if ($user['User']['hash_change_password'] != $hash || empty($user)) {
-			throw new NotFoundException(__('Link inválido'));
+			throw new NotFoundException(__('Link invalid'));
 		}
 
 		# Sends the hash to the form to check before changing the password

@@ -44,12 +44,12 @@
           <ul class="nav navbar-nav">
             <?php if( AuthComponent::user('id') ) { ?>
             <li class="<?php echo $this->params->controller == 'pages' && $this->action == 'index' ? 'active' : '';  ?>">
-              <?php echo $this->Html->link('Home','/home') ?>
+              <?php echo $this->Html->link(__('Home'),'/home') ?>
             </li>
             <?php } ?>
             <?php if( AuthComponent::user('role') == 'admin' ) { ?>
             <li class="<?php echo $this->params->controller == 'users' ? 'active' : '';  ?>">
-              <?php echo $this->Html->link('Users','/users') ?>
+              <?php echo $this->Html->link(__('Users'),'/users') ?>
             </li>
             <?php } ?>
           </ul>
@@ -89,7 +89,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php echo $this->params->webroot ?>js/lib/jquery.min.js"><\/script>')</script>
     <?php echo $this->Html->script(array('lib/bootstrap.min','src/scripts.js'));?>
-    <?php echo $this->CakeStrap->automaticScript(); ?>    
+    <?php echo $this->CakeStrap->automaticScript(); ?>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

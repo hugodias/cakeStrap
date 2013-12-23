@@ -47,7 +47,7 @@ msgid "Remember password - "
 msgstr "Lembrar senha - "
 
 #: Controller/UsersController.php:228
-msgid "Link inválido"
+msgid "Link invalid"
 msgstr "Link inválido"
 
 #: View/Elements/flash_fail.ctp:3
