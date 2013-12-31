@@ -1,0 +1,20 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-12-22 14:46+0100\n"
+"PO-Revision-Date: 2013-12-22 15:03+0100\n"
+"Last-Translator: Maik Ploigt <maik@ploigt.de>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.3\n"
+"Language: de_DE\n"
+
+#: Plugin/Install/Console/Command/SchemaInstallShell.php:23
+msgid "Schema is up to date."
+msgstr "Schema ist auf dem neuesten Stand."
