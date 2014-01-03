@@ -8,39 +8,33 @@
 </head>
 
 <body>
+	<div class="body-wrapper">
+		<div class="page-outer">
+			<div id="page">
+				<div id="main">
+					<header class="branding">
+						<h2><?php echo Configure::read('Application.name') ?> </h2>
+					</header>
+					<section class="container page-wrapper clearfix" role="main">
+			     		<?php echo $this->Session->flash();?>
+			     		<div class="sidebar-first">
+			     			<?php echo $this->fetch('steps') ?>
+			     		</div>
+			     		<div class="content">
+			      			<?php echo $this->fetch('content'); ?>
+			     		</div>
+			        </section> <!-- /container -->
 
-	<div id="wrap" class="install">
-		<header>
-			<div class="navbar navbar-default navbar-fixed-top">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a href="#" class="navbar-brand"><?php echo Configure::read('Application.name');?></a>
-					</div>
-				</div>
+					<footer>
+						<hr>
+			        	<p>&copy; <?php echo Configure::read('Application.name') ?> 2013</p>
+			      	</footer>
+				</div><!-- /install -->
 			</div>
-		</header>
-
-		<div class="container" role="main" id="main">
-
-     		<?php echo $this->Session->flash();?>
-      		<?php echo $this->fetch('content'); ?>
-      		<hr>
-       </div> <!-- /container -->
-
-		<footer>
-			<div class="container">
-        		<p>&copy; <?php echo Configure::read('Application.name') ?> 2013</p>
-			</div>
-      </footer>
-
-	</div><!-- /install -->
+		</div>
+	</div>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="<?php echo $this->params->webroot ?>js/lib/jquery.min.js"><\/script>')</script>
 	<?php echo $this->Html->script(array('lib/bootstrap.min','src/scripts.js'));?>
-	</body>
-	</html>
+</body>
+</html>

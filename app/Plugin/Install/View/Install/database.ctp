@@ -23,3 +23,12 @@
 <div class="form-actions">
 	<?php echo $this->Form->end(__('Submit')); ?>
 </div>
+<?php $this->start('steps');?>
+	<ul class="install-task-list">
+		<li class="done">Check for restrictions</li>
+		<li class="active">Create Database file</li>
+		<li>Build database</li>
+		<li>Create the initial user system</li>
+		<li>Create the configuration file</li>
+	</ul>
+<?php $this->end();?>
