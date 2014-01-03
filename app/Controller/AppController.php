@@ -39,7 +39,9 @@ class AppController extends Controller
 
   public $components = array('Auth','Session','Error','Cookie','MobileDetect');
   public $uses = array('User');
-  public $helpers = array('CakeStrap' => array('className' => 'CakeStrapHtml'));
+  public $helpers = array(
+                          'CakeStrap' => array('className' => 'CakeStrapHtml'),
+                          'Form' => array('className' => 'CakeStrapForm'));
 
 
   public function beforeFilter()
