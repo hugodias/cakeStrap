@@ -34,7 +34,7 @@
 	/* Profile page */
 	Router::connect('/me', array('controller' => 'users', 'action' => 'profile'));
 	/* Edit profile page */
-	Router::connect('/me/edit', array('controller' => 'users', 'action' => 'edit_profile'));
+	Router::connect('/me/edit', array('controller' => 'users', 'action' => 'edit'));
 
 	Router::connect('/sign-up', array('controller' => 'users', 'action' => 'add'));
 

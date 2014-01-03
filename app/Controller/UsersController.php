@@ -90,22 +90,25 @@ class UsersController extends AppController {
 	}
 
 	public function edit($id = null) {
-		if (AuthComponent::user('role') != 'admin') {
-			throw new ForbiddenException("Você não tem permissão para executar esta ação.");
+
+		# If its not an admin, he will edit his own profile only
+		if (AuthComponent::user('role') != 'admin' || empty($id)) {
+			$id = AuthComponent::user('id');
+			$this->set('user', AuthComponent::user());
+		} else {
+			$this->User->id = $id;
+
+			if (!$this->User->exists()) {
+				throw new NotFoundException(__('Invalid user'));
+			}
+			$this->set('user', $user = Hash::extract($this->User->findById($id),'User'));
 		}
 
-		$this->User->id = $id;
-
-		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$this->set('user', $this->User->findById($id));
 
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if (empty($this->request->data['User']['password'])) {
 				unset($this->request->data['User']['password']);
 			}
-
 
 			if ($this->User->save($this->request->data)) {
 				# Store log
@@ -247,30 +250,6 @@ class UsersController extends AppController {
 	public function profile(){
 	}
 
-	public function edit_profile(){
-		$this->set('user', AuthComponent::user());
-
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if (empty($this->request->data['User']['password'])) {
-				unset($this->request->data['User']['password']);
-			}
-
-			if ($this->User->save($this->request->data)) {
-				# Store log
-				CakeLog::info('The user '.AuthComponent::user('username').' (ID: '.AuthComponent::user('id').') edited user (ID: '.$this->User->id.')','users');
-
-				$this->Session->setFlash(__('The user has been saved'), 'flash_success');
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash_fail');
-			}
-		} else {
-			$this->request->data = $this->User->read(null, AuthComponent::user('id'));
-			unset($this->request->data['User']['password']);
-		}
-		$this->set('label', 'Edit profile');
-		$this->render('_form');
-	}
 }
 
 ?>
