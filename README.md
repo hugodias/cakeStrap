@@ -31,7 +31,7 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.4.1 Applications.
 
 - [Download](https://github.com/hugodias/cakeStrap/archive/master.zip) or clone this repository
 - Extract the cakeStrap folder in your web server
-- Go to http://localhost/cakeStrap and follow the instructions
+- Go to [http://localhost/cakeStrap](http://localhost/cakeStrap) and follow the instructions
 
 ## Automatic inclusion of JS and CSS
 CakeStrap has a JS and CSS folder structure allowing to automatic load files for each action of each controller.
