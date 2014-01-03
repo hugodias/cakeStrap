@@ -12,7 +12,7 @@ App::uses('SchemaInstallShell', 'Install.Console/Command');
 class InstallController extends Controller {
 
 
-	public $helpers = array('CakeStrap' => array('className' => 'CakeStrapHtml'));
+	public $helpers = array('Form' => array('className' => 'CakeStrapForm'));
 
 /**
  * Default configuration
