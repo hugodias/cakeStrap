@@ -18,7 +18,7 @@
     }
     </style>
     <?php echo $this->Html->css(array('bootstrap.min','style'));?>
-    <?php echo $this->Html->automaticCss();?>
+    <?php echo $this->CakeStrap->automaticCss();?>
     <?php echo $this->Html->script('lib/modernizr') ?>
   </head>
   <body>
@@ -89,7 +89,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php echo $this->params->webroot ?>js/lib/jquery.min.js"><\/script>')</script>
     <?php echo $this->Html->script(array('lib/bootstrap.min','src/scripts.js'));?>
-    <?php echo $this->Html->automaticScript(); ?>
+    <?php echo $this->CakeStrap->automaticScript(); ?>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
