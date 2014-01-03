@@ -29,29 +29,9 @@ CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.4.1 Applications.
 
 ## Quick start
 
-- Create a table named `users` in your database with the following structure:
-
-
-<pre>CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `role` varchar(20) NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `hash_change_password` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-</pre>
-
-
-- Open the file `app/Config/database.php` and change the database information
-- Change the permissions of the folder `app/tmp` to 777 ( and all the folders inside of it )
-- Change your app name and email in `app/Config/bootstrap.php` at line 149
-- Change your SMTP email settings in `app/Config/email.php` at line 66
-
+- [Download](https://github.com/hugodias/cakeStrap/archive/master.zip) or clone this repository
+- Extract the cakeStrap folder in your web server
+- Go to http://localhost/cakeStrap and follow the instructions
 
 ## Automatic inclusion of JS and CSS
 CakeStrap has a JS and CSS folder structure allowing to automatic load files for each action of each controller.
