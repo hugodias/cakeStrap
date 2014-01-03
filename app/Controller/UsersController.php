@@ -58,8 +58,8 @@ class UsersController extends AppController {
 		}
 
 		$user = $this->User->findByUsername($username);
-
-		$this->User->id = $user['User']['id'];
+		$user = Hash::extract($user,'User');
+		$this->User->id = $user['id'];
 
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));

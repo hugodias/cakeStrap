@@ -1,71 +1,28 @@
 <div class="row">
   <div class="col-lg-4 col-lg-offset-4">
-    <?php
-    echo $this->Form->create
-    (
-      'User',
-      array
-      (
-        'class'     => '',
-        'inputDefaults' => array
-        (
-          'error' => false
-        )
-      )
-    );
-    ?>
+    <?php echo $this->Form->create('User');?>
     <div class="center">
       <h2><?php echo $label ?></h2>
     </div>
 
     <hr>
-      <div class="form-group">
-        <?php
-        echo $this->Form->input('username',
-          array(
-            'placeholder' => __('Username'),
-            'class' => 'form-control',
-            'value' => !empty( $user['User']['username'] ) ? $user['User']['username'] : ''
-          )
-        );
-        ?>
-      </div>
-      <div class="form-group">
-        <?php
-        echo $this->Form->input('email',
-          array(
-            'type' => 'email',
-            'class' => 'form-control',
-            'placeholder' => __('Email'),
-            'value' => !empty( $user['User']['email'] ) ? $user['User']['email'] : ''
-          )
-        );
-        ?>
-      </div>
-      <div class="form-group">
-        <?php
-        echo $this->Form->input('password',
-          array(
-            'type' => 'password',
-            'class' => 'form-control',
-            'placeholder' => __('Password'),
-            'value' => false
-          )
-        );
-        ?>
-      </div>
-      <div class="form-group">
-        <?php
-        echo $this->Form->input('role', array(
+        <?php echo $this->Form->input('username',array(
+            'label' => __('Username'),
+            'value' => !empty( $user['username'] ) ? $user['username'] : ''));?>
+      
+        <?php echo $this->Form->input('email', array(
+            'label' => __('Email'),
+            'value' => !empty( $user['email'] ) ? $user['email'] : ''));?>
+     
+        <?php echo $this->Form->input('password',array(
+            'label' => __('Password'),
+            'value' => false));?>
+      
+        <?php echo $this->Form->input('role', array(
+            'label' => __('Role'),
             'options' => array('admin' => __('Admin'), 'author' => __('Author')),
-            'class' => 'form-control',
-            'selected' => !empty( $user['User']['role'] ) ? $user['User']['role'] : ''
-        ));
-        ?>
-      </div>
-      <button type="submit" class="btn btn-default"><?php echo __("Submit") ?></button>
-    </form>
-
-
+            'selected' => !empty( $user['role'] ) ? $user['role'] : ''));?>
+      
+        <?php echo $this->Form->end(__("Submit"));?>
   </div>
 </div>

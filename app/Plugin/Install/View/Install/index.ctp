@@ -1,4 +1,4 @@
-<div class="install">
+<div class="index install">
 	<h2><?php echo $title_for_layout; ?></h2>
 	<?php
 	$check = true;
@@ -43,12 +43,20 @@
 
 	?>
 </div>
-<div class="form-actions">
+<div class="form-actions form-group">
 	<?php if ($check): ?>
 		<?php echo $this->Html->link(__('Install'), array('action' => 'database'), array('class' => 'btn btn-primary')); ?>
-
 	<?php else: ?>
-		<?php echo $this->CakeStrap->tag('p',__('Installation cannot continue as minimum requirements are not met.'));?>
+		<?php echo $this->Html->tag('p',__('Installation cannot continue as minimum requirements are not met.'));?>
 	<?php endif;?>
 </div>
 
+<?php $this->start('steps');?>
+	<ul class="install-task-list">
+		<li class="active">Check for restrictions</li>
+		<li>Create Database file</li>
+		<li>Build database</li>
+		<li>Create the initial user system</li>
+		<li>Create the configuration file</li>
+	</ul>
+<?php $this->end();?>
