@@ -78,6 +78,11 @@ class AppController extends Controller
         $this->redirect('/home');
       }
 
+	  if( $this->params->params['controller'] == 'users' && $this->params->params['action'] == 'login' && AuthComponent::user('id'))
+	  {
+		  $this->redirect('/home');
+	  }
+
 	  if( $this->params->params['controller'] == 'users' && $this->params->params['action'] == 'login'){
 		  $this->dbIsConnected();
 	  }

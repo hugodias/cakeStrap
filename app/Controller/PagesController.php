@@ -70,5 +70,6 @@ class PagesController extends AppController {
 
 	public function index()
 	{
+		$this->set('users_count', $this->User->find('count'));
 	}
 }

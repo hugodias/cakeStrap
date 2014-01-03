@@ -14,6 +14,7 @@ class UsersController extends AppController {
 	}
 
 	public function login() {
+
 		if ($this->request->is('post')) {
 			try {
 				# Retrieve user username for auth
@@ -240,6 +241,35 @@ class UsersController extends AppController {
 
 		$this->render('/Users/change_password');
 
+	}
+
+
+	public function profile(){
+	}
+
+	public function edit_profile(){
+		$this->set('user', AuthComponent::user());
+
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if (empty($this->request->data['User']['password'])) {
+				unset($this->request->data['User']['password']);
+			}
+
+			if ($this->User->save($this->request->data)) {
+				# Store log
+				CakeLog::info('The user '.AuthComponent::user('username').' (ID: '.AuthComponent::user('id').') edited user (ID: '.$this->User->id.')','users');
+
+				$this->Session->setFlash(__('The user has been saved'), 'flash_success');
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash_fail');
+			}
+		} else {
+			$this->request->data = $this->User->read(null, AuthComponent::user('id'));
+			unset($this->request->data['User']['password']);
+		}
+		$this->set('label', 'Edit profile');
+		$this->render('_form');
 	}
 }
 

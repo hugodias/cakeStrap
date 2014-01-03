@@ -17,11 +17,14 @@
         <?php echo $this->Form->input('password',array(
             'label' => __('Password'),
             'value' => false));?>
-      
+
+
+	      <?php if(AuthComponent::user('role') == 'admin'){?>
         <?php echo $this->Form->input('role', array(
             'label' => __('Role'),
             'options' => array('admin' => __('Admin'), 'author' => __('Author')),
             'selected' => !empty( $user['role'] ) ? $user['role'] : ''));?>
+	      <?php }?>
       
         <?php echo $this->Form->end(__("Submit"));?>
   </div>

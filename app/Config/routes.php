@@ -28,11 +28,17 @@
 	if (Configure::read('Application.status')) {
 	   Router::connect('/', array('controller' => 'users', 'action' => 'login'));
 	}
-	
 
-	/* Route example */
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'index'));
+
+	/* Profile page */
+	Router::connect('/me', array('controller' => 'users', 'action' => 'profile'));
+	/* Edit profile page */
+	Router::connect('/me/edit', array('controller' => 'users', 'action' => 'edit_profile'));
+
 	Router::connect('/sign-up', array('controller' => 'users', 'action' => 'add'));
+
+	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
