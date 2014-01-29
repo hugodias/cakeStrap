@@ -101,7 +101,7 @@ foreach ($relations as $alias => $details):
 <div class="related">
 	<h3><?php echo "<?php echo __('Related " . $otherPluralHumanName . "'); ?>"; ?></h3>
 	<?php echo "<?php if (!empty(\${$singularVar}['{$alias}'])): ?>\n"; ?>
-	<table cellpadding = "0" cellspacing = "0">
+	<table cellpadding = "0" cellspacing = "0" class="table table-bordered">
 	<tr>
 <?php
 			foreach ($details['fields'] as $field) {
