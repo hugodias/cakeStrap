@@ -89,6 +89,12 @@ class AppController extends Controller
 
     # To enable portuguese language as main
     # Configure::write('Config.language', 'por');
+
+
+	  if(Configure::read('Meta.title')){
+		  $title = Configure::read('Meta.title');
+		  Configure::write('Application.name', $title);
+	  }
   }
 
   public function beforeRender() {
