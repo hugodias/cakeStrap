@@ -95,6 +95,13 @@ class AppController extends Controller
 		  $title = Configure::read('Meta.title');
 		  Configure::write('Application.name', $title);
 	  }
+
+	  # App in maintenance
+	  if(Configure::read('Application.maintenance')){
+		  if($this->request->action != "maintenance"){
+			  $this->redirect(array('controller' => 'pages', 'action' => 'maintenance'));
+		  }
+	  }
   }
 
   public function beforeRender() {

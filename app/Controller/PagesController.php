@@ -56,20 +56,13 @@ class PagesController extends AppController {
 	{
 		parent::beforeFilter();
 
-		$this->Auth->allow('home');
-	}
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @return void
- */
-	public function display() {
-
+		$this->Auth->allow('home', 'maintenance');
 	}
 
 	public function index()
 	{
 		$this->set('users_count', $this->User->find('count'));
 	}
+
+	public function maintenance(){}
 }

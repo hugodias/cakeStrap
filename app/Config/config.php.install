@@ -5,6 +5,7 @@ $config = array(
 		'name' 	  => 'CakeStrap',
 		'version' => 'v0.7',
 		'status'  => false,
+		'maintenance' => false
 	),
 	'Meta' => array(
 		'title' 	  => '{{title}}',
