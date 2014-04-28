@@ -1,6 +1,6 @@
 # CakeStrap v 0.7.1
 ---
-CakeStrap is a simple HTML5 Ready Bootstrap for CakePHP 2.4.1 Applications.
+CakeStrap is a bootstrap for CakePHP - HTML5 CakePHP2.x Bootstrap3.0!
 
 
 ### Video tutorial ( Portuguese )
