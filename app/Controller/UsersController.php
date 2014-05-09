@@ -7,7 +7,7 @@ class UsersController extends AppController {
 
 	public function index() {
 		if (AuthComponent::user('role') != 'admin') {
-			throw new ForbiddenException("Você não tem permissão para executar esta ação.");
+			throw new ForbiddenException("You're now allowed to do this.");
 		}
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
@@ -55,7 +55,7 @@ class UsersController extends AppController {
 
 	public function view($username = null) {
 		if (AuthComponent::user('role') != 'admin') {
-			throw new ForbiddenException("Você não tem permissão para executar esta ação.");
+			throw new ForbiddenException("You're now allowed to do this.");
 		}
 
 		$user = $this->User->findByUsername($username);
@@ -129,7 +129,7 @@ class UsersController extends AppController {
 
 	public function delete($id = null) {
 		if (AuthComponent::user('role') != 'admin') {
-			throw new ForbiddenException("Você não tem permissão para executar esta ação.");
+			throw new ForbiddenException("You're now allowed to do this.");
 		}
 
 		$this->User->id = $id;
