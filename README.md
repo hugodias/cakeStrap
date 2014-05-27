@@ -33,6 +33,12 @@ CakeStrap is a bootstrap for CakePHP - HTML5 CakePHP2.x Bootstrap3.0!
 - Extract the cakeStrap folder in your web server
 - Go to [http://localhost/cakeStrap](http://localhost/cakeStrap) and follow the instructions
 
+## Manually Installation
+* Rename the `app/Config/config.php.install` file to `app/Config/config.php` and still in this file change the *$config['Application']['status']* to **true**
+* Rename the `app/Config/database.php.default` file to `app/Config/database.php` and configure your database credentials
+* Create the users table in your database with this Schema: [https://github.com/hugodias/cakeStrap/blob/master/app/Config/Schema/schema.php](https://github.com/hugodias/cakeStrap/blob/master/app/Config/Schema/schema.php
+)
+
 ## Automatic inclusion of JS and CSS
 CakeStrap has a JS and CSS folder structure allowing to automatic load files for each action of each controller.
 For example, if you have this JS structure folder:
