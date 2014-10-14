@@ -1,0 +1,13 @@
+language: php
+php:
+  - "5.2"
+
+branches:
+  only:
+    - devel
+
+script:
+  - phpunit --configuration tests/phpunit.xml
+
+notifications:
+  email: false

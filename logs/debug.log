@@ -1,0 +1,14 @@
+2014-10-14 17:45:33 Notice: Notice (8): Undefined variable: user in [/Users/hugodias/Projects/cakephp-3-0-0-beta2/src/Template/Users/login.ctp, line 1]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 135
+include - APP/Template/Users/login.ctp, line 1
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 737
+Cake\View\View::_render() - CORE/src/View/View.php, line 698
+Cake\View\View::render() - CORE/src/View/View.php, line 418
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 624
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+

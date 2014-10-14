@@ -1,0 +1,128 @@
+2014-10-14 17:38:54 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Users',
+  'action' => 'login',
+  'plugin' => 'Users',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Users\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Users\',
+  \'_ext\' => NULL,
+)',
+)
+Request URL: /cakephp-3-0-0-beta2/
+Stack Trace:
+#0 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Router.php(583): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Router.php(686): Cake\Routing\Router::url(Array)
+#2 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(385): Cake\Routing\Router::normalize(Array)
+#3 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(345): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\PagesController))
+#4 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(278): Cake\Controller\Component\AuthComponent->_unauthenticated(Object(App\Controller\PagesController))
+#5 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManager.php(264): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManager.php(235): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManagerTrait.php(76): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Controller.php(525): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(106): Cake\Controller\Controller->startupProcess()
+#10 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PagesController))
+#11 /Users/hugodias/Projects/cakephp-3-0-0-beta2/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2014-10-14 17:40:44 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Users',
+  'action' => 'login',
+  'plugin' => 'Users',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Users\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Users\',
+  \'_ext\' => NULL,
+)',
+)
+Request URL: /cakephp-3-0-0-beta2/
+Stack Trace:
+#0 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Router.php(583): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Router.php(686): Cake\Routing\Router::url(Array)
+#2 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(385): Cake\Routing\Router::normalize(Array)
+#3 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(345): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\PagesController))
+#4 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(278): Cake\Controller\Component\AuthComponent->_unauthenticated(Object(App\Controller\PagesController))
+#5 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManager.php(264): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManager.php(235): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManagerTrait.php(76): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Controller.php(525): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(106): Cake\Controller\Controller->startupProcess()
+#10 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PagesController))
+#11 /Users/hugodias/Projects/cakephp-3-0-0-beta2/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2014-10-14 17:40:59 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Users',
+  'action' => 'login',
+  'plugin' => 'Users',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Users\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Users\',
+  \'_ext\' => NULL,
+)',
+)
+Request URL: /cakephp-3-0-0-beta2/
+Stack Trace:
+#0 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Router.php(583): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Router.php(686): Cake\Routing\Router::url(Array)
+#2 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(385): Cake\Routing\Router::normalize(Array)
+#3 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(345): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\PagesController))
+#4 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(278): Cake\Controller\Component\AuthComponent->_unauthenticated(Object(App\Controller\PagesController))
+#5 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManager.php(264): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManager.php(235): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Event/EventManagerTrait.php(76): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Controller.php(525): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(106): Cake\Controller\Controller->startupProcess()
+#10 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PagesController))
+#11 /Users/hugodias/Projects/cakephp-3-0-0-beta2/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2014-10-14 17:42:12 Error: [Cake\View\Exception\MissingViewException] View file "Users/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/login.ctp',
+)
+Request URL: /cakephp-3-0-0-beta2/users/login
+Stack Trace:
+#0 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/View/View.php(415): Cake\View\View->_getViewFileName(NULL)
+#1 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Controller.php(624): Cake\View\View->render(NULL, NULL)
+#2 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#4 /Users/hugodias/Projects/cakephp-3-0-0-beta2/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2014-10-14 17:48:26 Error: [PDOException] SQLSTATE[28000] [1045] Access denied for user 'my_app'@'localhost' (using password: YES)
+Request URL: /cakephp-3-0-0-beta2/users/login
+Stack Trace:
+#0 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Database/Driver/PDODriverTrait.php(44): PDO->__construct('mysql:host=loca...', 'my_app', 'secret', Array)
+#1 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(85): Cake\Database\Driver\Mysql->_connect(Array)
+#2 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(44): Cake\Database\Driver\Mysql->connect()
+#3 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(60): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(59): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Database/Connection.php(288): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/ORM/Table.php(337): Cake\Database\Connection->schemaCollection()
+#7 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/ORM/Marshaller.php(100): Cake\ORM\Table->schema()
+#8 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/ORM/Table.php(1677): Cake\ORM\Marshaller->one(Array, Array)
+#9 /Users/hugodias/Projects/cakephp-3-0-0-beta2/src/Controller/UsersController.php(16): Cake\ORM\Table->newEntity(Array)
+#10 [internal function]: App\Controller\UsersController->login()
+#11 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Controller/Controller.php(426): ReflectionMethod->invokeArgs(Object(App\Controller\UsersController), Array)
+#12 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#13 /Users/hugodias/Projects/cakephp-3-0-0-beta2/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#14 /Users/hugodias/Projects/cakephp-3-0-0-beta2/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+

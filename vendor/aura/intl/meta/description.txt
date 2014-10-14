@@ -1,0 +1,2 @@
+The Aura.Intl package provides internationalization (I18N) tools, specifically
+package-oriented per-locale message translation.

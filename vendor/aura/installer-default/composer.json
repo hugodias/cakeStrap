@@ -1,0 +1,23 @@
+{
+    "name": "aura/installer-default",
+    "version": "1.0.0",
+    "type": "composer-installer",
+    "license": "BSD-2-Clause",
+    "description": "Installs Aura packages using the Composer defaults.",
+    "keywords": ["aura", "installer"],
+    "authors": [
+        {
+            "name": "Paul M. Jones",
+            "email": "pmjones88@gmail.com",
+            "homepage": "http://paul-m-jones.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Aura\\Composer\\": "src/"
+        }
+    },
+    "extra" : {
+        "class" : "Aura\\Composer\\DefaultInstaller"
+    }
+}

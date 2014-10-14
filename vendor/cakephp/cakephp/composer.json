@@ -1,0 +1,55 @@
+{
+	"name": "cakephp/cakephp",
+	"description": "The CakePHP framework",
+	"type": "library",
+	"keywords": ["framework"],
+	"homepage": "http://cakephp.org",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "CakePHP Community",
+			"homepage": "https://github.com/cakephp/cakephp/graphs/contributors"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/cakephp/cakephp/issues",
+		"forum": "http://stackoverflow.com/tags/cakephp",
+		"irc": "irc://irc.freenode.org/cakephp",
+		"source": "https://github.com/cakephp/cakephp"
+	},
+	"require": {
+		"php": ">=5.4.16",
+		"ext-intl": "*",
+		"ext-mcrypt": "*",
+		"ext-mbstring": "*",
+		"nesbot/Carbon": "1.8.*",
+		"ircmaxell/password-compat": "1.0.*",
+		"aura/intl": "1.1.*",
+		"psr/log": "1.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Cake\\": "src"
+		},
+		"files": [
+			"src/Core/functions.php",
+			"src/Collection/functions.php"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Cake\\Test\\": "tests"
+		}
+	},
+	"replace": {
+		"cakephp/collection": "self.version",
+		"cakephp/event": "self.version",
+		"cakephp/validation": "self.version",
+		"cakephp/utility": "self.version",
+		"cakephp/core": "self.version",
+		"cakephp/datasource": "self.version"
+	}
+}
