@@ -17,7 +17,7 @@
           <th>#</th>
           <th><?php echo __('Username') ?></th>
           <th><?php echo __('Role') ?></th>
-          <th>#</th>
+          <th>Admin</th>
         </tr>
       </thead>
       <tbody>
