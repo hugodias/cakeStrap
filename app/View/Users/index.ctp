@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-10"><h3><?php echo __('Users')?></h3></div>
   <div class="col-lg-2">
-    <?php echo $this->Html->link(__('Add User'),'/users/add',array('class' => 'btn btn-default pull-right','style' => 'margin-top: 15px')) ?>
+    <?php echo $this->Html->link(__('Add User'),'/users/add',array('class' => 'btn btn-primary pull-right','style' => 'margin-top: 15px')) ?>
   </div>
 </div>
 
@@ -11,13 +11,13 @@
 		<?php echo $this->Session->flash() ?>
 
     <hr>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
           <th>#</th>
           <th><?php echo __('Username') ?></th>
           <th><?php echo __('Role') ?></th>
-          <th>#</th>
+          <th>Admin</th>
         </tr>
       </thead>
       <tbody>

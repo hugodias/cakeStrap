@@ -79,7 +79,7 @@ class UsersController extends AppController {
 					CakeLog::info('The user '.AuthComponent::user('username').' (ID: '.AuthComponent::user('id').') registered user (ID: '.$this->User->id.')','users');
 				}
 				$this->Session->setFlash(__('The user has been saved'), 'flash_success');
-				$this->redirect('/home');
+				$this->redirect(array('action' => 'index'));
 			} else {
 				# Create a loop with validation errors
 				$this->Error->set($this->User->invalidFields());
@@ -143,12 +143,12 @@ class UsersController extends AppController {
 			CakeLog::info('The user '.AuthComponent::user('username').' (ID: '.AuthComponent::user('id').') deleted user (ID: '.$this->User->id.')','users');
 
 			$this->Session->setFlash(__('User deleted'), 'flash_success');
-			$this->redirect('/home');
+			$this->redirect(array('action' => 'index'));
 		}
 
 		$this->Session->setFlash(__('User was not deleted'), 'flash_fail');
 
-		$this->redirect('/home');
+		$this->redirect(array('action' => 'index'));
 	}
 
 

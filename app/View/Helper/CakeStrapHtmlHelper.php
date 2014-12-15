@@ -101,7 +101,7 @@ class CakeStrapHtmlHelper extends HtmlHelper {
 		}
 
 	  	if (is_file($js_path . $this->controller . DS . $this->action . '.js')) {
-	    	$scripts[] = $this->controller . DS . $this->action;
+	    	$scripts[] = $this->controller . '/' . $this->action;
 		}
 		return $this->script($scripts);
   	}
